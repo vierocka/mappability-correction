@@ -1,0 +1,10 @@
+script,read_len_bp,reference,read_source,flanks,mode,alignIntronMax1,results_subdir,output_tsv
+v1_a,100,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_genomic,transcript_uniqueness_factors_genomic_L100bp.tsv
+v1_b,100,Full genome + alt loci,Genomic exon ± 50 bp,Yes,SE,No,results/mappability_genomic_SE,transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+v1_c,100,Full genome + alt loci,MANE spliced RNA,No,SE,No,results/mappability_genomic_RNA_SE,transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+v2_a,100,Dedup CDS,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_dedup_cds_PE_flank,transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv
+v2_b,100,Dedup CDS,Genomic exon ± 50 bp,Yes,SE,No,results/mappability_dedup_cds_SE_flank,transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv
+v2_c,100,Dedup CDS,MANE spliced RNA,No,SE,No,results/mappability_dedup_cds,transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+v2_d,100,Dedup CDS,MANE spliced RNA,No,SE,Yes,results/mappability_dedup_cds_alignIntronMax1,transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv
+v3_a,75,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_genomic_L75bp,transcript_uniqueness_factors_genomic_L75bp.tsv
+v4_a,150,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_genomic_L150bp,transcript_uniqueness_factors_genomic_L150bp.tsv

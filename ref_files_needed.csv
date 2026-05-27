@@ -1,0 +1,7 @@
+input_file,used_by_script,purpose,in_repo
+GCF_000001405.40_GRCh38.p14_genomic.fna,v1_a v1_b v1_c v3_a v4_a,Sequence extraction (samtools faidx) + genome STAR index build,No
+GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna,v2_a v2_b v2_c v2_d,Deduplicated CDS STAR index build,No
+MANE.GRCh38.v1.5.ensembl_genomic.gff,v1_a v1_b v2_a v2_b v3_a v4_a,Exon coordinate parsing,No
+MANE.GRCh38.v1.5.ensembl_rna.fna,v1_c v2_c v2_d,Read simulation from spliced RNA sequences,No
+STAR_index_genome,v1_a v1_b v1_c v3_a v4_a,Full genome alignment index,must be built
+STAR_index_dedup_cds,v2_a v2_b v2_c v2_d,Deduplicated CDS alignment index,must be built

@@ -1,0 +1,13 @@
+seqkit rmdup -s -i \
+    GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna \
+    -o GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna \
+    --threads 12
+[INFO] 53249 duplicated records removed
+
+seqkit rmdup -s -i \
+> GCF_000001405.40_GRCh38.p14_protein.faa \
+> -o GCF_000001405.40_GRCh38.p14_protein.dedup.faa \
+> --threads 12
+
+[INFO] 46434 duplicated records removed
+

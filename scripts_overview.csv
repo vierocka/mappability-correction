@@ -1,0 +1,10 @@
+script,read_len_bp,reference,read_source,flanks,mode,alignIntronMax1,outdir_conflict
+v1_a,100,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,
+v1_b,100,Full genome + alt loci,Genomic exon ± 50 bp,Yes,SE,No,
+v1_c,100,Full genome + alt loci,MANE spliced RNA,No,SE,No,
+v2_a,100,Dedup CDS,Genomic exon ± 50 bp,Yes,PE,No,
+v2_b,100,Dedup CDS,Genomic exon ± 50 bp,Yes,SE,No,
+v2_c,100,Dedup CDS,MANE spliced RNA,No,SE,No,
+v2_d,100,Dedup CDS,MANE spliced RNA,No,SE,Yes,
+v3_a,75,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,
+v4_a,150,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,
