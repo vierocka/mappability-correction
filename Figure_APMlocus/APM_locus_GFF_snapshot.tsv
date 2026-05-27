@@ -1,0 +1,210 @@
+panel	gene	feature_type	chrom	start	end	strand	description
+A_TAP_PSM	HLA-DQB2	gene	NC_000006.12	32756098	32763532	-	major histocompatibility complex, class II, DQ beta 2
+A_TAP_PSM	HLA-DOB	gene	NC_000006.12	32812763	32817002	-	major histocompatibility complex, class II, DO beta
+A_TAP_PSM	TAP2	gene	NC_000006.12	32821831	32838739	-	transporter 2, ATP binding cassette subfamily B member
+A_TAP_PSM	PSMB8	gene	NC_000006.12	32840717	32844679	-	proteasome 20S subunit beta 8
+A_TAP_PSM	PSMB8-AS1	gene	NC_000006.12	32844086	32846500	+	PSMB8 antisense RNA 1
+A_TAP_PSM	TAP1	gene	NC_000006.12	32845209	32853704	-	transporter 1, ATP binding cassette subfamily B member
+A_TAP_PSM	PSMB9	gene	NC_000006.12	32854192	32859851	+	proteasome 20S subunit beta 9
+A_TAP_PSM	PPP1R2P1	pseudogene	NC_000006.12	32876478	32880074	-	protein phosphatase 1 regulatory inhibitor subunit 2 pseudogene 1
+A_TAP_PSM	LOC100294145	gene	NC_000006.12	32894176	32903758	+	uncharacterized LOC100294145
+A_TAP_PSM	HLA-Z	pseudogene	NC_000006.12	32896402	32896489	+	major histocompatibility complex, class I, Z (pseudogene)
+A_TAP_PSM	HLA-DMB	gene	NC_000006.12	32934636	32941028	-	major histocompatibility complex, class II, DM beta
+A_TAP_PSM	HLA-DMA	gene	NC_000006.12	32948618	32953097	-	major histocompatibility complex, class II, DM alpha
+A_TAP_PSM	LOC124901302	gene	NC_000006.12	32963293	32968521	-	uncharacterized LOC124901302
+A_TAP_PSM	BRD2	gene	NC_000006.12	32968594	32981505	+	bromodomain containing 2
+A_TAP_PSM	HLA-DOA	gene	NC_000006.12	33004182	33009591	-	major histocompatibility complex, class II, DO alpha
+A_TAP_PSM	HLA-DPA1	gene	NC_000006.12	33064569	33080748	-	major histocompatibility complex, class II, DP alpha 1
+A_TAP_PSM	HLA-DPB1	gene	NC_000006.12	33075990	33089696	+	major histocompatibility complex, class II, DP beta 1
+A_TAP_PSM	RPL32P1	pseudogene	NC_000006.12	33079398	33079909	+	ribosomal protein L32 pseudogene 1
+A_TAP_PSM	HLA-DPA2	pseudogene	NC_000006.12	33091482	33093314	-	major histocompatibility complex, class II, DP alpha 2 (pseudogene)
+A_TAP_PSM	COL11A2P1	pseudogene	NC_000006.12	33103693	33107144	-	collagen type XI alpha 2 pseudogene 1
+A_TAP_PSM	HLA-DPB2	pseudogene	NC_000006.12	33112516	33129113	+	major histocompatibility complex, class II, DP beta 2 (pseudogene)
+A_TAP_PSM	LOC105375021	gene	NC_000006.12	33130747	33143434	-	uncharacterized LOC105375021
+A_TAP_PSM	HLA-DPA3	pseudogene	NC_000006.12	33131197	33131343	-	major histocompatibility complex, class II, DP alpha 3 (pseudogene)
+A_TAP_PSM	HCG24	gene	NC_000006.12	33143324	33148815	+	HLA complex group 24
+A_TAP_PSM	COL11A2	gene	NC_000006.12	33162694	33193519	-	collagen type XI alpha 2 chain
+A_TAP_PSM	RXRB	gene	NC_000006.12	33193588	33200853	-	retinoid X receptor beta
+A_TAP_PSM	RNY4P10	pseudogene	NC_000006.12	33199601	33199692	+	RNY4 pseudogene 10
+A_TAP_PSM	SLC39A7	gene	NC_000006.12	33200867	33204437	+	solute carrier family 39 member 7
+A_TAP_PSM	HSD17B8	gene	NC_000006.12	33204655	33206831	+	hydroxysteroid 17-beta dehydrogenase 8
+A_TAP_PSM	MIR219A1	gene	NC_000006.12	33207835	33207944	+	microRNA 219a-1
+A_TAP_PSM	RING1	gene	NC_000006.12	33208500	33212716	+	ring finger protein 1
+A_TAP_PSM	ZNF70P1	pseudogene	NC_000006.12	33215574	33216183	+	zinc finger protein 70 pseudogene 1
+A_TAP_PSM	LOC105375022	gene	NC_000006.12	33246075	33246873	-	uncharacterized LOC105375022
+A_TAP_PSM	HCG25	gene	NC_000006.12	33249536	33254890	+	HLA complex group 25
+A_TAP_PSM	VPS52	gene	NC_000006.12	33250272	33271965	-	VPS52 subunit of GARP complex
+A_TAP_PSM	RPS18	gene	NC_000006.12	33272075	33276511	+	ribosomal protein S18
+A_TAP_PSM	B3GALT4	gene	NC_000006.12	33277123	33278825	+	beta-1,3-galactosyltransferase 4
+A_TAP_PSM	WDR46	gene	NC_000006.12	33279108	33289239	-	WD repeat domain 46
+A_TAP_PSM	MIR6873	gene	NC_000006.12	33287227	33287289	-	microRNA 6873
+A_TAP_PSM	PFDN6	gene	NC_000006.12	33289197	33290934	+	prefoldin subunit 6
+A_TAP_PSM	MIR6834	gene	NC_000006.12	33290245	33290325	+	microRNA 6834
+A_TAP_PSM	RGL2	gene	NC_000006.12	33291654	33301612	-	ral guanine nucleotide dissociation stimulator like 2
+A_TAP_PSM	TAPBP	gene	NC_000006.12	33299694	33314078	-	TAP binding protein
+A_TAP_PSM	ZBTB22	gene	NC_000006.12	33314418	33317942	-	zinc finger and BTB domain containing 22
+A_TAP_PSM	DAXX	gene	NC_000006.12	33318558	33322959	-	death domain associated protein
+A_TAP_PSM	LOC124901303	gene	NC_000006.12	33322674	33323647	+	uncharacterized LOC124901303
+A_TAP_PSM	SMIM40	gene	NC_000006.12	33323628	33329279	-	small integral membrane protein 40
+A_TAP_PSM	MYL12BP3	pseudogene	NC_000006.12	33338963	33339711	+	MYL12B pseudogene 3
+A_TAP_PSM	LYPLA2P1	pseudogene	NC_000006.12	33364737	33366362	-	LYPLA2 pseudogene 1
+A_TAP_PSM	RPL35AP4	pseudogene	NC_000006.12	33389356	33389478	-	ribosomal protein L35a pseudogene 4
+B_HLA_classI	MOG	gene	NC_000006.12	29657092	29672365	+	myelin oligodendrocyte glycoprotein
+B_HLA_classI	ZFP57	gene	NC_000006.12	29672392	29681152	-	ZFP57 zinc finger protein
+B_HLA_classI	ZDHHC20P1	pseudogene	NC_000006.12	29708141	29708547	-	ZDHHC20 pseudogene 1
+B_HLA_classI	HCG4P11	pseudogene	NC_000006.12	29721178	29722167	-	HLA complex group 4 pseudogene 11
+B_HLA_classI	HLA-F	gene	NC_000006.12	29723434	29738532	+	major histocompatibility complex, class I, F
+B_HLA_classI	RPL23AP1	pseudogene	NC_000006.12	29726597	29727154	-	ribosomal protein L23a pseudogene 1
+B_HLA_classI	HLA-F-AS1	gene	NC_000006.12	29726601	29749049	-	HLA-F antisense RNA 1
+B_HLA_classI	MICE	pseudogene	NC_000006.12	29741556	29745784	-	MHC class I polypeptide-related sequence E (pseudogene)
+B_HLA_classI	HCG9P5	pseudogene	NC_000006.12	29748254	29748648	+	HLA complex group 9 pseudogene 5
+B_HLA_classI	IFITM4P	pseudogene	NC_000006.12	29750807	29751148	-	interferon induced transmembrane protein 4 pseudogene
+B_HLA_classI	LOC353010	pseudogene	NC_000006.12	29765116	29766296	-	HLA complex group 26 (non-protein coding) pseudogene
+B_HLA_classI	HCG4	gene	NC_000006.12	29791031	29793073	-	HLA complex group 4
+B_HLA_classI	HLA-V	pseudogene	NC_000006.12	29791906	29797807	+	major histocompatibility complex, class I, V (pseudogene)
+B_HLA_classI	HCG4P9	pseudogene	NC_000006.12	29798424	29800126	-	HLA complex group 4 pseudogene 9
+B_HLA_classI	HLA-P	pseudogene	NC_000006.12	29800044	29803079	+	major histocompatibility complex, class I, P (pseudogene)
+B_HLA_classI	RPL7AP7	pseudogene	NC_000006.12	29803132	29804017	-	ribosomal protein L7a pseudogene 7
+B_HLA_classI	MICG	pseudogene	NC_000006.12	29812390	29812692	-	MHC class I polypeptide-related sequence G (pseudogene)
+B_HLA_classI	HCG4P8	pseudogene	NC_000006.12	29826129	29827114	-	HLA complex group 4 pseudogene 8
+B_HLA_classI	HLA-G	gene	NC_000006.12	29826474	29831021	+	major histocompatibility complex, class I, G
+B_HLA_classI	HCGVIII-2	pseudogene	NC_000006.12	29833588	29835128	-	HCGVIII-2 pseudogene
+B_HLA_classI	LOC105375010	gene	NC_000006.12	29848002	29857386	-	uncharacterized LOC105375010
+B_HLA_classI	MICF	pseudogene	NC_000006.12	29852187	29854052	-	MHC class I polypeptide-related sequence F (pseudogene)
+B_HLA_classI	LOC353009	pseudogene	NC_000006.12	29865915	29867087	-	HLA complex group 26 (non-protein coding) pseudogene
+B_HLA_classI	HCP5B	gene	NC_000006.12	29871895	29873783	-	HLA complex P5B
+B_HLA_classI	HCG4P7	pseudogene	NC_000006.12	29886110	29887007	-	HLA complex group 4 pseudogene 7
+B_HLA_classI	HLA-H	pseudogene	NC_000006.12	29887573	29891079	+	major histocompatibility complex, class I, H (pseudogene)
+B_HLA_classI	HLA-T	pseudogene	NC_000006.12	29896443	29898947	+	major histocompatibility complex, class I, T (pseudogene)
+B_HLA_classI	DDX39BP1	pseudogene	NC_000006.12	29906547	29907449	+	DEAD-box helicase 39B pseudogene 1
+B_HLA_classI	MCCD1P1	pseudogene	NC_000006.12	29907783	29908645	-	mitochondrial coiled-coil domain 1 pseudogene 1
+B_HLA_classI	LOC353008	pseudogene	NC_000006.12	29910235	29911400	-	HLA complex group 26 (non-protein coding) pseudogene
+B_HLA_classI	HCG4B	gene	NC_000006.12	29924592	29927215	-	HLA complex group 4B
+B_HLA_classI	HLA-K	pseudogene	NC_000006.12	29926659	29929825	+	major histocompatibility complex, class I, K (pseudogene)
+B_HLA_classI	LOC124901298	gene	NC_000006.12	29928198	29945593	-	uncharacterized LOC124901298
+B_HLA_classI	HLA-U	pseudogene	NC_000006.12	29933764	29934880	+	major histocompatibility complex, class I, U (pseudogene)
+B_HLA_classI	HCG4P5	pseudogene	NC_000006.12	29940912	29941801	-	HLA complex group 4 pseudogene 5
+B_HLA_classI	HLA-A	gene	NC_000006.12	29942532	29945870	+	major histocompatibility complex, class I, A
+B_HLA_classI	HCG4P4	pseudogene	NC_000006.12	29955205	29955633	-	HLA complex group 4 pseudogene 4
+B_HLA_classI	HLA-W	pseudogene	NC_000006.12	29955834	29959058	+	major histocompatibility complex, class I, W (pseudogene)
+B_HLA_classI	MICD	pseudogene	NC_000006.12	29970372	29975745	-	MHC class I polypeptide-related sequence D (pseudogene)
+B_HLA_classI	HCG9	gene	NC_000006.12	29975115	29978403	+	HLA complex group 9
+B_HLA_classI	DDX39BP2	pseudogene	NC_000006.12	29993209	29994133	+	DEAD-box helicase 39B pseudogene 2
+B_HLA_classI	MCCD1P2	pseudogene	NC_000006.12	29995142	29995314	-	mitochondrial coiled-coil domain 1 pseudogene 2
+B_HLA_classI	LOC353007	pseudogene	NC_000006.12	29995957	29996415	-	HLA complex group 26 (non-protein coding) pseudogene
+B_HLA_classI	POLR1HASP	pseudogene	NC_000006.12	30001011	30061189	-	POLR1H antisense, pseudogene
+B_HLA_classI	HCG4P3	pseudogene	NC_000006.12	30004845	30005828	-	HLA complex group 4 pseudogene 3
+B_HLA_classI	HLA-J	pseudogene	NC_000006.12	30005971	30009956	+	major histocompatibility complex, class I, J (pseudogene)
+B_HLA_classI	ETF1P1	pseudogene	NC_000006.12	30031713	30033877	+	eukaryotic translation termination factor 1 pseudogene 1
+B_HLA_classI	POLR1H	gene	NC_000006.12	30060062	30064907	+	RNA polymerase I subunit H
+B_HLA_classI	PPP1R11	gene	NC_000006.12	30061265	30070333	+	protein phosphatase 1 regulatory inhibitor subunit 11
+B_HLA_classI	RNF39	gene	NC_000006.12	30070270	30075769	-	ring finger protein 39
+B_HLA_classI	TRIM31	gene	NC_000006.12	30102897	30113090	-	tripartite motif containing 31
+B_HLA_classI	TRIM31-AS1	gene	NC_000006.12	30105240	30114724	+	TRIM31 antisense RNA 1
+B_HLA_classI	LOC124900227	gene	NC_000006.12	30132805	30132942	-	small nucleolar RNA SNORA48
+B_HLA_classI	TRIM40	gene	NC_000006.12	30136140	30148735	+	tripartite motif containing 40
+B_HLA_classI	TRIM10	gene	NC_000006.12	30151943	30164009	-	tripartite motif containing 10
+B_HLA_classI	TRIM15	gene	NC_000006.12	30163546	30172693	+	tripartite motif containing 15
+B_HLA_classI	TRIM26	gene	NC_000006.12	30184455	30213406	-	tripartite motif containing 26
+B_HLA_classI	PAIP1P1	pseudogene	NC_000006.12	30186610	30188643	-	PAIP1 pseudogene 1
+B_HLA_classI	HCG17	gene	NC_000006.12	30234039	30326134	-	HLA complex group 17
+B_HLA_classI	TRIM26BP	pseudogene	NC_000006.12	30238301	30242279	+	tripartite motif containing 26B, pseudogene
+B_HLA_classI	HLA-L	pseudogene	NC_000006.12	30259562	30266951	+	major histocompatibility complex, class I, L (pseudogene)
+B_HLA_classI	HCG18	gene	NC_000006.12	30287397	30327156	-	HLA complex group 18
+B_HLA_classI	TRIM39	gene	NC_000006.12	30326469	30343729	+	tripartite motif containing 39
+B_HLA_classI	TRIM39-RPP21	gene	NC_000006.12	30329311	30346858	+	TRIM39-RPP21 readthrough
+B_HLA_classI	RPP21	gene	NC_000006.12	30345156	30346857	+	ribonuclease P subunit p21
+B_HLA_classI	HLA-N	pseudogene	NC_000006.12	30351074	30352038	+	major histocompatibility complex, class I, N (pseudogene)
+B_HLA_classI	UBQLN1P1	pseudogene	NC_000006.12	30358594	30364111	-	ubiquilin 1 pseudogene 1
+B_HLA_classI	MICC	pseudogene	NC_000006.12	30414711	30416636	+	MHC class I polypeptide-related sequence C (pseudogene)
+B_HLA_classI	LOC105375012	gene	NC_000006.12	30460825	30463603	-	uncharacterized LOC105375012
+B_HLA_classI	TMPOP1	pseudogene	NC_000006.12	30466225	30468871	+	thymopoietin pseudogene 1
+B_HLA_classI	SUCLA2P1	pseudogene	NC_000006.12	30468878	30470922	+	SUCLA2 pseudogene 1
+B_HLA_classI	RANP1	pseudogene	NC_000006.12	30485885	30486976	+	RAN pseudogene 1
+B_HLA_classI	HLA-E	gene	NC_000006.12	30489509	30494194	+	major histocompatibility complex, class I, E
+B_HLA_classI	LINC02569	gene	NC_000006.12	30516266	30519580	+	long intergenic non-protein coding RNA 2569
+B_HLA_classI	GNL1	gene	NC_000006.12	30541381	30556489	-	G protein nucleolar 1 (putative)
+B_HLA_classI	PRR3	gene	NC_000006.12	30556709	30563723	+	proline rich 3
+B_HLA_classI	ABCF1	gene	NC_000006.12	30571442	30591522	+	ATP binding cassette subfamily F member 1
+B_HLA_classI	MIR877	gene	NC_000006.12	30584332	30584417	+	microRNA 877
+B_HLA_classI	PPP1R10	gene	NC_000006.12	30600413	30617243	-	protein phosphatase 1 regulatory subunit 10
+B_HLA_classI	MRPS18B	gene	NC_000006.12	30617840	30626392	+	mitochondrial ribosomal protein S18B
+B_HLA_classI	ATAT1	gene	NC_000006.12	30626874	30646821	+	alpha tubulin acetyltransferase 1
+B_HLA_classI	PTMAP1	pseudogene	NC_000006.12	30633450	30635237	+	prothymosin alpha pseudogene 1
+B_HLA_classI	C6orf136	gene	NC_000006.12	30647133	30653207	+	chromosome 6 open reading frame 136
+B_HLA_classI	DHX16	gene	NC_000006.12	30653127	30673006	-	DEAH-box helicase 16
+B_HLA_classI	PPP1R18	gene	NC_000006.12	30676389	30688391	-	protein phosphatase 1 regulatory subunit 18
+B_HLA_classI	NRM	gene	NC_000006.12	30688049	30691420	-	nurim
+B_HLA_classI	RPL7P4	pseudogene	NC_000006.12	30696746	30697536	-	ribosomal protein L7 pseudogene 4
+B_HLA_classI	MDC1	gene	NC_000006.12	30699807	30717281	-	mediator of DNA damage checkpoint 1
+B_HLA_classI	MDC1-AS1	gene	NC_000006.12	30703067	30713184	+	MDC1 antisense RNA 1
+B_HLA_classI	TUBB	gene	NC_000006.12	30720352	30725422	+	tubulin beta class I
+B_HLA_classI	FLOT1	gene	NC_000006.12	30727709	30742687	-	flotillin 1
+B_HLA_classI	IER3-AS1	gene	NC_000006.12	30742963	30743673	+	IER3 antisense RNA 1
+B_HLA_classI	IER3	gene	NC_000006.12	30743199	30744547	-	immediate early response 3
+B_HLA_classI	RN7SL353P	pseudogene	NC_000006.12	30751038	30751289	+	RNA, 7SL, cytoplasmic 353, pseudogene
+B_HLA_classI	HCG20	gene	NC_000006.12	30766825	30792250	+	HLA complex group 20
+B_HLA_classI	LINC00243	gene	NC_000006.12	30812866	30830659	-	long intergenic non-protein coding RNA 243
+B_HLA_classI	LINC02570	gene	NC_000006.12	30839529	30848159	-	long intergenic non-protein coding RNA 2570
+B_HLA_classI	RN7SKP186	pseudogene	NC_000006.12	30864250	30864493	+	RN7SK pseudogene 186
+B_HLA_classI	DDR1	gene	NC_000006.12	30880970	30900156	+	discoidin domain receptor tyrosine kinase 1
+B_HLA_classI	MIR4640	gene	NC_000006.12	30890883	30890972	+	microRNA 4640
+B_HLA_classI	GTF2H4	gene	NC_000006.12	30908207	30914106	+	general transcription factor IIH subunit 4
+B_HLA_classI	VARS2	gene	NC_000006.12	30914238	30926459	+	valyl-tRNA synthetase 2, mitochondrial
+B_HLA_classI	SFTA2	gene	NC_000006.12	30931353	30932170	-	surfactant associated 2
+B_HLA_classI	LOC124901299	gene	NC_000006.12	30937041	30938906	+	uncharacterized LOC124901299
+B_HLA_classI	MUCL3	gene	NC_000006.12	30940973	30954221	+	mucin like 3
+B_HLA_classI	HCG21	gene	NC_000006.12	30945979	30954862	-	HLA complex group 21
+B_HLA_classI	NAPGP2	pseudogene	NC_000006.12	30961401	30961978	-	N-ethylmaleimide-sensitive factor attachment protein, gamma pseudogene 2
+B_HLA_classI	MUC21	gene	NC_000006.12	30983718	30989903	+	mucin 21, cell surface associated
+B_HLA_classI	MUC22	gene	NC_000006.12	31005952	31035402	+	mucin 22
+B_HLA_classI	HCG22	pseudogene	NC_000006.12	31053449	31059849	+	HLA complex group 22
+B_HLA_classI	RNU6-1133P	pseudogene	NC_000006.12	31083040	31083103	+	RNA, U6 small nuclear 1133, pseudogene
+B_HLA_classI	C6orf15	gene	NC_000006.12	31111223	31112575	-	chromosome 6 open reading frame 15
+B_HLA_classI	PSORS1C1	gene	NC_000006.12	31114800	31140092	+	psoriasis susceptibility 1 candidate 1
+B_HLA_classI	CDSN	gene	NC_000006.12	31115087	31120446	-	corneodesmosin
+B_HLA_classI	PSORS1C2	gene	NC_000006.12	31137534	31139066	-	psoriasis susceptibility 1 candidate 2
+B_HLA_classI	POLR2LP1	pseudogene	NC_000006.12	31140727	31140913	+	RNA polymerase II subunit L pseudogene 1
+B_HLA_classI	CCHCR1	gene	NC_000006.12	31142439	31158197	-	coiled-coil alpha-helical rod protein 1
+B_HLA_classI	TCF19	gene	NC_000006.12	31158589	31164215	+	transcription factor 19
+B_HLA_classI	POU5F1	gene	NC_000006.12	31164337	31170682	-	POU class 5 homeobox 1
+B_HLA_classI	PSORS1C3	gene	NC_000006.12	31173735	31186317	-	psoriasis susceptibility 1 candidate 3
+B_HLA_classI	HCG27	gene	NC_000006.12	31197760	31203968	+	HLA complex group 27
+B_HLA_classI	HLA-C	gene	NC_000006.12	31268749	31272092	-	major histocompatibility complex, class I, C
+B_HLA_classI	USP8P1	pseudogene	NC_000006.12	31275572	31279424	+	USP8 pseudogene 1
+B_HLA_classI	RPL3P2	pseudogene	NC_000006.12	31280291	31281571	+	ribosomal protein L3 pseudogene 2
+B_HLA_classI	WASF5P	pseudogene	NC_000006.12	31287501	31289115	-	WASP family member 5, pseudogene
+B_HLA_classI	LINC02571	gene	NC_000006.12	31293908	31301637	-	long intergenic non-protein coding RNA 2571
+B_HLA_classI	LOC112267902	gene	NC_000006.12	31296826	31308594	-	uncharacterized LOC112267902
+B_HLA_classI	HLA-B	gene	NC_000006.12	31353875	31357179	-	major histocompatibility complex, class I, B
+B_HLA_classI	MIR6891	gene	NC_000006.12	31355224	31355316	-	microRNA 6891
+B_HLA_classI	DHFRP2	pseudogene	NC_000006.12	31363467	31366965	-	dihydrofolate reductase pseudogene 2
+B_HLA_classI	RNU6-283P	pseudogene	NC_000006.12	31370134	31370240	+	RNA, U6 small nuclear 283, pseudogene
+B_HLA_classI	FGFR3P1	pseudogene	NC_000006.12	31377717	31378028	+	fibroblast growth factor receptor 3 pseudogene 1
+B_HLA_classI	ZDHHC20P2	pseudogene	NC_000006.12	31380408	31380839	+	ZDHHC20 pseudogene 2
+B_HLA_classI	HLA-S	pseudogene	NC_000006.12	31381569	31382487	-	major histocompatibility complex, class I, S (pseudogene)
+B_HLA_classI	LOC124901300	gene	NC_000006.12	31385257	31387858	+	uncharacterized LOC124901300
+B_HLA_classI	MICA-AS1	gene	NC_000006.12	31394289	31400470	-	MICA antisense RNA 1
+B_HLA_classI	MICA	gene	NC_000006.12	31400711	31415315	+	MHC class I polypeptide-related sequence A
+B_HLA_classI	LINC01149	gene	NC_000006.12	31441667	31446973	+	long intergenic non-protein coding RNA 1149
+B_HLA_classI	HLA-X	pseudogene	NC_000006.12	31461846	31462490	-	major histocompatibility complex, class I, X (pseudogene)
+B_HLA_classI	HCP5	gene	NC_000006.12	31463180	31465809	+	HLA complex P5
+B_HLA_classI	HCG26	gene	NC_000006.12	31471229	31472408	+	HLA complex group 26
+B_HLA_classI	MICB-DT	gene	NC_000006.12	31479918	31494794	-	MICB divergent transcript
+B_HLA_classI	MICB	gene	NC_000006.12	31494918	31511124	+	MHC class I polypeptide-related sequence B
+B_HLA_classI	PPIAP9	pseudogene	NC_000006.12	31518977	31520330	-	peptidylprolyl isomerase A pseudogene 9
+B_HLA_classI	RPL15P4	pseudogene	NC_000006.12	31528072	31528721	+	ribosomal protein L15 pseudogene 4
+B_HLA_classI	MCCD1	gene	NC_000006.12	31528962	31530232	+	mitochondrial coiled-coil domain 1
+B_HLA_classI	ATP6V1G2-DDX39B	gene	NC_000006.12	31530219	31546848	-	ATP6V1G2-DDX39B readthrough (NMD candidate)
+B_HLA_classI	DDX39B	gene	NC_000006.12	31530226	31542003	-	DExD-box helicase 39B
+B_HLA_classI	SNORD117	gene	NC_000006.12	31536374	31536449	-	small nucleolar RNA, C/D box 117
+B_HLA_classI	SNORD84	gene	NC_000006.12	31541101	31541178	-	small nucleolar RNA, C/D box 84
+B_HLA_classI	DDX39B-AS1	gene	NC_000006.12	31542304	31543138	+	DDX39B antisense RNA 1
+B_HLA_classI	ATP6V1G2	gene	NC_000006.12	31544444	31546742	-	ATPase H+ transporting V1 subunit G2
+B_HLA_classI	NFKBIL1	gene	NC_000006.12	31546851	31558829	+	NFKB inhibitor like 1
+B_HLA_classI	LOC100287329	gene	NC_000006.12	31559571	31572703	-	uncharacterized LOC100287329
+B_HLA_classI	LTA	gene	NC_000006.12	31560610	31574324	+	lymphotoxin alpha
+B_HLA_classI	TNF	gene	NC_000006.12	31575565	31578336	+	tumor necrosis factor
+B_HLA_classI	LTB	gene	NC_000006.12	31580558	31582425	-	lymphotoxin beta
+B_HLA_classI	LST1	gene	NC_000006.12	31586277	31588909	+	leukocyte specific transcript 1
+B_HLA_classI	NCR3	gene	NC_000006.12	31588895	31593006	-	natural cytotoxicity triggering receptor 3
