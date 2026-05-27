@@ -1,53 +1,58 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────────────────────
-# In silico mappability correction — v1_c
+# In silico mappability correction — v2_d
 #
-# Full genome reference (same STAR index as v1), single-end alignment.
-# Reads simulated from MANE spliced RNA sequences (no intronic flanks).
-# Splice-aware alignment retained: junction-spanning reads from spliced mRNA
-# need to be split-aligned across introns in the genome.
+# Identical to v2_c (dedup CDS reference, MANE spliced RNA, single-end)
+# EXCEPT: splicing disabled with --alignIntronMax 1.
 #
-# Comparison axes:
-#   v1_b → v1_c: effect of intronic flanks + genomic vs. spliced RNA source
-#   v1_c → v2_c: effect of reference (full genome vs. dedup CDS), all else equal
+# Comparison axis:
+#   v2_c → v2_d: effect of --alignIntronMax 1 on dedup CDS reference.
+#   Since the CDS index has no sjdb, STAR cannot use annotated junctions in
+#   either version; this tests whether STAR's de novo split-read search
+#   affects uniqueness factors when aligning to CDS sequences.
+#
+# STAR index parameters for 235 Mb / 93,088 sequences:
+#   genomeSAindexNbases = min(14, floor(log2(235e6)/2 - 1)) = 12
+#   genomeChrBinNbits   = min(18, floor(log2(235e6/93088))) = 11
 # ─────────────────────────────────────────────────────────────────────────────
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REF="$SCRIPT_DIR/Ref"
-GENOME_FA="$REF/GCF_000001405.40_GRCh38.p14_genomic.fna"
+REF="$SCRIPT_DIR/../Ref"
 MANE_RNA="$REF/MANE.GRCh38.v1.5.ensembl_rna.fna"
-GENOME_IDX="$REF/STAR_index_genome"
-OUTDIR="$SCRIPT_DIR/results/mappability_genomic_RNA_SE"
+CDS_FA="$REF/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna"
+CDS_IDX="$REF/STAR_index_dedup_cds"
+OUTDIR="$SCRIPT_DIR/results/mappability_dedup_cds_alignIntronMax1"
 THREADS=64
 READ_LEN=100
 
-mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs"
+mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs" "$CDS_IDX"
 
 echo "════════════════════════════════════════════════════════"
-echo "MANE mappability — v1_c (full genome, MANE RNA, SE)"
+echo "MANE mappability — v2_d (dedup CDS, MANE RNA, SE, alignIntronMax 1)"
 echo "READ_LEN=$READ_LEN  THREADS=$THREADS"
+echo "Reference: $CDS_FA"
 echo "════════════════════════════════════════════════════════"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 0b: Build STAR index from full genome (once; shared by all genome scripts)
+# STEP 0: Build STAR index from deduplicated CDS FASTA (once)
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 0b: Building STAR index from full genome..."
-mkdir -p "$GENOME_IDX"
-if [ ! -f "$GENOME_IDX/SA" ]; then
+echo "Step 0: Building STAR index from deduplicated CDS..."
+
+if [ ! -f "$CDS_IDX/SA" ]; then
     STAR \
-        --runMode             genomeGenerate \
-        --genomeDir           "$GENOME_IDX" \
-        --genomeFastaFiles    "$GENOME_FA" \
-        --genomeSAindexNbases 14 \
-        --genomeChrBinNbits   14 \
-        --runThreadN          $THREADS \
+        --runMode            genomeGenerate \
+        --genomeDir          "$CDS_IDX" \
+        --genomeFastaFiles   "$CDS_FA" \
+        --genomeSAindexNbases 12 \
+        --genomeChrBinNbits  11 \
+        --runThreadN         $THREADS \
         2>&1 | tee "$OUTDIR/logs/star_index.log"
-    echo "Step 0b complete."
+    echo "Step 0 complete."
 else
-    echo "Step 0b: Index already exists, skipping."
+    echo "Step 0: Index already exists, skipping."
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -65,9 +70,12 @@ read_len = $READ_LEN
 
 r1_path = outdir / "simreads/sim_R1.fastq"
 qual    = 'I' * read_len
+
 n_reads = 0
 n_tx    = 0
 n_skip  = 0
+
+print("  Reading MANE RNA FASTA...", flush=True)
 
 def parse_fasta(path):
     name, seq = None, []
@@ -82,7 +90,6 @@ def parse_fasta(path):
                 seq.append(line.upper())
     if name: yield name, ''.join(seq)
 
-print("  Reading MANE RNA FASTA...", flush=True)
 with open(r1_path, 'w') as r1:
     for tid, seq in parse_fasta(mane_rna):
         L = len(seq)
@@ -104,14 +111,14 @@ PYEOF
 echo "Step 1 complete."
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 2: STAR alignment — single-end, splice-aware (full genome index)
+# STEP 2: STAR alignment — single-end, splicing disabled
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 2: STAR alignment single-end, full genome ($THREADS threads)..."
+echo "Step 2: STAR alignment against deduplicated CDS ($THREADS threads)..."
 
 STAR \
     --runThreadN            $THREADS \
-    --genomeDir             "$GENOME_IDX" \
+    --genomeDir             "$CDS_IDX" \
     --readFilesIn           "$OUTDIR/simreads/sim_R1.fastq" \
     --outSAMtype            BAM SortedByCoordinate \
     --outSAMattributes      NH HI AS NM \
@@ -120,6 +127,7 @@ STAR \
     --outBAMsortingThreadN  $THREADS \
     --outBAMsortingBinsN    20 \
     --limitBAMsortRAM       160000000000 \
+    --alignIntronMax        1 \
     --outFileNamePrefix     "$OUTDIR/bam/sim_" \
     2>&1 | tee "$OUTDIR/logs/star_sim.log"
 
@@ -146,9 +154,11 @@ sim_counts = defaultdict(int)
 with open(r1_path) as fh:
     for line in fh:
         if line.startswith('@'):
-            sim_counts[line[1:].split('|')[0]] += 1
+            tid = line[1:].split('|')[0]
+            sim_counts[tid] += 1
 
-print(f"  Transcripts: {len(sim_counts):,}  Reads: {sum(sim_counts.values()):,}", flush=True)
+print(f"  Transcripts: {len(sim_counts):,}  "
+      f"Reads: {sum(sim_counts.values()):,}", flush=True)
 
 print("  Counting unique recoveries from BAM...", flush=True)
 unique_back = defaultdict(int)
@@ -178,21 +188,23 @@ for tid, n_sim in sim_counts.items():
     })
 
 df = pd.DataFrame(records).sort_values('uniqueness_factor')
-out = outdir / "transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv"
+out = outdir / "transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv"
 df.to_csv(out, sep='\t', index=False)
 
 print(f"\n  ── Distribution ─────────────────────────────────────")
 print(df['uniqueness_factor'].describe().round(4).to_string())
-print(f"\n  f=1.00: {(df.uniqueness_factor==1.0).sum():,}")
-print(f"  f>=0.90: {(df.uniqueness_factor>=0.90).sum():,}")
-print(f"  f<0.10: {(df.uniqueness_factor<0.10).sum():,}")
-print(f"  f=0.00: {(df.uniqueness_factor==0.0).sum():,}")
+print(f"\n  f=1.00 (perfect):   {(df.uniqueness_factor==1.0).sum():,}")
+print(f"  f>=0.90:            {(df.uniqueness_factor>=0.90).sum():,}")
+print(f"  f 0.10–0.90:        "
+      f"{((df.uniqueness_factor>=0.10)&(df.uniqueness_factor<0.90)).sum():,}")
+print(f"  f<0.10 (exclude):   {(df.uniqueness_factor<0.10).sum():,}")
 print(f"\n  ── Worst 15 ─────────────────────────────────────────")
-print(df.head(15)[['transcript_id','n_positions','n_unique_back','uniqueness_factor']].to_string(index=False))
+print(df.head(15)[['transcript_id','n_positions',
+                   'n_unique_back','uniqueness_factor']].to_string(index=False))
 print(f"\n  Saved: {out}")
 PYEOF
 
 echo ""
 echo "════════════════════════════════════════════════════════"
-echo "Done: $OUTDIR/transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv"
+echo "Done: $OUTDIR/transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv"
 echo "════════════════════════════════════════════════════════"

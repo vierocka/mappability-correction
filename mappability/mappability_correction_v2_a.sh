@@ -1,39 +1,49 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────────────────────
-# In silico mappability correction — v1_b
+# In silico mappability correction — v2_a
 #
-# Identical to v1 (genomic exon-flank approach, full genome reference)
-# EXCEPT: single-end alignment (R2 removed).
+# Deduplicated CDS reference (93,088 seqs, 53,249 exact duplicates removed).
+# Reads simulated identically to v1: genomic exon ± 50 bp intronic flank.
+# Paired-end (R2 = revcomp of R1). Splice-aware mode kept (same as v1):
+# the CDS STAR index has no sjdb so STAR will not use annotated junctions,
+# but the parameter space is identical to v1 for a clean comparison.
 #
-# Comparison axis v1 → v1_b: isolates the effect of PE vs SE on full genome.
+# Sequence extraction still uses the full genome FASTA (samtools faidx);
+# the dedup CDS is used only as the alignment target.
+#
+# Comparison axes:
+#   v1   → v2_a: effect of reference (full genome vs. dedup CDS), PE, with flanks
+#   v2_a → v2_b: effect of PE vs SE on CDS reference
+#   v2_a → v2_c: effect of flanks + read source on CDS reference
 # ─────────────────────────────────────────────────────────────────────────────
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REF="$SCRIPT_DIR/Ref"
+REF="$SCRIPT_DIR/../Ref"
 MANE_GFF="$REF/MANE.GRCh38.v1.5.ensembl_genomic.gff"
 GENOME_FA="$REF/GCF_000001405.40_GRCh38.p14_genomic.fna"
-GENOME_IDX="$REF/STAR_index_genome"
-OUTDIR="$SCRIPT_DIR/results/mappability_genomic_SE"
+CDS_FA="$REF/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna"
+CDS_IDX="$REF/STAR_index_dedup_cds"
+OUTDIR="$SCRIPT_DIR/results/mappability_dedup_cds_PE_flank"
 THREADS=64
 READ_LEN=100
 FLANK=50
 CHR_NAMES="ncbi"
 
-mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs"
+mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs" "$CDS_IDX"
 
 echo "════════════════════════════════════════════════════════"
-echo "MANE mappability — v1_b (full genome, exon-flank, SE)"
+echo "MANE mappability — v2_a (dedup CDS, exon-flank, PE)"
 echo "READ_LEN=$READ_LEN  FLANK=$FLANK  THREADS=$THREADS"
 echo "════════════════════════════════════════════════════════"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 0: Build chr → FASTA sequence-name map (identical to v1)
+# STEP 0a: Build chr → FASTA sequence-name map (for genomic sequence extraction)
 # ─────────────────────────────────────────────────────────────────────────────
 if [ "$CHR_NAMES" = "ncbi" ]; then
     echo ""
-    echo "Step 0: Building chr→NC chromosome name map..."
+    echo "Step 0a: Building chr→NC chromosome name map..."
     python3 - << PYEOF
 import gzip, re
 from pathlib import Path
@@ -63,22 +73,22 @@ with open(out_map, 'w') as fh:
 
 print(f"  Chromosomes mapped: {len(ncbi_map)}")
 PYEOF
-    echo "Step 0 complete."
+    echo "Step 0a complete."
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 0b: Build STAR index from full genome (once; shared by all genome scripts)
+# STEP 0b: Build STAR index from deduplicated CDS (once)
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 0b: Building STAR index from full genome..."
-mkdir -p "$GENOME_IDX"
-if [ ! -f "$GENOME_IDX/SA" ]; then
+echo "Step 0b: Building STAR index from deduplicated CDS..."
+
+if [ ! -f "$CDS_IDX/SA" ]; then
     STAR \
         --runMode             genomeGenerate \
-        --genomeDir           "$GENOME_IDX" \
-        --genomeFastaFiles    "$GENOME_FA" \
-        --genomeSAindexNbases 14 \
-        --genomeChrBinNbits   14 \
+        --genomeDir           "$CDS_IDX" \
+        --genomeFastaFiles    "$CDS_FA" \
+        --genomeSAindexNbases 12 \
+        --genomeChrBinNbits   11 \
         --runThreadN          $THREADS \
         2>&1 | tee "$OUTDIR/logs/star_index.log"
     echo "Step 0b complete."
@@ -87,10 +97,10 @@ else
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 1: Parse GFF, fetch exon ± FLANK from genome, simulate reads (SE only)
+# STEP 1: Parse GFF, fetch exon ± FLANK from genome, simulate PE reads
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 1: Parsing GFF and simulating reads (single-end)..."
+echo "Step 1: Parsing GFF and simulating reads (paired-end)..."
 
 python3 - << PYEOF
 import gzip, subprocess
@@ -145,14 +155,15 @@ if not fai.exists():
     print("  Indexing genome with samtools faidx...", flush=True)
     subprocess.run(['samtools', 'faidx', str(genome_fa)], check=True)
 
-print(f"  Simulating reads (SE, step=1, READ_LEN={read_len}, FLANK={flank})...", flush=True)
+print(f"  Simulating reads (PE, step=1, READ_LEN={read_len}, FLANK={flank})...", flush=True)
 
 r1_path = outdir / "simreads/sim_R1.fastq"
+r2_path = outdir / "simreads/sim_R2.fastq"
 qual    = 'I' * read_len
 n_reads = 0
 n_skip  = 0
 
-with open(r1_path, 'w') as r1:
+with open(r1_path, 'w') as r1, open(r2_path, 'w') as r2:
     for tid, exons in tx_exons.items():
         for ex_idx, (chrom_fa, ex_start, ex_end, strand) in enumerate(exons):
             win_start = max(0, ex_start - flank)
@@ -175,6 +186,7 @@ with open(r1_path, 'w') as r1:
                     continue
                 name = f"{tid}|{ex_idx}|{pos}"
                 r1.write(f"@{name}\n{fwd}\n+\n{qual}\n")
+                r2.write(f"@{name}\n{revcomp(fwd)}\n+\n{qual}\n")
                 n_reads += 1
 
 print(f"  Exon windows skipped: {n_skip}")
@@ -184,15 +196,16 @@ PYEOF
 echo "Step 1 complete."
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 2: STAR alignment — single-end, splice-aware
+# STEP 2: STAR alignment — paired-end, splicing disabled, CDS index
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 2: STAR alignment single-end ($THREADS threads)..."
+echo "Step 2: STAR alignment paired-end against dedup CDS ($THREADS threads)..."
 
 STAR \
     --runThreadN            $THREADS \
-    --genomeDir             "$GENOME_IDX" \
+    --genomeDir             "$CDS_IDX" \
     --readFilesIn           "$OUTDIR/simreads/sim_R1.fastq" \
+                            "$OUTDIR/simreads/sim_R2.fastq" \
     --outSAMtype            BAM SortedByCoordinate \
     --outSAMattributes      NH HI AS NM \
     --outSAMmultNmax        1 \
@@ -236,7 +249,7 @@ total_back  = defaultdict(int)
 
 bam = pysam.AlignmentFile(str(bam_path), 'rb')
 for read in bam.fetch():
-    if read.is_supplementary or read.is_secondary or read.is_unmapped:
+    if read.is_supplementary or read.is_secondary or read.is_read2 or read.is_unmapped:
         continue
     tid = read.query_name.split('|')[0]
     total_back[tid] += 1
@@ -258,7 +271,7 @@ for tid, n_sim in sim_counts.items():
     })
 
 df = pd.DataFrame(records).sort_values('uniqueness_factor')
-out = outdir / "transcript_uniqueness_factors_genomic_SE_L100bp.tsv"
+out = outdir / "transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv"
 df.to_csv(out, sep='\t', index=False)
 
 print(f"\n  ── Distribution ─────────────────────────────────────")
@@ -274,5 +287,5 @@ PYEOF
 
 echo ""
 echo "════════════════════════════════════════════════════════"
-echo "Done: $OUTDIR/transcript_uniqueness_factors_genomic_SE_L100bp.tsv"
+echo "Done: $OUTDIR/transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv"
 echo "════════════════════════════════════════════════════════"
