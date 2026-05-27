@@ -1,15 +1,15 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────────────────────
-# In silico mappability correction — v2_d
+# In silico mappability correction — v2_c
 #
-# Identical to v2_c (dedup CDS reference, MANE spliced RNA, single-end)
-# EXCEPT: splicing disabled with --alignIntronMax 1.
+# Deduplicated CDS reference (93,088 seqs, 53,249 exact duplicates removed).
+# Reads simulated from MANE spliced RNA (no intronic flanks). Single-end.
+# Splice-aware mode kept (same as v1_c): CDS index has no sjdb so annotated
+# junctions are not used, but the parameter space matches v1_c for a clean comparison.
 #
-# Comparison axis:
-#   v2_c → v2_d: effect of --alignIntronMax 1 on dedup CDS reference.
-#   Since the CDS index has no sjdb, STAR cannot use annotated junctions in
-#   either version; this tests whether STAR's de novo split-read search
-#   affects uniqueness factors when aligning to CDS sequences.
+# Comparison axes:
+#   v1_c → v2_c: effect of reference (full genome vs. dedup CDS), all else equal
+#   v2_b → v2_c: effect of intronic flanks + read source on CDS reference
 #
 # STAR index parameters for 235 Mb / 93,088 sequences:
 #   genomeSAindexNbases = min(14, floor(log2(235e6)/2 - 1)) = 12
@@ -19,18 +19,18 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REF="$SCRIPT_DIR/Ref"
+REF="$SCRIPT_DIR/../Ref"
 MANE_RNA="$REF/MANE.GRCh38.v1.5.ensembl_rna.fna"
 CDS_FA="$REF/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna"
 CDS_IDX="$REF/STAR_index_dedup_cds"
-OUTDIR="$SCRIPT_DIR/results/mappability_dedup_cds_alignIntronMax1"
+OUTDIR="$SCRIPT_DIR/results/mappability_dedup_cds"
 THREADS=64
 READ_LEN=100
 
 mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs" "$CDS_IDX"
 
 echo "════════════════════════════════════════════════════════"
-echo "MANE mappability — v2_d (dedup CDS, MANE RNA, SE, alignIntronMax 1)"
+echo "MANE mappability — deduplicated CDS approach (v2)"
 echo "READ_LEN=$READ_LEN  THREADS=$THREADS"
 echo "Reference: $CDS_FA"
 echo "════════════════════════════════════════════════════════"
@@ -127,7 +127,6 @@ STAR \
     --outBAMsortingThreadN  $THREADS \
     --outBAMsortingBinsN    20 \
     --limitBAMsortRAM       160000000000 \
-    --alignIntronMax        1 \
     --outFileNamePrefix     "$OUTDIR/bam/sim_" \
     2>&1 | tee "$OUTDIR/logs/star_sim.log"
 
@@ -188,7 +187,7 @@ for tid, n_sim in sim_counts.items():
     })
 
 df = pd.DataFrame(records).sort_values('uniqueness_factor')
-out = outdir / "transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv"
+out = outdir / "transcript_uniqueness_factors_dedup_cds_L100bp.tsv"
 df.to_csv(out, sep='\t', index=False)
 
 print(f"\n  ── Distribution ─────────────────────────────────────")
@@ -206,5 +205,5 @@ PYEOF
 
 echo ""
 echo "════════════════════════════════════════════════════════"
-echo "Done: $OUTDIR/transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv"
+echo "Done: $OUTDIR/transcript_uniqueness_factors_dedup_cds_L100bp.tsv"
 echo "════════════════════════════════════════════════════════"

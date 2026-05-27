@@ -16,13 +16,13 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REF="$SCRIPT_DIR/Ref"
+REF="$SCRIPT_DIR/../Ref"
 MANE_GFF="$REF/MANE.GRCh38.v1.5.ensembl_genomic.gff"
 GENOME_FA="$REF/GCF_000001405.40_GRCh38.p14_genomic.fna"
 GENOME_IDX="$REF/STAR_index_genome"
-OUTDIR="$SCRIPT_DIR/results/mappability_genomic_L150bp"
+OUTDIR="$SCRIPT_DIR/results/mappability_genomic_L75bp"
 THREADS=64
-READ_LEN=150   # match actual R1 read length (check with: zcat R1.fastq.gz | sed -n '2p' | wc -c)
+READ_LEN=75   # match actual R1 read length (check with: zcat R1.fastq.gz | sed -n '2p' | wc -c)
 FLANK=50       # bp of intronic flanking sequence each side of each exon
 
 # GFF "chr1" names are mapped to NCBI "NC_000001.11" names via Step 0.
@@ -307,7 +307,7 @@ for tid, n_sim in sim_counts.items():
     })
 
 df = pd.DataFrame(records).sort_values('uniqueness_factor')
-out = outdir / "transcript_uniqueness_factors_genomic_L150bp.tsv"
+out = outdir / "transcript_uniqueness_factors_genomic_L75bp.tsv"
 df.to_csv(out, sep='\t', index=False)
 
 print(f"\n  ── Distribution ─────────────────────────────────────")
@@ -325,6 +325,6 @@ PYEOF
 
 echo ""
 echo "════════════════════════════════════════════════════════"
-echo "Done: $OUTDIR/transcript_uniqueness_factors_genomic_L150bp.tsv"
+echo "Done: $OUTDIR/transcript_uniqueness_factors_genomic_L75bp.tsv"
 echo "Run: python3 apply_uniqueness_correction.py"
 echo "════════════════════════════════════════════════════════"

@@ -16,7 +16,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REF="$SCRIPT_DIR/Ref"
+REF="$SCRIPT_DIR/../Ref"
 MANE_GFF="$REF/MANE.GRCh38.v1.5.ensembl_genomic.gff"
 GENOME_FA="$REF/GCF_000001405.40_GRCh38.p14_genomic.fna"
 GENOME_IDX="$REF/STAR_index_genome"
