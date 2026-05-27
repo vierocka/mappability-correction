@@ -66,7 +66,7 @@ with opener(genome_fa, 'rt') as fh:
         rest = line[1:]
         # Look for "chromosome N," or "chromosome X," or "chromosome Y,"
         m = re.search(r'chromosome (\w+)[,\s]', rest)
-        if m:
+        if m and name.startswith('NC_'):
             chrom_num = m.group(1)
             chr_name  = f"chr{chrom_num}"
             ncbi_map[chr_name] = name

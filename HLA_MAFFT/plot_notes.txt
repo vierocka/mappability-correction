@@ -1,0 +1,3 @@
+MANE mRNA: 6 sequences, alignment length 2591
+Deduplicated CDS (also alternative): 78 sequences, alignment length 1546
+Genomic gene body (only canonical chromosomes): 20 sequences, alignment length 18560

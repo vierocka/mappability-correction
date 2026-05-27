@@ -8,3 +8,7 @@ v2_c,100,Dedup CDS,MANE spliced RNA,No,SE,No,results/mappability_dedup_cds,trans
 v2_d,100,Dedup CDS,MANE spliced RNA,No,SE,Yes,results/mappability_dedup_cds_alignIntronMax1,transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv
 v3_a,75,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_genomic_L75bp,transcript_uniqueness_factors_genomic_L75bp.tsv
 v4_a,150,Full genome + alt loci,Genomic exon ± 50 bp,Yes,PE,No,results/mappability_genomic_L150bp,transcript_uniqueness_factors_genomic_L150bp.tsv
+v5_a,100,MANE transcriptome,MANE spliced RNA,No,SE,Yes,results/mappability_MANE_RNA_SE,transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+v5_b,100,MANE transcriptome,Genomic exon ± 50 bp,Yes,PE,Yes,results/mappability_MANE_exonflank_PE,transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+v5_c,75,MANE transcriptome,MANE spliced RNA,No,SE,Yes,results/mappability_MANE_RNA_SE_L75bp,transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+v5_d,200,MANE transcriptome,MANE spliced RNA,No,SE,Yes,results/mappability_MANE_RNA_SE_L200bp,transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv

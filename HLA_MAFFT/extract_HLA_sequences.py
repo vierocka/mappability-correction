@@ -14,8 +14,9 @@ Genes targeted:
 import subprocess, re
 from pathlib import Path
 
-REF = Path("/home/veve/Dropbox/Self-Nonself/Reference/mappability-correction/Ref")
-OUT = Path("/home/veve/Dropbox/Self-Nonself/Reference/mappability-correction/HLA_MAFFT")
+HERE = Path(__file__).resolve().parent
+REF  = HERE.parent / "Ref"
+OUT  = HERE
 OUT.mkdir(parents=True, exist_ok=True)
 
 HLA_CODING    = {'HLA-A', 'HLA-B', 'HLA-C', 'HLA-E', 'HLA-F', 'HLA-G'}

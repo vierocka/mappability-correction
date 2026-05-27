@@ -296,7 +296,7 @@ legend_elements = [
 fig.legend(handles=legend_elements, loc='lower center', ncol=4,
            fontsize=9, framealpha=0.9, bbox_to_anchor=(0.5, 0.005))
 
-base = '/home/veve/Dropbox/Self-Nonself/Reference/mappability-correction/Figure_APMlocus/APM_locus_chr6'
+base = 'mappability-correction/Figure_APMlocus/APM_locus_chr6'
 fig.savefig(base + '.pdf', dpi=200, bbox_inches='tight')
 fig.savefig(base + '.png', dpi=200, bbox_inches='tight')
 print(f"Saved: {base}.pdf")
