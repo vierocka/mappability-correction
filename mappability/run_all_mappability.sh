@@ -21,7 +21,7 @@ set -euo pipefail
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 
 echo "════════════════════════════════════════════════════════"
-echo "Mappability correction — full run (9 scripts)"
+echo "Mappability correction — full run (13 scripts)"
 echo "Started : $(date)"
 echo "Host    : $(hostname)"
 echo "Dir     : $SCRIPT_DIR"
@@ -75,6 +75,24 @@ bash "$SCRIPT_DIR/mappability_correction_v2_c.sh"
 echo ""
 echo "━━━━ v2_d : dedup CDS | MANE RNA   | SE | 100 bp | alignIntronMax 1 ━━━"
 bash "$SCRIPT_DIR/mappability_correction_v2_d.sh"
+
+# ── MANE transcriptome group (v5_a builds the shared MANE index) ─────────────
+
+echo ""
+echo "━━━━ v5_a : MANE ref  | MANE RNA    | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━"
+bash "$SCRIPT_DIR/mappability_correction_v5_a.sh"
+
+echo ""
+echo "━━━━ v5_b : MANE ref  | exon-flank  | PE | 100 bp ━━━━━━━━━━━━━━━━━━━━"
+bash "$SCRIPT_DIR/mappability_correction_v5_b.sh"
+
+echo ""
+echo "━━━━ v5_c : MANE ref  | MANE RNA    | SE |  75 bp ━━━━━━━━━━━━━━━━━━━━"
+bash "$SCRIPT_DIR/mappability_correction_v5_c.sh"
+
+echo ""
+echo "━━━━ v5_d : MANE ref  | MANE RNA    | SE | 200 bp ━━━━━━━━━━━━━━━━━━━━"
+bash "$SCRIPT_DIR/mappability_correction_v5_d.sh"
 
 # ── Summary ───────────────────────────────────────────────────────────────────
 

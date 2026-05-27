@@ -51,7 +51,7 @@ with opener(genome_fa, 'rt') as fh:
         name = line[1:].split()[0]
         rest = line[1:]
         m = re.search(r'chromosome (\w+)[,\s]', rest)
-        if m:
+        if m and name.startswith('NC_'):
             ncbi_map[f"chr{m.group(1)}"] = name
         if 'mitochondrion' in rest.lower() or 'mitochondrial' in rest.lower():
             ncbi_map['chrM']  = name

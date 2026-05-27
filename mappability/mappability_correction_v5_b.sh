@@ -1,14 +1,14 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────────────────────
-# In silico mappability correction — v2_b
+# In silico mappability correction — v5_b
 #
-# Identical to v2_a (dedup CDS reference, genomic exon ± 50 bp flank)
-# EXCEPT: single-end alignment (R2 removed).
+# MANE transcriptome reference, paired-end alignment.
+# Reads simulated from genomic exon ± 50 bp flanks (same source as v1_a).
+# Splice junction detection disabled: the reference is already spliced.
 #
 # Comparison axes:
-#   v1_b → v2_b: effect of reference (full genome vs. dedup CDS), SE, with flanks
-#   v2_a → v2_b: effect of PE vs SE on CDS reference
-#   v2_b → v2_c: effect of intronic flanks + genomic vs. spliced RNA source on CDS
+#   v1_a → v5_b: effect of reference (full genome vs. MANE transcriptome)
+#   v5_a → v5_b: effect of read source (MANE RNA vs. genomic exon-flank)
 # ─────────────────────────────────────────────────────────────────────────────
 
 set -euo pipefail
@@ -17,28 +17,26 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REF="$SCRIPT_DIR/../Ref"
 MANE_GFF="$REF/MANE.GRCh38.v1.5.ensembl_genomic.gff"
 GENOME_FA="$REF/GCF_000001405.40_GRCh38.p14_genomic.fna"
-CDS_FA="$REF/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna"
-CDS_IDX="$REF/STAR_index_dedup_cds"
-OUTDIR="$SCRIPT_DIR/results/mappability_dedup_cds_SE_flank"
+MANE_IDX="$REF/STAR_index_MANE"
+OUTDIR="$SCRIPT_DIR/results/mappability_MANE_exonflank_PE"
 THREADS=64
 READ_LEN=100
 FLANK=50
 CHR_NAMES="ncbi"
 
-mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs" "$CDS_IDX"
+mkdir -p "$OUTDIR/simreads" "$OUTDIR/bam" "$OUTDIR/logs"
 
 echo "════════════════════════════════════════════════════════"
-echo "MANE mappability — v2_b (dedup CDS, exon-flank, SE)"
+echo "MANE mappability — v5_b (MANE reference, exon-flank, PE)"
 echo "READ_LEN=$READ_LEN  FLANK=$FLANK  THREADS=$THREADS"
 echo "════════════════════════════════════════════════════════"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 0a: Build chr → FASTA sequence-name map
+# STEP 0: Build chr → FASTA sequence-name map
 # ─────────────────────────────────────────────────────────────────────────────
-if [ "$CHR_NAMES" = "ncbi" ]; then
-    echo ""
-    echo "Step 0a: Building chr→NC chromosome name map..."
-    python3 - << PYEOF
+echo ""
+echo "Step 0: Building chr→NC chromosome name map..."
+python3 - << PYEOF
 import gzip, re
 from pathlib import Path
 
@@ -56,7 +54,9 @@ with opener(genome_fa, 'rt') as fh:
         rest = line[1:]
         m = re.search(r'chromosome (\w+)[,\s]', rest)
         if m and name.startswith('NC_'):
-            ncbi_map[f"chr{m.group(1)}"] = name
+            chrom_num = m.group(1)
+            chr_name  = f"chr{chrom_num}"
+            ncbi_map[chr_name] = name
         if 'mitochondrion' in rest.lower() or 'mitochondrial' in rest.lower():
             ncbi_map['chrM']  = name
             ncbi_map['chrMT'] = name
@@ -66,35 +66,36 @@ with open(out_map, 'w') as fh:
         fh.write(f"{k}\t{v}\n")
 
 print(f"  Chromosomes mapped: {len(ncbi_map)}")
+for k in sorted(ncbi_map)[:5]:
+    print(f"    {k} → {ncbi_map[k]}")
 PYEOF
-    echo "Step 0a complete."
-fi
+echo "Step 0 complete."
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 0b: Build STAR index from deduplicated CDS (once)
+# STEP 0b: Build STAR index from MANE RNA FASTA (shared by all v5 scripts)
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 0b: Building STAR index from deduplicated CDS..."
-
-if [ ! -f "$CDS_IDX/SA" ]; then
+echo "Step 0b: Building STAR index from MANE RNA FASTA..."
+mkdir -p "$MANE_IDX"
+if [ ! -f "$MANE_IDX/SA" ]; then
     STAR \
         --runMode             genomeGenerate \
-        --genomeDir           "$CDS_IDX" \
-        --genomeFastaFiles    "$CDS_FA" \
+        --genomeDir           "$MANE_IDX" \
+        --genomeFastaFiles    "$REF/MANE.GRCh38.v1.5.ensembl_rna.fna" \
         --genomeSAindexNbases 12 \
         --genomeChrBinNbits   11 \
         --runThreadN          $THREADS \
-        2>&1 | tee "$OUTDIR/logs/star_index.log"
+        2>&1 | tee "$OUTDIR/logs/star_index_MANE.log"
     echo "Step 0b complete."
 else
-    echo "Step 0b: Index already exists, skipping."
+    echo "Step 0b: MANE index already exists, skipping."
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 1: Parse GFF, fetch exon ± FLANK from genome, simulate SE reads
+# STEP 1: Parse GFF, fetch exon ± FLANK from genome, simulate reads
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 1: Parsing GFF and simulating reads (single-end)..."
+echo "Step 1: Parsing GFF and simulating reads (paired-end)..."
 
 python3 - << PYEOF
 import gzip, subprocess
@@ -106,19 +107,20 @@ genome_fa = Path("$GENOME_FA")
 outdir    = Path("$OUTDIR")
 read_len  = $READ_LEN
 flank     = $FLANK
-chr_names = "$CHR_NAMES"
+
+RC = str.maketrans('ACGTNacgtn', 'TGCANtgcan')
+def revcomp(s): return s.translate(RC)[::-1]
 
 chr_map = {}
-if chr_names == "ncbi":
-    with open(outdir / "chr_name_map.tsv") as fh:
-        for line in fh:
-            parts = line.strip().split('\t')
-            if len(parts) == 2:
-                chr_map[parts[0]] = parts[1]
-    print(f"  Loaded {len(chr_map)} chr→NC mappings", flush=True)
+map_file = outdir / "chr_name_map.tsv"
+with open(map_file) as fh:
+    for line in fh:
+        parts = line.strip().split('\t')
+        if len(parts) == 2:
+            chr_map[parts[0]] = parts[1]
+print(f"  Loaded {len(chr_map)} chr→NC mappings", flush=True)
 
-def resolve_chrom(c):
-    return chr_map.get(c, c)
+def resolve_chrom(c): return chr_map.get(c, c)
 
 print("  Parsing GFF exon features...", flush=True)
 tx_exons = defaultdict(list)
@@ -129,13 +131,17 @@ with opener(gff_path, 'rt') as fh:
         if line.startswith('#'): continue
         f = line.rstrip('\n').split('\t')
         if len(f) < 9 or f[2] != 'exon': continue
+        chrom_gff = f[0]
+        start     = int(f[3]) - 1
+        end       = int(f[4])
+        strand    = f[6]
         tid = None
         for part in f[8].split(';'):
             if part.startswith('transcript_id='):
                 tid = part.split('=', 1)[1].strip()
                 break
         if tid is None: continue
-        tx_exons[tid].append((resolve_chrom(f[0]), int(f[3])-1, int(f[4]), f[6]))
+        tx_exons[tid].append((resolve_chrom(chrom_gff), start, end, strand))
         n_exons += 1
 
 print(f"  Exon features parsed: {n_exons:,}")
@@ -143,21 +149,23 @@ print(f"  Unique transcripts: {len(tx_exons):,}", flush=True)
 
 fai = Path(str(genome_fa) + '.fai')
 if not fai.exists():
+    print("  Indexing genome with samtools faidx...", flush=True)
     subprocess.run(['samtools', 'faidx', str(genome_fa)], check=True)
 
-print(f"  Simulating reads (SE, step=1, READ_LEN={read_len}, FLANK={flank})...", flush=True)
+print(f"  Simulating reads (PE, step=1, READ_LEN={read_len}, FLANK={flank})...", flush=True)
 
 r1_path = outdir / "simreads/sim_R1.fastq"
+r2_path = outdir / "simreads/sim_R2.fastq"
 qual    = 'I' * read_len
 n_reads = 0
 n_skip  = 0
 
-with open(r1_path, 'w') as r1:
+with open(r1_path, 'w') as r1, open(r2_path, 'w') as r2:
     for tid, exons in tx_exons.items():
         for ex_idx, (chrom_fa, ex_start, ex_end, strand) in enumerate(exons):
             win_start = max(0, ex_start - flank)
             win_end   = ex_end + flank
-            region = f"{chrom_fa}:{win_start + 1}-{win_end}"
+            region    = f"{chrom_fa}:{win_start + 1}-{win_end}"
             try:
                 res = subprocess.run(
                     ['samtools', 'faidx', str(genome_fa), region],
@@ -167,35 +175,38 @@ with open(r1_path, 'w') as r1:
                 n_skip += 1
                 continue
             L = len(seq)
-            if L < read_len:
-                continue
+            if L < read_len: continue
             for pos in range(L - read_len + 1):
                 fwd = seq[pos : pos + read_len]
-                if fwd.count('N') > read_len // 5:
-                    continue
-                r1.write(f"@{tid}|{ex_idx}|{pos}\n{fwd}\n+\n{qual}\n")
+                if fwd.count('N') > read_len // 5: continue
+                name = f"{tid}|{ex_idx}|{pos}"
+                r1.write(f"@{name}\n{fwd}\n+\n{qual}\n")
+                r2.write(f"@{name}\n{revcomp(fwd)}\n+\n{qual}\n")
                 n_reads += 1
 
-print(f"  Exon windows skipped: {n_skip}")
+print(f"  Exon windows skipped (sequence fetch error): {n_skip}")
 print(f"  Total reads simulated: {n_reads:,}", flush=True)
 PYEOF
 
 echo "Step 1 complete."
 
 # ─────────────────────────────────────────────────────────────────────────────
-# STEP 2: STAR alignment — single-end, splicing disabled, CDS index
+# STEP 2: STAR alignment — paired-end, MANE transcriptome index
 # ─────────────────────────────────────────────────────────────────────────────
 echo ""
-echo "Step 2: STAR alignment single-end against dedup CDS ($THREADS threads)..."
+echo "Step 2: STAR alignment paired-end, MANE reference ($THREADS threads)..."
 
 STAR \
     --runThreadN            $THREADS \
-    --genomeDir             "$CDS_IDX" \
+    --genomeDir             "$MANE_IDX" \
     --readFilesIn           "$OUTDIR/simreads/sim_R1.fastq" \
+                            "$OUTDIR/simreads/sim_R2.fastq" \
     --outSAMtype            BAM SortedByCoordinate \
     --outSAMattributes      NH HI AS NM \
     --outSAMmultNmax        1 \
     --outFilterMultimapNmax 40 \
+    --alignIntronMax        1 \
+    --alignEndsType         EndToEnd \
     --outBAMsortingThreadN  $THREADS \
     --outBAMsortingBinsN    20 \
     --limitBAMsortRAM       160000000000 \
@@ -235,7 +246,7 @@ total_back  = defaultdict(int)
 
 bam = pysam.AlignmentFile(str(bam_path), 'rb')
 for read in bam.fetch():
-    if read.is_supplementary or read.is_secondary or read.is_unmapped:
+    if read.is_supplementary or read.is_secondary or read.is_read2 or read.is_unmapped:
         continue
     tid = read.query_name.split('|')[0]
     total_back[tid] += 1
@@ -257,7 +268,7 @@ for tid, n_sim in sim_counts.items():
     })
 
 df = pd.DataFrame(records).sort_values('uniqueness_factor')
-out = outdir / "transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv"
+out = outdir / "transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv"
 df.to_csv(out, sep='\t', index=False)
 
 print(f"\n  ── Distribution ─────────────────────────────────────")
@@ -273,5 +284,5 @@ PYEOF
 
 echo ""
 echo "════════════════════════════════════════════════════════"
-echo "Done: $OUTDIR/transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv"
+echo "Done: $OUTDIR/transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv"
 echo "════════════════════════════════════════════════════════"
