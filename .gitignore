@@ -20,5 +20,14 @@ _STARtmp/
 *.bam
 *.bai
 
+# Claude Code local settings and project memory (stored in ~/.claude/ globally)
+.claude/
+
+# Run logs (full SLURM output — large, not versioned)
+mappability_all_*.out
+
+# Third-party reference / transparency files (large or not redistributable)
+HLA_MAFFT/TransparentScience_HLA_Li.txt
+
 # Result directories — uncomment once TSVs are copied out
 # results*/
