@@ -5,6 +5,8 @@ Long-read sequencing can resolve many transcripts that remain ambiguous in short
 
 Many conclusions in immuno-oncology and transcriptomics are based on RNA-seq measurements generated from short-read data. By identifying loci that are systematically misquantified due to pseudogenes, paralogs or annotation complexity, this project may improve both the interpretation of historical datasets and the design of future hybrid short-read/long-read studies.
 
+Despite the rapid adoption of long-read technologies, most large-scale transcriptomic resources—including TCGA, GTEx, TARGET, PCAWG, CCLE, DepMap, ENCODE and the Human Cell Atlas—were generated using short-read RNA-seq and will remain a cornerstone of biomedical research for years to come.
+
 ## What this project investigates
 
 Standard RNA-seq pipelines produce opposing systematic biases at loci with complex annotation geometry — dense pseudogene neighbourhoods, gene family duplications, and repetitive elements:
