@@ -4,13 +4,16 @@ Build a MANE ↔ RefSeq ID conversion table.
 
 Sources:
   MANE.GRCh38.v1.5.ensembl_genomic.gff  → Ensembl gene/transcript/protein IDs
-                                            + RefSeq transcript ID (NM_) via Dbxref
+                                            + RefSeq transcript ID (NM_ or NR_) via Dbxref
   GCF_000001405.40_GRCh38.p14_genomic.gff → RefSeq GeneID and protein ID (NP_)
-                                              linked via NM_ transcript ID
+                                              linked via NM_/NR_ transcript ID
 
 Output columns:
   gene_symbol, ensembl_gene_id, ensembl_transcript_id, ensembl_protein_id,
   refseq_transcript_id, refseq_gene_id, refseq_protein_id
+
+NR_ transcripts (snRNAs and other non-coding MANE Select entries) are included;
+their ensembl_protein_id and refseq_protein_id columns are empty.
 """
 
 import re
@@ -45,7 +48,7 @@ with open(MANE_GFF) as fh:
         if len(f) < 9 or f[2] != 'transcript':
             continue
         a = parse_attrs(f[8])
-        nm_m = re.search(r'RefSeq:(NM_\S+)', a.get('Dbxref', ''))
+        nm_m = re.search(r'RefSeq:(N[MR]_\S+)', a.get('Dbxref', ''))
         if not nm_m:
             continue
         nm = nm_m.group(1)
@@ -59,7 +62,7 @@ with open(MANE_GFF) as fh:
             'refseq_protein_id':     '',
         }
 
-print(f"  MANE transcripts with NM_ cross-ref: {len(mane_rows)}")
+print(f"  MANE transcripts with NM_ or NR_ cross-ref: {len(mane_rows)}")
 
 # ── Step 2: parse RefSeq GFF — mRNA features → GeneID ─────────────────────────
 # and CDS features → protein_id (NP_)
@@ -77,7 +80,7 @@ with open(REFSEQ_GFF) as fh:
             continue
         ftype = f[2]
 
-        if ftype == 'mRNA':
+        if ftype in ('mRNA', 'ncRNA', 'primary_transcript'):
             a  = parse_attrs(f[8])
             nm = a.get('transcript_id', '')
             if nm not in mane_rows:
