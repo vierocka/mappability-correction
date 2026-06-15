@@ -1,0 +1,15 @@
+| Consortium                                                           | Approx. samples                 | Data type                                 |
+| -------------------------------------------------------------------- | ------------------------------- | ----------------------------------------- |
+| The Cancer Genome Atlas                                              | ~11,000 tumors                  | Illumina short-read RNA-seq               |
+| Genotype-Tissue Expression Project                                   | ~17,000 samples, 50+ tissues    | Illumina short-read RNA-seq               |
+| Therapeutically Applicable Research to Generate Effective Treatments | Thousands                       | Pediatric cancers, short-read RNA-seq     |
+| International Cancer Genome Consortium                               | Tens of thousands               | Short-read RNA-seq + genomics             |
+| Pan-Cancer Analysis of Whole Genomes                                 | ~2,600 cancers                  | Short-read RNA-seq                        |
+| ENCODE Project Consortium                                            | Thousands                       | Functional genomics, RNA-seq              |
+| Roadmap Epigenomics Project                                          | Hundreds                        | RNA-seq + epigenomics                     |
+| Cancer Cell Line Encyclopedia                                        | >1,000 cell lines               | Short-read RNA-seq                        |
+| Cancer Dependency Map                                                | Thousands of cell line profiles | Short-read RNA-seq                        |
+| Human Cell Atlas                                                     | Millions of cells               | Mostly Illumina short-read scRNA-seq      |
+| Tabula Sapiens Consortium                                            | Hundreds of thousands of cells  | Short-read scRNA-seq                      |
+| NIH All of Us Research Program                                       | Growing population cohort       | Predominantly short-read sequencing       |
+| PsychENCODE Consortium                                               | Thousands                       | Brain transcriptomics, short-read RNA-seq |

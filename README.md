@@ -3,6 +3,8 @@ RNA-seq analysis assumes that annotated transcripts can be quantified accurately
 
 Long-read sequencing can resolve many transcripts that remain ambiguous in short-read RNA-seq. However, its current cost limits routine application in large transcriptomic studies. By identifying problematic loci, this project may help guide targeted long-read sequencing while retaining cost-effective Illumina sequencing for the remainder of the transcriptome.
 
+Many conclusions in immuno-oncology and transcriptomics are based on RNA-seq measurements generated from short-read data. By identifying loci that are systematically misquantified due to pseudogenes, paralogs or annotation complexity, this project may improve both the interpretation of historical datasets and the design of future hybrid short-read/long-read studies.
+
 ## What this project investigates
 
 Standard RNA-seq pipelines produce opposing systematic biases at loci with complex annotation geometry — dense pseudogene neighbourhoods, gene family duplications, and repetitive elements:
