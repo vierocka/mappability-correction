@@ -43,8 +43,11 @@ from collections import defaultdict
 from pathlib import Path
 
 # ── paths ──────────────────────────────────────────────────────────────────────
+import os
 HERE     = Path(__file__).resolve().parent
-GTF_GZ   = Path('/home/veve/Dropbox/Self-Nonself/Reference/GENCODE/gencode.v49.annotation.gtf.gz')
+GTF_GZ   = Path(os.environ.get(
+    'GENCODE_GTF',
+    HERE / '../../Ref/gencode.v49.annotation.gtf.gz'))
 CLUSTERS = HERE / 'results/gencode_v49/3end_clusters_250bp.tsv'
 SUMMARY  = HERE / 'results/gencode_v49/3end_cluster_summary_250bp.tsv'
 OUT      = HERE / 'results/gene_overlap_annotation.tsv'

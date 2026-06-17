@@ -20,6 +20,7 @@ Outputs (in results/):
 
 import csv
 import gzip
+import os
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -29,7 +30,9 @@ RESULTS = HERE / 'results'
 
 XLSX    = HERE / 'CellMarker2_Human_cell_markers.xlsx'
 PANGL   = HERE / 'PanglaoDB_markers_27Mar2020.tsv'
-FASTA   = Path('/home/veve/Dropbox/Self-Nonself/Reference/GENCODE/gencode.v49.transcripts.fa.gz')
+FASTA   = Path(os.environ.get(
+    'GENCODE_FASTA',
+    HERE / '../../Ref/gencode.v49.transcripts.fa.gz'))
 ANNOT   = RESULTS / 'gene_overlap_annotation.tsv'
 
 DELTA_THR = -0.10   # UF drop threshold
