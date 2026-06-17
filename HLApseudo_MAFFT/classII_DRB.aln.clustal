@@ -1,0 +1,244 @@
+CLUSTAL format alignment by MAFFT L-INS-i (v7.505)
+
+
+HLA-DRB1        agtaacttcctccctataacttggaatgtgggtgga-ggggttcatagttctccctgagt
+HLA-DRB3        agtaacttcctccctataatttggaatgtgggtggaggggggtcatagttctccctgagt
+HLA-DRB4        --------------------------------------------atagttctccctgatt
+HLA-DRB5        --------------------------------------------atagttctccctgagt
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        gagacttgcctgcttctctggcccctggtcctgtcctgttctccagcatggtgtgtctga
+HLA-DRB3        gagacttgcctgctcctctggcccctggtcctgtcctcttctccagcatggtgtgtctga
+HLA-DRB4        gagacttgcctgctgctgtgaccactggtcttgtcctcttctccagcatggtgtgtctga
+HLA-DRB5        gagacttgcctgctcctctggcccctggtcctgtcctgttctccagcatggtgtgtctga
+HLA-DRB2        -----------------------------------------------atggtgtgcctca
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        -----------------------------------------------atggtgtgtctga
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        agctccc----tggaggctcctgcatgacagcgctgacagtgacactgatggtgctgagc
+HLA-DRB3        agctccc----tggaggctccagcttggcagcgttgacagtgacactgatggtgctgagc
+HLA-DRB4        agctccc----tggaggctcctgtatggcagcgctgacagtgacattgacggtgctgagc
+HLA-DRB5        agctccc----tggaggttcctacatggcaaagctgacagtgacactgatggtgctgagc
+HLA-DRB2        ggctgcctggctggaggctcttgcatggcacctctgacagtgacactgatggtgctgagc
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        agccccc----tggaggctcctgcatggcagctctgacagtgacactgatggtgctgagc
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------ggaggctcccgcatggcagcgctgacagtgacactgatggtgctgagc
+                                                                            
+
+HLA-DRB1        tccccactggctttgtctggggacacccgaccacgtttcctgtggcagcctaagagggag
+HLA-DRB3        tcccgactggctttcgctggggacacccgaccacgtttcttggagctgcgtaagtctgag
+HLA-DRB4        tccccactggctttggctggggacacccaaccacgtttcttggagcaggctaagtgtgag
+HLA-DRB5        tccccactggctttggctggggacacccgaccacgtttcttgcagcaggataagtatgag
+HLA-DRB2        tccccactggctttggctg-----------------------------------------
+HLA-DRB6        -------------------------------cacgtttcttggagcaggctaagtgtgag
+HLA-DRB7        tccccactggctttggctggggacacccgaccacgtttcttggagcaggctaagtctgag
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ttcccactggctttggctggggac-----accgcatttcttggagcagattaaacacgag
+                                                                            
+
+HLA-DRB1        tgtcatttcttcaatgggacggagcgggtgcggttcctggacagatacttctataaccag
+HLA-DRB3        tgtcatttcttcaatgggacggagcgggtgcggtacctggacagatacttccataaccag
+HLA-DRB4        tgtcatttcctcaatgggacggagcgagtgtggaacctgatcagatacatctataaccaa
+HLA-DRB5        tgtcatttcttcaacgggacggagcgggtgcggttcctgcacagagacatctataaccaa
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        tgtcatatcttcaatgggatgaagcgggtgcagtacctgaacagatacatccataaacgg
+HLA-DRB7        tgtcatttcttcaatgggacgga------gcggtacctgtaaagatacttctataaccaa
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        tgctatttctgcaatgggacagagcggatgcggtttgtgcagagactcatccac-accgg
+                                                                            
+
+HLA-DRB1        gaggagtccgtgcgcttcgacagcgacgtgggggagttccgggcggtgacggagctgggg
+HLA-DRB3        gaggagttcctgcgcttcgacagcgacgtgggggagtaccgggcggtgacggagctgggg
+HLA-DRB4        gaggagtacgcgcgctacaacagtgacctgggggagtaccaggcggtgacggagctgggg
+HLA-DRB5        gaggaggacttgcgcttcgacagcgacgtgggggagtaccgggcggtgacggagctgggg
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        gaggagaacctgcgcttcgacagcaacgtggaggagttccaggcagttacggaactgggg
+HLA-DRB7        gaggagtacgtgcgcttcaacagcgacatgggggagttccgggcggtgactgagctgggg
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        aaggagtatgcgcgcttccatagggacgtcggaaagttccgggcggtggcggagctggag
+                                                                            
+
+HLA-DRB1        cggcctgacgctgagtactg-gaacagccagaaggacatcctggagcaggcgcgggccgc
+HLA-DRB3        cggcctgtcgccgagtcctg-gaacagccagaaggacctcctggagcagaagcggggccg
+HLA-DRB4        cggcctgacgctgagtactg-gaacagccagaaggacctcctggagcggaggcgggccga
+HLA-DRB5        cggcctgacgctgagtactg-gaacagccagaaggacttcctggaagacaggcgcgccgc
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        cggcctgtcgcagagaactg-gaacagccagaagggcatcccggaggagaagcgggacaa
+HLA-DRB7        cggcctgacgctgagtactg-gaacagccagaaggacatcctggagcagaagcgggccga
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        cggagaagagtccaggaatgcaaacagccagaagaacctcttgggctgcttgcggggtct
+                                                                            
+
+HLA-DRB1        ggtggacacctactgcagacacaactacgggg-ttgtggagagcttcacagtgcagcggc
+HLA-DRB3        ggtggacaattactgcagacacaactacgggg-ttggtgagagcttcacagtgcagcggc
+HLA-DRB4        ggtggacacctactgcagatacaactacgggg-ttgtggagagcttcacagtgcagcggc
+HLA-DRB5        ggtggacacctactgcagacacaactacgggg-ttggtgagagcttcacagtgcagcggc
+HLA-DRB2        -------------------------------------------------tgggcacccga
+HLA-DRB6        gatggacgactactgcagatacaattacggggttttttgagagcttcacagtgcagccgc
+HLA-DRB7        agtggacaactaatgcagacacaactatgggg-ttgtggagagattcacagtgcagcggc
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        gttggacacctactgcagacacaactacgggg-tttttgagagcttctccatgcacaggc
+                                                                            
+
+HLA-DRB1        gagtccaacctaaggtgactgtatatccttcaaagacccagcccctgcagcaccacaacc
+HLA-DRB3        gagtccatcctcaggtgactgtgtatcctgcaaagacccagcccctgcagcaccacaacc
+HLA-DRB4        gagtccaacctaaggtgactgtgtatccttcaaagacccagcccctgcagcaccacaacc
+HLA-DRB5        gagttgagcctaaggtgactgtgtatcctgcaaggacccagaccctgcagcaccacaacc
+HLA-DRB2        ccttccaacctaaggggactatgtatcctgcaaagacccagcccctgcctcacagcaacc
+HLA-DRB6        gagtccatcctaaggtgactgtgtatcctgcaaagacccagcccctgcatcaccgcaacc
+HLA-DRB7        gaatccaacctaaggtgactgtgtatccttcaaaagaccagcccctgcagcaccacaacc
+HLA-DRB8        ---tccatcctaaggtgactgtgtatcctttaaagacccagcccctgcagcaccacaacc
+HLA-DRB9        ga----------------------------------------------------------
+                                                                            
+
+HLA-DRB1        tcctggtctgctctgtgagtggtttctatccaggcagcattgaagtcaggtggttcctga
+HLA-DRB3        tcctggtctgctctgtgagtggtttctatccaggcagcattgaagtcaggtggttccgga
+HLA-DRB4        tcctggtctgctctgtgaatggtttctatccaggcagcattgaagtcaggtggttccgga
+HLA-DRB5        tcctggtctgctctgtgaatggtttctatccaggcagcattgaagtcaggtggttccgga
+HLA-DRB2        tcctggtctgctgtgtgagtggtttctatccaggcagcattgaagtcaggtggttccgga
+HLA-DRB6        ccctggtcggctctgtgagtggtttctatccaggcagcattaaagtcaggtggttccaga
+HLA-DRB7        tcctggtctgctctgtgagtggtttctatccaggcagcattgaagtcaggtggttccaga
+HLA-DRB8        tcctggtctgctctgtgagtggtttctgtccagccagcattgaagtcaggtggttccgga
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        acggccaggaagagaaggctgggatggtgtccacaggcctgatccagaatggagactgga
+HLA-DRB3        acggccaggaagagaaggctggggtggtgtccacgggcctgatccagaatggagactgga
+HLA-DRB4        acggccaggaagagaaggctggggtggtgtccacaggcctgatccagaatggagactgga
+HLA-DRB5        acagccaggaagagaaggctggggtggtgtccacaggcctgattcagaatggagactgga
+HLA-DRB2        atggtcaggaagagaaggctgcggtggtctccataggcctgatccagaatggagactgga
+HLA-DRB6        atggtcaggaagagaaggctgcggtggtctccataggcctgatccagaatggagattgga
+HLA-DRB7        atggccaggaagagaaggctggggtggtgtccacaggcctgatccagaatggagactgga
+HLA-DRB8        acggccaggaagagaaggctggggtggtgtccacaggcctgatccagaatggagactgga
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        ccttccagaccctggtgatgctggaaacagttcctcgaagtggagaggtttacacctgcc
+HLA-DRB3        ccttccagaccctggtgatgctagaaacagttcctcggagtggagaggtttacacttgcc
+HLA-DRB4        ccttccagaccctggtgatgctggaaacagttcctcggagtggagaggtttacacctgcc
+HLA-DRB5        ccttccagaccctggtgatgctggaaacagttcctcgaagtggagaggtttacacctgcc
+HLA-DRB2        ctttccagaccctggtgatgctggaaacagttcctcggagtgga----------------
+HLA-DRB6        ccttccagaccctggtgatgctggaaacagttcctcggagtggagaggtttacacctgcc
+HLA-DRB7        ccttccagaccctggtgatgctggaaacagttcctcagaatgcagaggtttacacctgtc
+HLA-DRB8        ccttccagacactgatgatgctggaaacagttcctcagagtggagaggtttacacctgcc
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        aagtggagcacccaagcgtgacaagccctctca--cagtggaatggagagcacggtctga
+HLA-DRB3        aagtggagcacccaagcgtaacgagcgctctca--cagtggaatggagagcacggtctga
+HLA-DRB4        aagtggagcatccaagcatgatgagccctctca--cggtgcaatggagtgcacggtctga
+HLA-DRB5        aagtggagcacccaagcgtgacgagccctctca--cagtggaatggagagcacagtctga
+HLA-DRB2        ----ggagcatccaagcatgacgagccctctca--cagtgcaatggagagcacggtctga
+HLA-DRB6        aagtggagcatccaagcgtgacgagccctctca--cagtggaatggagtacacggactga
+HLA-DRB7        aactggagcacccaagcatgatgagccttctcatgcagtggaatggagagcatggtctga
+HLA-DRB8        aagtggagcatccaagcatgatgagccctctca--cggtgcaatggagagcatggtctga
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB3        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB4        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB5        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB2        atctgcacagagcaagatgctgagtggagtcgggggcttcgtgctgggcctgctcttcct
+HLA-DRB6        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB7        atctgcacagagcaagatgctgagtggagtcgggggcttcgtgctgggcctgctcttcct
+HLA-DRB8        atctgcacagagcaagatgctgagtggagtcgggggctttgtgctgggcctgctcttcct
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        tggggccgggctgttcatctacttcaggaatcagaaaggacactctggacttcagccaac
+HLA-DRB3        tggggccgggctgttcatctacttcaggaatcagaaaggacactctggacttcagccaac
+HLA-DRB4        tgggacagggctgttcatctacttcaggaatcagaaaggacactctggacttcagccaac
+HLA-DRB5        tggggccgggctattcatctacttcaagaatcagaaagggcactctggacttcacccaac
+HLA-DRB2        tgggacggggctgttcatctacttcaagaatcagaaaggacactctggacttcacccaaa
+HLA-DRB6        tgggacagggctgttcatctacttcaggaatcagaaaggacactctggacttcagccaac
+HLA-DRB7        tggggccgggctgttcatctacttcaggaatcagaaaggacactctggacttcaaccaac
+HLA-DRB8        tggggccgggctgtttctctacttcaggaatcagaaaggacactctggacttcagccaac
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        aggattcctgagctgaaatgcagatgaccacattcaaggaagaactttctgccccggctt
+HLA-DRB3        aggattcctgagctgaagtgcagatgac--aatttaaggaagaatcttctgccccagctt
+HLA-DRB4        aggactcttgagctgaagtgcagatgaccacattcaaggaagaaccttctgccccagctt
+HLA-DRB5        aggactcgtgagctgaagtgcagatgaccacattcaagggggaaccttctgccccagctt
+HLA-DRB2        ag----------------------------------------------------------
+HLA-DRB6        aggactcctgcgctggactcctga------------------------------------
+HLA-DRB7        aggt--------------------------------------------------------
+HLA-DRB8        aggactcctgaactgaa-------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        tgcaggatgaaaagctttcctgcttggcagttattcttccacaagagagggctttctcag
+HLA-DRB3        tgcaggatgaaaagctttcccgcctggctgttattcttccacgagagagggctttctcag
+HLA-DRB4        tgcaagatgaaaagctttcccacttggctcttattcttccacaagag----ctttgtcag
+HLA-DRB5        tgcatgatgaaaagctttcctgcttggctcttattcttccacaagagaggactttctcag
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        gacctggttgctactggttcggcaa--ctgcagaaaatgtcctcccttgtggcttcctca
+HLA-DRB3        gacctagttgctactggttcagcaa--ctgcagaaaatgtcctcccttgtggcttcctca
+HLA-DRB4        gaccaggttgttactggttcagcaactctgcagaaaatgtcctcccttgtggcttcctta
+HLA-DRB5        gccctggttgctaccggttcagcaactctgcagaaaatgtccatccttgtggcttcctca
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        gctcctgcccttggcctgaagtcc--cagcattgatggcagcgcctcatcttcaactttt
+HLA-DRB3        gttcctgcccttggcctgaagtcc--cagcattgatggcagcgcctcatcttcaactttt
+HLA-DRB4        gctcctgttcttggcctgaagcctcacagctttgatggcagtgcctcatcttcaactttt
+HLA-DRB5        gctcctgcccttggcctgaagtcc--cagcattgatggcagtgcctcatcttcaacttta
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        --------------gctga-----------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        gtgctcccctttgcctaaaccgtatggcctcccgtgcatctgtattcaccctgtatg--a
+HLA-DRB3        gtgctcccctttgcctaaaccctatggcctcctgtgcatctgtactcaccctgtacc--a
+HLA-DRB4        gtgcttccctttacctaaactgtcctgcctcccgtgcatctgtactccccttgtgcc---
+HLA-DRB5        gtgctcccctttacct-aaccctacggcctcccatgcatctgtactccccctgtgtgcca
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        caaacacattacattattaaatgtttctcaaagatgga----------------------
+HLA-DRB3        caaacacattacattattaaatgtttctcaaagatggagttaaa----------------
+HLA-DRB4        ---acacattgcattattaaatgtttctcaaacatgga----------------------
+HLA-DRB5        caaatgcactacgttattaaatttttctgaagcccagagttaaaaatcatctgtccacct
+HLA-DRB2        ------------------------------------------------------------
+HLA-DRB6        ------------------------------------------------------------
+HLA-DRB7        ------------------------------------------------------------
+HLA-DRB8        ------------------------------------------------------------
+HLA-DRB9        ------------------------------------------------------------
+                                                                            
+
+HLA-DRB1        ---------------------------------------------
+HLA-DRB3        ---------------------------------------------
+HLA-DRB4        ---------------------------------------------
+HLA-DRB5        ggctccaaagacaaaaaataaaaagaaaagaaaaagggaagatta
+HLA-DRB2        ---------------------------------------------
+HLA-DRB6        ---------------------------------------------
+HLA-DRB7        ---------------------------------------------
+HLA-DRB8        ---------------------------------------------
+HLA-DRB9        ---------------------------------------------
+                                                             

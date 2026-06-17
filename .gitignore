@@ -29,5 +29,8 @@ mappability_all_*.out
 # Third-party reference / transparency files (large or not redistributable)
 HLA_MAFFT/TransparentScience_HLA_Li.txt
 
+# Kallisto run_info.json — contains cluster username and scratch paths
+mappability/kallisto_results/*/run_info.json
+
 # Result directories — uncomment once TSVs are copied out
 # results*/

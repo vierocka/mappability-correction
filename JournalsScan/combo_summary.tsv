@@ -1,0 +1,31 @@
+combo	n_papers	pct	n_scrna	n_bulk	multi_risk	year_range	2020	2021	2022	2023	2024	2025	2026
+(none detected)	7128	98.5	0	0	unknown	2020–2026	703	906	791	935	1393	1675	725
+limma	23	0.3	0	23	unknown	2021–2026	0	3	2	3	3	11	1
+Seurat	16	0.2	16	0	unknown	2021–2025	0	1	0	3	4	8	0
+DESeq2	15	0.2	0	15	unknown	2020–2026	1	0	3	2	3	5	1
+Monocle	7	0.1	7	0	unknown	2024–2026	0	0	0	0	1	4	2
+edgeR	6	0.1	0	6	unknown	2021–2026	0	2	1	0	1	1	1
+Salmon	3	0.0	0	3	em_redistribute	2022–2026	0	0	1	0	0	1	1
+featureCounts + DESeq2	3	0.0	0	3	discard_default	2025–2026	0	0	0	0	0	2	1
+Harmony	3	0.0	3	0	unknown	2024–2026	0	0	0	0	1	1	1
+limma + Seurat	3	0.0	3	3	unknown	2024–2024	0	0	0	0	3	0	0
+DESeq2 + edgeR + limma	2	0.0	0	2	unknown	2022–2024	0	0	1	0	1	0	0
+Scanpy	2	0.0	2	0	unknown	2021–2022	0	1	1	0	0	0	0
+scVI	2	0.0	2	0	unknown	2023–2024	0	0	0	1	1	0	0
+STAR	2	0.0	0	2	discard_default	2026–2026	0	0	0	0	0	0	2
+Seurat + Monocle	2	0.0	2	0	unknown	2024–2025	0	0	0	0	1	1	0
+Seurat + Harmony	2	0.0	2	0	unknown	2024–2025	0	0	0	0	1	1	0
+DESeq2 + edgeR	1	0.0	0	1	unknown	2024–2024	0	0	0	0	1	0	0
+CellRanger	1	0.0	1	0	discard_default	2026–2026	0	0	0	0	0	0	1
+StringTie	1	0.0	0	1	em_redistribute	2022–2022	0	0	1	0	0	0	0
+Seurat + scVI	1	0.0	1	0	unknown	2021–2021	0	1	0	0	0	0	0
+Seurat + Harmony + scVI	1	0.0	1	0	unknown	2023–2023	0	0	0	1	0	0	0
+STAR + HISAT2	1	0.0	0	1	discard_default	2023–2023	0	0	0	1	0	0	0
+kallisto	1	0.0	0	1	em_redistribute	2023–2023	0	0	0	1	0	0	0
+HISAT2 + DESeq2	1	0.0	0	1	discard_default	2022–2022	0	0	1	0	0	0	0
+TopHat	1	0.0	0	1	discard_default	2025–2025	0	0	0	0	0	1	0
+DESeq2 + limma	1	0.0	0	1	unknown	2025–2025	0	0	0	0	0	1	0
+RSEM	1	0.0	0	1	em_redistribute	2024–2024	0	0	0	0	1	0	0
+edgeR + limma	1	0.0	0	1	unknown	2025–2025	0	0	0	0	0	1	0
+CellRanger + limma + Seurat + Monocle	1	0.0	1	1	discard_default	2025–2025	0	0	0	0	0	1	0
+StringTie + DESeq2	1	0.0	0	1	em_redistribute	2025–2025	0	0	0	0	0	1	0
