@@ -1,0 +1,422 @@
+CLUSTAL format alignment by MAFFT L-INS-i (v7.505)
+
+
+HLA-DPA1        agtct------------catctgcctccactcggcctcagtt------cctcatcactgt
+HLA-DPB1        ccttcttttcctgactgcagctcttttcattttgccatccttttccagctccatgatggt
+HLA-DPA2        ----------------------------------------------------atgagtgg
+HLA-DPB2        ----------------------------------------------------atgatgat
+                                                                    ** *  . 
+
+HLA-DPA1        tcctgtgctcacagtcatcaattatagaccccacaacatgcgccctgaagaca----gaa
+HLA-DPB1        tctgcaggtt----------tctgcggccccccggacagtggctctgacggcgttactga
+HLA-DPA2        t-------------------gtcataaagctcccaa------------------------
+HLA-DPB2        cctgcaggtt----------tcagggggcccctggacagtggctctgacagcattactga
+                .                    . . ..  *.*  .*                        
+
+HLA-DPA1        tgttccatatcagagctgtgatcttg---agagccctctccttggctttcctgctgagtc
+HLA-DPB1        tggtgctgctcacatctgtggtccagggcagggccactccagagaattac-------ctt
+HLA-DPA2        -------------------gagttta---cgtcttttgtgattggctacc----------
+HLA-DPB2        tggtgctgctcatatctgtggtccagagcagggccactccagagaattcc-------gtc
+                                   *. .. .    *  .. . .    *. *  *          
+
+HLA-DPA1        tccgaggagctggggccatcaaggcggaccatgtgtcaacttatgccgcgtt-tgtacag
+HLA-DPB1        ttccagggac----ggcaggaatgctacgcgtttaatgggacacagcgcttcctggagag
+HLA-DPA2        ----------------------agcagaccatgtgtcaacatatgcggagtt-tgtgcag
+HLA-DPB2        taccaggaac----ggcaggaatgctatgcgttcaatgggactcagcgcgttgtggacgg
+                                       ** .  *.* .. ...  . ..  *  *. ** . .*
+
+HLA-DPA1        acgcatagaccaacagg-ggagtttatgtttgaatttgatgaagatgagatgttctatgt
+HLA-DPB1        atacatctacaaccgggaggagttcgcgcgcttcgacagcgacgtgggggagttccgggc
+HLA-DPA2        acgcacagaccctctgg-ggagtatatgtttgaatttgatgaggaggagcagttctacgt
+HLA-DPB2        gctcatctacaaccgggaggaatacgtgcattttgacagcgcagtgggggagttcctagc
+                .. **.  **   * ** ***.* ...*. .     ....*  *  *.*  ****.  *.
+
+HLA-DPA1        ggatctggacaagaaggagaccgtctggcatctggaggagtttggccaagccttttcctt
+HLA-DPB1        ggtgacggagctggggcggcctgctgcggagtactggaacagccagaaggacatcctgga
+HLA-DPA2        gaacctggatgagaaggagatggtctggcctctaccagagtttattcacacctttgactt
+HLA-DPB2        agtgatggagctggggcggcccataggcgagtacttcaatagccagaaggactttatgga
+                ..   .***   *..* .* . ..       .     .*   .    * . * *.     
+
+HLA-DPA1        tgaggctcagggcgggctggctaacattgctatattgaacaacaacttgaataccttgat
+HLA-DPB1        ggagaagcgggcagtgccggacaggatgtgcagacacaactacgagctgg-----gcggg
+HLA-DPA2        tggtgctcagaggggtattgctggcatcgtcatggcaaggaagcacttgaacacccggat
+HLA-DPB2        acggaagcgagccgaggtggacaaggtgtgcagacacaagtacgagctga-----tggag
+                  . .  *...  *   . * ... .*   .* .   *.  *  * .**.       *. 
+
+HLA-DPA1        ccagcgttccaaccacactcaggccaccaac-----gatccccctgaggtgaccgtgttt
+HLA-DPB1        cccatgaccctgcagcgcc---------------gagtccagcctagggtgaatgtttcc
+HLA-DPA2        -caatggtccaaacagacttgggccacaaatgtggagcccccaccgaggtaagcgtcttt
+HLA-DPB2        ccactcatccggcagcgcc-------------gagagtccagcctagggtgaacatct-c
+                 *  .  .** .  . .*.                 * .*   *...***.* ..* * .
+
+HLA-DPA1        cccaaggagcctgtggagctgggccagcccaacaccctcatctgccacattgacaagttc
+HLA-DPB1        ccctccaagaaggggcccttgcagcaccacaacctgcttgtctgccacgtgacggatttc
+HLA-DPA2        cccaaggagcctgtggatctgggccagcccaacaccctcgtctgccatgttgacaagttc
+HLA-DPB2        ccctccaagaaggagccccagcagcaccacgacctgcttgtctaccacgtgacagatttc
+                ***   .**   * *   . * . ** * *.** . **..***.***..* .  .* ***
+
+HLA-DPA1        ttcccaccagtgctcaacgtcacgtggctgtgcaacggggagctggtcactgagggtgtc
+HLA-DPB1        tacccaggcagcattcaagtccgatggttcctgaatggacaggaggaaacagctggggtc
+HLA-DPA2        ttcccaccagtgctgaacatcacgtggctgcgcaatggggagccagtcattgagggtatt
+HLA-DPB2        tacccagacagcattcaagtccgatgcttcctgaatggacaggaggaaacagctggggtc
+                * ****   .   *  * .**  .** .* .  **.**. **  .*  *. *  ** .*.
+
+HLA-DPA1        gctgagagcctcttcctgcccagaacagattacagcttccacaagttccattacctgacc
+HLA-DPB1        gtgtccaccaacctgatccgtaatggagactggaccttccagatcctggtgatgctggaa
+HLA-DPA2        gcagagaccatcttcctgcccagcaagaaactcagattacacaggttccactatctgacc
+HLA-DPB2        gtgtccaccaacctgatccgtaatggagactggaccttccagatcctggagatgctggaa
+                *.    * *  *.*  * * .*. . ..* .  *  ** ** *  .*       ***.  
+
+HLA-DPA1        tttgtgccctcagcagaggacttctatgactgcagggtggagcactggggcttggaccag
+HLA-DPB1        atgaccccccagcagggagatgtctacacctgccaagtggagcacaccagcctggatagt
+HLA-DPA2        ctcgttcccatggccgaggacacctgtgacctccagggggagcactggggcctgcaccag
+HLA-DPB2        atgaccccccagcagggaaacatctacacctgccaagtggagcaccccagcctggacagt
+                 * .. ***  .   *...*. .**... *. * ..* *******   .**.** *. . 
+
+HLA-DPA1        ccgctcctcaagcactgggaggccca---agagccaatccagatgcctgagacaacggag
+HLA-DPB1        cctgtcaccgtggagtggaaggcacagtctgattctgcccggagtaagacattgacggga
+HLA-DPA2        cctctcctcaggcactgggaggtcca---tgaactaatccaggtgcctgagaccatggag
+HLA-DPB2        cctgtcactgtggagtggaaggcacagtctgattctgtgcagagcaagatgctgacagga
+                **  ** ... * * ***.***. **    ** .. .. *.*.     . . . *..*..
+
+HLA-DPA1        actgtgctctgtgccctgggcctggtgctgggcctagtcggcatcatcgtgggcaccgtc
+HLA-DPB1        gctgggggcttcgtgctggggctcatcatctgtggagtgggcatcttcatgcacagga--
+HLA-DPA2        atgctggtctgtgccctcggcctgctggtgggcctggcgggggtccttaatggcacca--
+HLA-DPB2        gccaggggcttcatgctggggctcatcatctgtggagtgggcatcttcacgcacagaa--
+                ..   *  ** ... ** ** **  *  *  *.  .*. ** .** *..   .**  .  
+
+HLA-DPA1        ctcatcataaagtctctgcgttctggccatgacccccgggcccaggggaccctgtgaaat
+HLA-DPB1        -ggagcaagaaagttcaacg----------------------------------------
+HLA-DPA2        -ttgtctcaaagaccaagcgatctgacagc-atccccgggtccaggggctcctatga---
+HLA-DPB2        -ggagcaagaaagttcaaca----------------------------------------
+                   . *  .**. ..  .*.                                        
+
+HLA-DPA1        actgtaaaggtgacaaaatatctgaacagaagaggacttaggagagatctgaactccagc
+HLA-DPB1        ----------------aggatctgcataaacagggttcctgagctcactgaaaagactat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ----------------aggatctgcataa-------------------------------
+                                                                            
+
+HLA-DPA1        tgccctacaaactccatctcagcttttcttctcacttcatgtgaaaactactccagtggc
+HLA-DPB1        tgtgccttaggaaaagcatttgctgtgttt--------------------cgttagcatc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        tgactgaattgctgacccttcaagctctgtccttatccattacctcaaagcagtcattcc
+HLA-DPB1        tggctccaggacagaccttc--aacttccaaattggatactgctgccaagaagttgctct
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ttagtaaagtttccaacaaatagaaattaatgacactttggtagcactaatatggagatt
+HLA-DPB1        gaagtcagtttc------------------tatcattctgctctttgattcaaagcactg
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        atcctttcattgagccttttatcctctgttctcctttgaagaacccctcactgtcacctt
+HLA-DPB1        tttctctcactgggcctccaaccatgttcccttcttcttagcaccac-------------
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        cccgagaataccctaagaccaataaatacttcagtatttcagagcggggagactctgagt
+HLA-DPB1        -----aaataatcaaaacccaacatgactgt----------------------------t
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        cattcttactggaagtctaggaccaggtcacatgtgaatactatttcttgaaggtgtggt
+HLA-DPB1        tgttttcctttaaaaatatgcaccaaatcatctctcatcacttttctctgagggttttag
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ttcaacctctgttgccgatgtggttactaaaggttctgatcccacttgaacggaaaggtc
+HLA-DPB1        taga----------cagtaggagttaataaagaagttcattttggtttaa-acataggaa
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        tgaggatattgattcagtcctgggtttttccctaactacaggatagggtggggtagagaa
+HLA-DPB1        agaagagaaccatgaaaatggggatatgttaactattgtataatggggcctgttacacat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        aggatatttgggggaaattttacttggatgaagattttcttggatgtagtttgaagactg
+HLA-DPB1        gacactcttctgaattgactgtatttcagtgagctgcccccaaatcaagtttagtgccct
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        cagtgtttgaagtctc--------------------------------------------
+HLA-DPB1        catccatttatgtctcagaccactattcttaactattcaatggtgagcagactgcaaatc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        tgcctgataggacccatattcccacagcactaattcaacatataccttactgagagcatg
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ttttatcattaccattaagaagttaaatgaacatcagaatttaaaatcataaatataatc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        taatacactttaaccattttctttgtgtgccatcacaaatactccttaaccaaatacggc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ttggacttttgaatgcatccaatagacgtcatttgtcgtctaagtctgcattcatccacc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        agcctaggcctcctgtcttaattttcatacagacagaaatgactccccactggggaaaga
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gcaaagcaatacatgtagcactctttttcaaacactggtctttttttttttcttaacaat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ccaacattgttatgtgttttgcgtctcatattgacaccttttggtcaaggtagaggacat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gtttgttgtaagctttctttttcgtgtagaggatggattcttcactcctgatacacacaa
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        tcagtgcacagcagctctcttatacatccagttgatgccttcagtctccctggcttctta
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        caagcatcttctgggccttgtgtgtccctgggcacctgtccctggtcaattcccgaaagc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        tactgtgctcctcttgcccatctccccttgcaaataatatcttccatcgggggaccggct
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        --------------------------tgagggaagagatttgg-----------------
+HLA-DPB1        tcctccaatttcaggagaggtggggctgaaggcacagacttgggcgtcactggcacagat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ataagtaaatacagctggagtctgcagagaggctggactgagtcagggagtcaggaaaga
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gaagccacacacaaggacaaccaatcatgtttctcataatcttcttaacctagggaatag
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gacacaatcattttttctttttaaaacatctttatccctgatcagcctcatttcctcaaa
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        aactataaaggaaaatgctgctgacttgtttttgcgtagtaatttcagctgtcacataat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        aagctaaggaagacagtatatagtaaataaggaccctttatctgtcttattttccctttt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ggcttcacaggaaacttgtgagaaacctatgcagcataaaattaatatgatttcaatcca
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gggattcaacgatggaaggaggtcatgagaatagcagaaagtcttcaaatcgagatcatt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        atgaaatcctcagacccagagcacataaatcctaccctcagagtcactgagcagttaaca
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ttacaaattacaaaccatatccagtcagagtcattctctttcctgcttgtctcctgtact
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        -------------------------------------------------------tctgt
+HLA-DPB1        catgttacaggttagggcagtaccccgagtggagtgaacaatctctggactaacacttgt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ctggatcaagatttcaggca----------------------------------------
+HLA-DPB1        caggatcagaagctgaggtatctgcacccacattacaggaacaggatatgtgctcctagg
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gaactgagggtgtcaggagatgaggaatgtccctggagtcacagaaagaaggtatcagat
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gtgtctcactctgacatatgcaggtgtttatgaaactctgggatttctaaggaaggatgc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        agtgcagagacaggtcccagaggagacaagagctgagagaccatccaaactgggaccacc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        ttgtcactagacttcaaattttcaatattgatagagtgttttctaagagtcaggcccttt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gctgagtgctatgtgcagcaggatcaaaggcagccaggaggtagaggagtcttgaggtac
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        atcagtcattggagttgaagagcagagattcaaaggaaagttggaactggagctttaaag
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gagatgtgaagtgggtgactcaacctctgactcagaaaaattgatacctgcagaagaaaa
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ----------gattaggatt----------------------------------------
+HLA-DPB1        aacccggcgggcttaggactcccagctgagtgttgtatcctccatccctttccacctggt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        --------------ccattcacagcccctgag----------------------------
+HLA-DPB1        cccttcattttctacccctcacagttccctaacgagaaggtggtccacccaacagacaac
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------cttcct
+HLA-DPB1        actgcctcagatggttatcaaggggtaccctaagaagaaatcatctcaccctctctttgt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        tccca-------------------------------------------------------
+HLA-DPB1        ccccatttgtcaagtagcagtgaggccgagccaggggatggtgaaagtggaaggaggtgg
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        gagttgggcatcgggtgtgaagatgctcttgaaaggggttttaataaccacttgctacca
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        --------------------------------------aggctgtattgtaa--------
+HLA-DPB1        ggccagtgaacacttaccatagttgatgccttttgagcatgttgcattgtaaactgtccc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ---------------------ttatag---------------------------------
+HLA-DPB1        tgaaattactgtgcacttggcttatgggatgaaacatcctcctagttcttttgtctctca
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        -------caatatttcatggagga-------------tttttctaca-------------
+HLA-DPB1        gcttctctgaagtctcattgagcaccttctcttcaatttcttttacacagtaagaatagg
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        --------tgataaactaa-----------------------------------------
+HLA-DPB1        atcagctgtgctaaactaacaaatacccagatatccaggtttggctcatgttacacgtcc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        aaagtaagtcatgcaggaagctctgctcatcatcgtactcaggaagtcaggctgacagtc
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ----------------------------------------------gagccaagaaat--
+HLA-DPB1        tttctcctgcacatctgctcccagaacctccccagcagaatgaagggaacctaagaattt
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ------------------------------------------------------------
+HLA-DPB1        attcactggcttttaatgatccctcctagaaagaacacacttctcgcatttcattttcca
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        -------------------------------------------------------aaaat
+HLA-DPB1        atgtaaatcatatggctgcaactaacttcaaataagtgggaatacttgaaggtggaaaac
+HLA-DPA2        ------------------------------------------------------------
+HLA-DPB2        ------------------------------------------------------------
+                                                                            
+
+HLA-DPA1        ttttaaaatgccc--------------------------------taa
+HLA-DPB1        atttaagaagtacacactaaataaataataaaatacttctacaagaga
+HLA-DPA2        ------------------------------------------------
+HLA-DPB2        ------------------------------------------------
+                                                                

@@ -1,0 +1,212 @@
+CLUSTAL format alignment by MAFFT L-INS-i (v7.505)
+
+
+HLA-DQA1        acaattactctacagctcagaacaccaactgctgaggctgc-------------------
+HLA-DQB1        at----------caggtccgagctgtgttgactaccactgcttttcccttcgtctcagtt
+HLA-DQA2        acaattgctctacagctcagagcagcaactgctgaggctgc-------------------
+HLA-DQB2        at----------taggtttgagctgtgttgactaccactgctttttccttggtctcactt
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ----cttgggaagaggat-----gatcctaaacaaagctctgctgctgggggccctcgct
+HLA-DQB1        atgtcttggaagaaggctttgcggatccccggagaccttcgggtagcaactgtcaccttg
+HLA-DQA2        ----cttgggaagaagat-----gatcctaaacaaagctctgctgctgggggccctcgcc
+HLA-DQB2        acgtcttggaagatggctctgcagatccctggaggcttttgggcagcagctgtgaccgtg
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ctgaccaccgtgatgagcccctgtggaggtgaagacattgtggctgaccacgttgcctct
+HLA-DQB1        atgctggcgatgctgagctccc---------------tactggctgagggcagagactct
+HLA-DQA2        ctgactgccgtgatgagcccctgtggaggtgaagacattgtggctgaccatgttgcctcc
+HLA-DQB2        atgctggtgatgctgagcaccc---------------cagtggctgaggccagagacttt
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        tgtggtgtaaacttgtaccagttttacggt------------------------------
+HLA-DQB1        cccgaggatttcgtgttccagtttaagggcatgtgctacttcaccaacgggacggagcgc
+HLA-DQA2        tatggtgtgaacttctaccagtctcacggt------------------------------
+HLA-DQB2        cccaaggatttcttggtccagtttaagggcatgtgctacttcaccaacgggacagagcgc
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        -----ccctctggccag-tacacccatgaatttgatggagatgagcagttctacgtggac
+HLA-DQB1        gtgcgtcttgtgaccagatacatctataaccgagaggagtacgcgcgcttcgacagcgac
+HLA-DQA2        -----ccctctggccag-tacacccatgaatttgatggagacgaggagttctatgtggac
+HLA-DQB2        gtgcgcggtgtggccagatacatctataaccgcgaggagtacgggcgcttcgacagcgac
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ctggagaggaaggagactgcctggcggtggcctgagttcagcaaatttggaggttttgac
+HLA-DQB1        gtgggggtg--------taccgcgcggtgacgccgcaggggcggcc----tgatgccgag
+HLA-DQA2        ctggagacgaaagagactgtctggcagttgcctatgtttagcaaatttataagttttgac
+HLA-DQB2        gttggggag--------ttccaggcggtgaccgagctggggcgg-------agcatcgag
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ccgcagggtgcactgagaaacatggctgtggcaaaacacaacttgaacatcatgattaaa
+HLA-DQB1        tactggaacagccagaaggaagtcctggaggggacccgggcggagttggacacggtgtgc
+HLA-DQA2        ccgcagagtgcactgagaaatatggctgtgggaaaacacaccttggaattcatgatgaga
+HLA-DQB2        gactggaacaactataaggacttcttggagcaggagcgggccgcggtggacaaggtgtgc
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        cgctacaactctaccgctgctaccaatgaggttc------------ctgaggtcacagtg
+HLA-DQB1        agacacaactacgaggtggcgttccgcgggatcttgcagaggagagtggagcccacagtg
+HLA-DQA2        cagtccaactctaccgctgccaccaatgaggttc------------ctgaggtcacagtg
+HLA-DQB2        agacacaactacgaggcggagctgcgcacgaccttgcagcggcaagtggagcccacagtg
+HLA-DQB3        ----------------------------------------------tggagcctgcagtg
+                                                              . *** ...*****
+
+HLA-DQA1        ttttccaagtctcccgtgaca------ctgggtcagcccaacaccctcatttgtcttgtg
+HLA-DQB1        accatctccccatccaggacagaggccctcaaccaccacaacctgctggtctgctcggtg
+HLA-DQA2        ttttccaagtttcctgtgacg------ctgggtcagcccaacaccctcatctgtcttgtg
+HLA-DQB2        accatctccccatccaggacagaggccctcaaccaccacaacctgctggtctgctcggtg
+HLA-DQB3        accatctccccagctaagacatagg---tcagccatcacaatttgctggtctgtttggtg
+                 .. .*   ..  *.. ***.       * ...** * ***. . ** .*.**... ***
+
+HLA-DQA1        gacaacatctttcctcctgtggtcaacatcacatggctgagcaatgggcagtcagtcaca
+HLA-DQB1        acagatttctatccaggccagatcaaagtccggtggtttcggaatgatcaggaggagaca
+HLA-DQA2        gacaacatctttcctcctgtggtcaacatcacctggctgagcaatgggcactcagtcaca
+HLA-DQB2        acagatttctatccagcccagatcaaagtccggtggtttcggaatgaccaggaggagaca
+HLA-DQB3        acaaatttctttccttgccaagtgaaactcagatggttccagaaaaaacagaagcagact
+                .  .*. *** ***   .  ..* **  **   ***.*  . ** .. **   .   ** 
+
+HLA-DQA1        gaaggtgtttctgagaccagcttcctctccaagagtgatcattccttcttcaagatc---
+HLA-DQB1        gccggcgt---tgtgtccaccccccttattaggaatggtgactggactttccagatcctg
+HLA-DQA2        gaaggtgtttctgagaccagcttcctctccaagagtgatcattccttcttcaagatc---
+HLA-DQB2        gccggtgt---tgtgtccacctccctcattaggaatggtgactggaccttccagattctg
+HLA-DQB3        gctggagt---tgtatcca---cacctattcagaatagggattagacctaccagattctt
+                *  ** **   ** . ***   . *.. .. .**.*..  *.*   ..* * ****.   
+
+HLA-DQA1        -agttacc-tcaccttcctcccttctgctgatgagatttatgactgcaaggtggagcact
+HLA-DQB1        gtgatgct-ggaaatgactccccagcg-tggagatgtctacacctgccacgtggagcacc
+HLA-DQA2        -agttacc-tcaccttcctcccttctgctgatgagatttatgactgcaaggtggagcact
+HLA-DQB2        gtgatgct-ggaaataactccccagcg-tggagacatctacacctgccaagtggagcacc
+HLA-DQB3        gtaatgctagaaaataatacccgagcg-tggagatgtctacacctaccatctggagcacc
+                  . *.*.   *  *  . ***   .* **. ** .*.**.. **.* *  ********.
+
+HLA-DQA1        ggggcctggaccagcctcttctgaaacactgggagcctgagattccagcccctatgtcag
+HLA-DQB1        ccagcctccagagccccatcaccgtggagtggcgggctcag---------tctgaatctg
+HLA-DQA2        ggggcctggacgagcctcttctgaaacactgggagcctgagattccagcccctatgtcag
+HLA-DQB2        ccagcctccagagccccatcaccgtggagtggcgggctcag---------tctgaatctg
+HLA-DQB3        ccagcctccagagccccatcacagtagaatgatggacactg---------tctgaatctg
+                  .****  *  . **. *. . . . * **. .* *   *         .**. .** *
+
+HLA-DQA1        agctcacagagactgtggtctgtgccctggggttgtctgtgggcctcatgggcattgtgg
+HLA-DQB1        cccagagcaagatgctgagtggcgttggaggcttcgtgctggggctgatcttccttgggc
+HLA-DQA2        agctcacagagactttggtctgcgccctggggttgtctgtgggcctcatgggcattgtgg
+HLA-DQB2        cccagagcaagatgctgagtggcattggaggcttcgtgctggggctgatcttcctcgggc
+HLA-DQB3        cccagagcaagatgctgagtggccttcggggtcttgtgctggggctgatctctcttggtt
+                  *  *  .***.  **. . *. ..  .** .*  .  **** ** **   . *.*   
+
+HLA-DQA1        tgggcactgtcttcatcatccaaggcctgcgttcagttggtgcttccagacaccaagggc
+HLA-DQB1        tgggccttatcatccgtcaaaggagtcagaa-----------------------------
+HLA-DQA2        tgggcactgtcttcatcatccaaggcctgcgttcagttggtgcttccagacaccaagggc
+HLA-DQB2        tgggccttatcatccgtcacaggggtcagaaa---------------ggacctcgagggc
+HLA-DQB3        tg----------------------------------------------------------
+                **                                                          
+
+HLA-DQA1        cattgtgaatcccatcctggaagggaaggtgcatcgc-catctacaggagcagaagaatg
+HLA-DQB1        ----------agggcttctgcactgactcctgagactattttaactaggattggttatca
+HLA-DQA2        tcttatgaatcccatcctgaaaaggaaggtgcatcac-catctacaggagaagaagaatg
+HLA-DQB2        ctccaccagcaggactcctgcactgactcctgaggac-ttttgtctgggattggtcatca
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        gacttgctaaatgacctagcactattctctggcccgatttatcatatcccttt-------
+HLA-DQB1        ctcttctgtgatgcc----tgcttatgcctgcccagaattcccagctgcctgtgtcagct
+HLA-DQA2        gacttgctaaatgacctagcactattctctggcctgatttatcatatcccttt-------
+HLA-DQB2        ctcttctgtaatgcc----cacctgcccctgcccagaattcctagctgcctgtgtcaccc
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        -------------------------------------------------tctcctccaaa
+HLA-DQB1        tgtccccctgagatcaaagtcctacagtggctgtcacgcagccaccaggtcatctccttt
+HLA-DQA2        -------------------------------------------------tctcctccaaa
+HLA-DQB2        tgtcccactgaggtcagagtcctacagtggc--tcatgcagcca-caggtcaccttctgt
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        tatttctcctctcaccttttctctgggacttaagctgctatatcccctcagagctcacaa
+HLA-DQB1        catccccaccccaaggcgctggctgtgactctgcttcctgcactgacccagagcct----
+HLA-DQA2        tgtttcttctctcacctcttctctgggacttaaggtgctatattccctcagagctcacaa
+HLA-DQB2        gatccccatcccaaggcactggtggtgactctgcttcctgcactgacccagagcct----
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        atgcctttacattctttccctgacctcctg---------------attt---tttttttc
+HLA-DQB1        ctgcctgtgcatggccagctgcgtctactcaggtcccaagggg--tttc---tgtttcta
+HLA-DQA2        atgcctttcaattctttccctgacctcctt---------------tcctgaattttttta
+HLA-DQB2        ctgcctgtgcactgcaagctgtgtctactcaggccccaaggggcatctc---tgtttcca
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ttttctcaaatgttacctacaaagacatgcctggggtaag-------ccacccggctacc
+HLA-DQB1        ttctttcctcagactgctcaagagaagcacatgaaaaaca-------ttacctgacttta
+HLA-DQA2        ttttctcaaatgttacctactaagggatgcct-gggtaag-------ccactcagctacc
+HLA-DQB2        ttctccccccacagacctgtcaagagaagcatgacaaacaaaatcatttacctgacttta
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        taattcctcagtaacctccatctaaaatctccaaggaagcaataaattccttttatgaga
+HLA-DQB1        gagcttttttacataattaaacatgatcct----------------------------ga
+HLA-DQA2        taattcctcaatgacctttatctaaaatctccatggaagcaataaattcccttttgatgc
+HLA-DQB2        gtgctttttcccataattaaacctgattct----------------------------ga
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        tctatgtcaaatttttccatctttcatc-----------------cagggctgactgaaa
+HLA-DQB1        gttatctgtattctgaactttcttaattgagaagaggcaggaaatcactgcagaatgaag
+HLA-DQA2        ctctattgaatttttcccatctttcatc----------------tcagggctgactgaga
+HLA-DQB2        gtta--------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        ctatggctaataattggggtactcttatgtttcaatccaatttaacctcatttccc-aga
+HLA-DQB1        gaacatcccttga-ggtgacccagcaaacctgtggccagaaggaggattgtaccttgaaa
+HLA-DQA2        gcataacttagaa-tgggcgactcttatgttttaggccaatttcatatcattcccc-aga
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        tcatttttcatgtccagtaacaca-gaagccaccaagtacagtatagcctgataatatgt
+HLA-DQB1        agacactgaaagcattttggggtgtgaagtaagggtgggcagaggaggtagaaaataatt
+HLA-DQA2        tcatatttcaagtccagtaacaca-ggagcaaccaagtacagtgtatcctgataatttgt
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        tgatttcttagctgacattaatatttcttgcttccttgtgttcccacccttgg-cactg-
+HLA-DQB1        caattgtcgcat---cattcatggttctttaatactgatgctcagtgcattggccttaga
+HLA-DQA2        tgatttcttaactggtgttaatatttctttcttccttttgttcctacccttggccactg-
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        -----ccacccacccctcaattcaggcaacaatgaaattaatggataccgtctgcccttg
+HLA-DQB1        atatcccagcctctcttctggtttggtga-----------------gtgctgtgt-----
+HLA-DQA2        -----ccagccacccctcaattcaggtaccaacga-----------accctctgcccttg
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        gcccagaattgttatagcaaaaattttagaaccaaaaaataagtctgtactaatttcaat
+HLA-DQB1        -----aaataagcatggtagaattgtttggagacatatatagtgat------ccttggtc
+HLA-DQA2        gctcagaatggttatagcagaaatacaaaaaaaaaaaaaaa-------------------
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        gtggcttttaaaagtatgacagagaaataagttaggataaaggaaatttgaatctcaaaa
+HLA-DQB1        actggtgtttcaaacattctggaaagtcacatcgatcaagaatattttttatttttaaga
+HLA-DQA2        ------------------------------------------------------------
+HLA-DQB2        ------------------------------------------------------------
+HLA-DQB3        ------------------------------------------------------------
+                                                                            
+
+HLA-DQA1        a-----tatcaaaagtaaaaatgtattct------caaaa
+HLA-DQB1        aagcataaccagcaataaaaatactatttttgagtctaaa
+HLA-DQA2        ----------------------------------------
+HLA-DQB2        ----------------------------------------
+HLA-DQB3        ----------------------------------------
+                                                        

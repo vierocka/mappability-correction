@@ -7,12 +7,12 @@ Scripts for simulating reads from reference sequences and computing per-transcri
 | Version family | Read source | Reference targets | Key variable |
 |---|---|---|---|
 | v1 | Genomic exon ± 50 bp flanks or MANE RNA | Full genome | Mode (PE/SE), read source |
-| v2 | Genomic exon ± 50 bp flanks or MANE RNA | Deduplicated CDS | Mode, read source, alignIntronMax |
+| v2 | Genomic exon ± 50 bp flanks or MANE RNA | Deduplicated CDS (protein-coding only) | Mode, read source, alignIntronMax |
 | v3 | Genomic exon ± 50 bp flanks | Full genome | Read length (75 bp) |
 | v4 | Genomic exon ± 50 bp flanks or MANE RNA | Full genome | Read length (150 bp) |
 | v5 | MANE RNA or genomic exon flanks | MANE transcriptome | Mode, read source, read length |
 | v6 | MANE RNA | Full genome | Read length (200 bp) |
-| v7 | Deduplicated CDS sequences | Full genome or dedup CDS self-map | Read length, mode |
+| v7 | Deduplicated CDS sequences (protein-coding only; no reads simulated for non-coding genes) | Full genome or dedup CDS self-map | Read length, mode |
 | v8 | MANE RNA, proper PE 300 bp insert | Full genome / dedup CDS / MANE | Reference (a=genome, b=CDS, c=MANE) |
 
 ## Selected parameter comparisons
@@ -106,4 +106,4 @@ bash mappability_correction_v8_c.sh   # reuses reads, aligns to MANE RNA
 
 Each script writes results to `../results/<subdir>/` and produces a `transcript_uniqueness_factors_*.tsv` with one row per transcript.
 
-For HPC submission, adapt `kallisto_mappability_HPC.sh` as a template — it shows the module load commands and resource requests used on the original cluster.
+For HPC submission, adapt `kallisto_mappability_crossval.sh` as a template — it shows the module load commands and SLURM resource requests used on the original cluster.

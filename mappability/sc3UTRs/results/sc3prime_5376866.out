@@ -1,0 +1,1170 @@
+Loading lang/Python/3.11.5-GCCcore-13.2.0
+  Loading requirement: compiler/GCCcore/13.2.0 lib/zlib/1.2.13-GCCcore-13.2.0
+    tools/binutils/2.40-GCCcore-13.2.0 tools/bzip2/1.0.8-GCCcore-13.2.0
+    devel/ncurses/6.4-GCCcore-13.2.0 lib/libreadline/8.2-GCCcore-13.2.0
+    lang/Tcl/8.6.13-GCCcore-13.2.0 devel/SQLite/3.43.1-GCCcore-13.2.0
+    tools/XZ/5.4.4-GCCcore-13.2.0 lib/libffi/3.4.4-GCCcore-13.2.0
+    system/OpenSSL/1.1
+Loading bio/SAMtools/1.19.2-GCC-13.2.0
+  Loading requirement: compiler/GCC/13.2.0 tools/cURL/8.3.0-GCCcore-13.2.0
+════════════════════════════════════════════════════════
+3' window analyses — MANE RNA BAMs + 3' end similarity
+Started : Tue Jun 16 19:30:08 CEST 2026
+Host    : ramses11007
+════════════════════════════════════════════════════════
+
+━━━━ v1b_genome_exflank_SE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v1b_genome_exflank_SE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE/transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,886
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,886
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,886
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,886
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1b_genome_exflank_SE_100.tsv
+
+━━━━ v1a_genome_exflank_PE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v1a_genome_exflank_PE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic/transcript_uniqueness_factors_genomic_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_genomic_L100bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,889
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,889
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,889
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,889
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1a_genome_exflank_PE_100.tsv
+
+━━━━ v1c_genome_RNA_SE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v1c_genome_RNA_SE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE/transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 69,982,721  MAPQ=255: 64,210,565
+  [250 bp]  mean_uf=0.8956  uf=0: 1,676  delta<-0.10:   438
+  [400 bp]  mean_uf=0.8950  uf=0: 1,601  delta<-0.10:   397
+  [500 bp]  mean_uf=0.8947  uf=0: 1,543  delta<-0.10:   355
+  [600 bp]  mean_uf=0.8945  uf=0: 1,498  delta<-0.10:   296
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1c_genome_RNA_SE_100.tsv
+
+━━━━ v1d_genome_RNA_PE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v1d_genome_RNA_PE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE/transcript_uniqueness_factors_genomic_RNA_PE.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_genomic_RNA_PE.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 69,922,453  MAPQ=255: 64,273,832
+  [250 bp]  mean_uf=0.8961  uf=0: 1,673  delta<-0.10:   446
+  [400 bp]  mean_uf=0.8955  uf=0: 1,601  delta<-0.10:   404
+  [500 bp]  mean_uf=0.8953  uf=0: 1,546  delta<-0.10:   357
+  [600 bp]  mean_uf=0.8951  uf=0: 1,501  delta<-0.10:   299
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1d_genome_RNA_PE_100.tsv
+
+━━━━ v3b_genome_exflank_SE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v3b_genome_exflank_SE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE_L75bp/transcript_uniqueness_factors_genomic_SE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_genomic_SE_L75bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,804
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,804
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,804
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,804
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3b_genome_exflank_SE_75.tsv
+
+━━━━ v3a_genome_exflank_PE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v3a_genome_exflank_PE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_L75bp/transcript_uniqueness_factors_genomic_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_genomic_L75bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,808
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,808
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,808
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 17,808
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3a_genome_exflank_PE_75.tsv
+
+━━━━ v3c_genome_RNA_SE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v3c_genome_RNA_SE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L75bp/transcript_uniqueness_factors_genomic_RNA_SE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_genomic_RNA_SE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,451,742  MAPQ=255: 64,290,178
+  [250 bp]  mean_uf=0.8897  uf=0: 1,699  delta<-0.10:   529
+  [400 bp]  mean_uf=0.8889  uf=0: 1,611  delta<-0.10:   456
+  [500 bp]  mean_uf=0.8885  uf=0: 1,555  delta<-0.10:   426
+  [600 bp]  mean_uf=0.8882  uf=0: 1,509  delta<-0.10:   375
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3c_genome_RNA_SE_75.tsv
+
+━━━━ v3d_genome_RNA_PE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v3d_genome_RNA_PE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L75bp/transcript_uniqueness_factors_genomic_RNA_PE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_genomic_RNA_PE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,388,038  MAPQ=255: 64,370,335
+  [250 bp]  mean_uf=0.8905  uf=0: 1,694  delta<-0.10:   528
+  [400 bp]  mean_uf=0.8898  uf=0: 1,608  delta<-0.10:   466
+  [500 bp]  mean_uf=0.8894  uf=0: 1,555  delta<-0.10:   430
+  [600 bp]  mean_uf=0.8891  uf=0: 1,509  delta<-0.10:   378
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3d_genome_RNA_PE_75.tsv
+
+━━━━ v4b_genome_exflank_SE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v4b_genome_exflank_SE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_SE_L150bp/transcript_uniqueness_factors_genomic_SE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,372 transcripts from transcript_uniqueness_factors_genomic_SE_L150bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,957
+  [400 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,957
+  [500 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,957
+  [600 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,957
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4b_genome_exflank_SE_150.tsv
+
+━━━━ v4a_genome_exflank_PE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v4a_genome_exflank_PE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_L150bp/transcript_uniqueness_factors_genomic_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,372 transcripts from transcript_uniqueness_factors_genomic_L150bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,963
+  [400 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,963
+  [500 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,963
+  [600 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 17,963
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4a_genome_exflank_PE_150.tsv
+
+━━━━ v4c_genome_RNA_SE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v4c_genome_RNA_SE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L150bp/transcript_uniqueness_factors_genomic_RNA_SE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_genomic_RNA_SE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 69,012,995  MAPQ=255: 63,686,244
+  [250 bp]  mean_uf=0.9020  uf=0: 1,649  delta<-0.10:   400
+  [400 bp]  mean_uf=0.9015  uf=0: 1,572  delta<-0.10:   352
+  [500 bp]  mean_uf=0.9014  uf=0: 1,527  delta<-0.10:   315
+  [600 bp]  mean_uf=0.9012  uf=0: 1,489  delta<-0.10:   287
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4c_genome_RNA_SE_150.tsv
+
+━━━━ v4d_genome_RNA_PE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v4d_genome_RNA_PE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L150bp/transcript_uniqueness_factors_genomic_RNA_PE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_genomic_RNA_PE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 68,959,288  MAPQ=255: 63,724,098
+  [250 bp]  mean_uf=0.9022  uf=0: 1,646  delta<-0.10:   405
+  [400 bp]  mean_uf=0.9017  uf=0: 1,570  delta<-0.10:   355
+  [500 bp]  mean_uf=0.9017  uf=0: 1,526  delta<-0.10:   323
+  [600 bp]  mean_uf=0.9015  uf=0: 1,487  delta<-0.10:   291
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4d_genome_RNA_PE_150.tsv
+
+━━━━ v5c_MANE_RNA_SE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5c_MANE_RNA_SE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,534,228  MAPQ=255: 67,416,499
+  [250 bp]  mean_uf=0.9312  uf=0:   937  delta<-0.10:   998
+  [400 bp]  mean_uf=0.9331  uf=0:   789  delta<-0.10:   919
+  [500 bp]  mean_uf=0.9341  uf=0:   725  delta<-0.10:   885
+  [600 bp]  mean_uf=0.9348  uf=0:   675  delta<-0.10:   842
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5c_MANE_RNA_SE_75.tsv
+
+━━━━ v5a_MANE_RNA_SE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5a_MANE_RNA_SE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE/transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,055,694  MAPQ=255: 67,164,198
+  [250 bp]  mean_uf=0.9358  uf=0:   903  delta<-0.10:   938
+  [400 bp]  mean_uf=0.9378  uf=0:   766  delta<-0.10:   865
+  [500 bp]  mean_uf=0.9388  uf=0:   706  delta<-0.10:   833
+  [600 bp]  mean_uf=0.9396  uf=0:   652  delta<-0.10:   799
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5a_MANE_RNA_SE_100.tsv
+
+━━━━ v5e_MANE_RNA_SE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5e_MANE_RNA_SE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L150bp/transcript_uniqueness_factors_MANE_RNA_SE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_MANE_RNA_SE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 69,097,516  MAPQ=255: 66,498,528
+  [250 bp]  mean_uf=0.9424  uf=0:   829  delta<-0.10:   862
+  [400 bp]  mean_uf=0.9444  uf=0:   716  delta<-0.10:   798
+  [500 bp]  mean_uf=0.9453  uf=0:   664  delta<-0.10:   765
+  [600 bp]  mean_uf=0.9461  uf=0:   615  delta<-0.10:   741
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5e_MANE_RNA_SE_150.tsv
+
+━━━━ v5d_MANE_RNA_SE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5d_MANE_RNA_SE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 68,135,789  MAPQ=255: 65,741,553
+  [250 bp]  mean_uf=0.9472  uf=0:   776  delta<-0.10:   780
+  [400 bp]  mean_uf=0.9489  uf=0:   683  delta<-0.10:   728
+  [500 bp]  mean_uf=0.9498  uf=0:   629  delta<-0.10:   708
+  [600 bp]  mean_uf=0.9506  uf=0:   589  delta<-0.10:   690
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5d_MANE_RNA_SE_200.tsv
+
+━━━━ v5f_MANE_RNA_PE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5f_MANE_RNA_PE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L75bp/transcript_uniqueness_factors_MANE_RNA_PE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_MANE_RNA_PE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,482,444  MAPQ=255: 67,381,806
+  [250 bp]  mean_uf=0.9278  uf=0:   404  delta<-0.10:   996
+  [400 bp]  mean_uf=0.9310  uf=0:   369  delta<-0.10:   914
+  [500 bp]  mean_uf=0.9324  uf=0:   338  delta<-0.10:   881
+  [600 bp]  mean_uf=0.9334  uf=0:   330  delta<-0.10:   840
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5f_MANE_RNA_PE_75.tsv
+
+━━━━ v5g_MANE_RNA_PE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5g_MANE_RNA_PE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE/transcript_uniqueness_factors_MANE_RNA_PE.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_MANE_RNA_PE.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  70M reads ...
+  R1 reads processed: 70,000,464  MAPQ=255: 67,128,306
+  [250 bp]  mean_uf=0.9323  uf=0:   402  delta<-0.10:   937
+  [400 bp]  mean_uf=0.9356  uf=0:   364  delta<-0.10:   867
+  [500 bp]  mean_uf=0.9370  uf=0:   336  delta<-0.10:   832
+  [600 bp]  mean_uf=0.9380  uf=0:   327  delta<-0.10:   800
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5g_MANE_RNA_PE_100.tsv
+
+━━━━ v5h_MANE_RNA_PE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5h_MANE_RNA_PE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L150bp/transcript_uniqueness_factors_MANE_RNA_PE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_MANE_RNA_PE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 69,036,411  MAPQ=255: 66,462,026
+  [250 bp]  mean_uf=0.9387  uf=0:   391  delta<-0.10:   858
+  [400 bp]  mean_uf=0.9420  uf=0:   352  delta<-0.10:   797
+  [500 bp]  mean_uf=0.9433  uf=0:   341  delta<-0.10:   764
+  [600 bp]  mean_uf=0.9444  uf=0:   332  delta<-0.10:   739
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5h_MANE_RNA_PE_150.tsv
+
+━━━━ v5i_MANE_RNA_PE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5i_MANE_RNA_PE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L200bp/transcript_uniqueness_factors_MANE_RNA_PE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_MANE_RNA_PE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 68,070,966  MAPQ=255: 65,704,165
+  [250 bp]  mean_uf=0.9435  uf=0:   364  delta<-0.10:   772
+  [400 bp]  mean_uf=0.9466  uf=0:   321  delta<-0.10:   727
+  [500 bp]  mean_uf=0.9478  uf=0:   312  delta<-0.10:   706
+  [600 bp]  mean_uf=0.9488  uf=0:   307  delta<-0.10:   688
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5i_MANE_RNA_PE_200.tsv
+
+━━━━ v5j_MANE_exflank_SE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5j_MANE_exflank_SE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE_L75bp/transcript_uniqueness_factors_MANE_exonflank_SE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_MANE_exonflank_SE_L75bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,979
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,979
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,979
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,979
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5j_MANE_exflank_SE_75.tsv
+
+━━━━ v5k_MANE_exflank_SE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5k_MANE_exflank_SE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE/transcript_uniqueness_factors_MANE_exonflank_SE.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_MANE_exonflank_SE.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,992
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,992
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,992
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,992
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5k_MANE_exflank_SE_100.tsv
+
+━━━━ v5l_MANE_exflank_SE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5l_MANE_exflank_SE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_SE_L150bp/transcript_uniqueness_factors_MANE_exonflank_SE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,372 transcripts from transcript_uniqueness_factors_MANE_exonflank_SE_L150bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,925
+  [400 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,925
+  [500 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,925
+  [600 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,925
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5l_MANE_exflank_SE_150.tsv
+
+━━━━ v5m_MANE_exflank_PE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5m_MANE_exflank_PE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE_L75bp/transcript_uniqueness_factors_MANE_exonflank_PE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_MANE_exonflank_PE_L75bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,966
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,966
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,966
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,966
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5m_MANE_exflank_PE_75.tsv
+
+━━━━ v5b_MANE_exflank_PE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5b_MANE_exflank_PE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,373 transcripts from transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,968
+  [400 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,968
+  [500 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,968
+  [600 bp]  mean_uf=0.0000  uf=0: 19,373  delta<-0.10: 18,968
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5b_MANE_exflank_PE_100.tsv
+
+━━━━ v5n_MANE_exflank_PE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v5n_MANE_exflank_PE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_exonflank_PE_L150bp/transcript_uniqueness_factors_MANE_exonflank_PE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,372 transcripts from transcript_uniqueness_factors_MANE_exonflank_PE_L150bp.tsv
+  R1 reads processed: 0  MAPQ=255: 0
+  [250 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,871
+  [400 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,871
+  [500 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,871
+  [600 bp]  mean_uf=0.0000  uf=0: 19,372  delta<-0.10: 18,871
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5n_MANE_exflank_PE_150.tsv
+
+━━━━ v6a_genome_RNA_SE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v6a_genome_RNA_SE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_SE_L200bp/transcript_uniqueness_factors_genomic_RNA_SE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_genomic_RNA_SE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 68,034,201  MAPQ=255: 63,005,693
+  [250 bp]  mean_uf=0.9059  uf=0: 1,615  delta<-0.10:   380
+  [400 bp]  mean_uf=0.9054  uf=0: 1,542  delta<-0.10:   340
+  [500 bp]  mean_uf=0.9053  uf=0: 1,501  delta<-0.10:   305
+  [600 bp]  mean_uf=0.9051  uf=0: 1,480  delta<-0.10:   272
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v6a_genome_RNA_SE_200.tsv
+
+━━━━ v6b_genome_RNA_PE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v6b_genome_RNA_PE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L200bp/transcript_uniqueness_factors_genomic_RNA_PE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_genomic_RNA_PE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 67,980,245  MAPQ=255: 63,028,157
+  [250 bp]  mean_uf=0.9060  uf=0: 1,604  delta<-0.10:   380
+  [400 bp]  mean_uf=0.9055  uf=0: 1,532  delta<-0.10:   340
+  [500 bp]  mean_uf=0.9055  uf=0: 1,491  delta<-0.10:   311
+  [600 bp]  mean_uf=0.9053  uf=0: 1,468  delta<-0.10:   277
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v6b_genome_RNA_PE_200.tsv
+
+━━━━ v8a_genome_RNA_PE_150_proper ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v8a_genome_RNA_PE_150_proper
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L150bp_proper/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_genomic_RNA_PE_L150bp_proper/transcript_uniqueness_factors_genomic_RNA_PE_L150bp_proper.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,357 transcripts from transcript_uniqueness_factors_genomic_RNA_PE_L150bp_proper.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 66,053,550  MAPQ=255: 61,456,858
+  [250 bp]  mean_uf=0.9097  uf=0: 1,568  delta<-0.10:   375
+  [400 bp]  mean_uf=0.9095  uf=0: 1,503  delta<-0.10:   333
+  [500 bp]  mean_uf=0.9094  uf=0: 1,479  delta<-0.10:   298
+  [600 bp]  mean_uf=0.9093  uf=0: 1,458  delta<-0.10:   279
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8a_genome_RNA_PE_150_proper.tsv
+
+━━━━ v8b_dedupcds_RNA_PE_150_proper ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v8b_dedupcds_RNA_PE_150_proper
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L150bp_proper/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L150bp_proper/transcript_uniqueness_factors_dedup_cds_RNA_PE_L150bp_proper.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,357 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_PE_L150bp_proper.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 31,382,480  MAPQ=255: 9,107,674
+  [250 bp]  mean_uf=0.0870  uf=0: 16,699  delta<-0.10: 7,805
+  [400 bp]  mean_uf=0.1057  uf=0: 15,830  delta<-0.10: 7,187
+  [500 bp]  mean_uf=0.1164  uf=0: 15,260  delta<-0.10: 6,774
+  [600 bp]  mean_uf=0.1254  uf=0: 14,849  delta<-0.10: 6,365
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8b_dedupcds_RNA_PE_150_proper.tsv
+
+━━━━ v8c_MANE_RNA_PE_150_proper ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v8c_MANE_RNA_PE_150_proper
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L150bp_proper/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_MANE_RNA_PE_L150bp_proper/transcript_uniqueness_factors_MANE_RNA_PE_L150bp_proper.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,357 transcripts from transcript_uniqueness_factors_MANE_RNA_PE_L150bp_proper.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  35M reads ...
+  40M reads ...
+  45M reads ...
+  50M reads ...
+  55M reads ...
+  60M reads ...
+  65M reads ...
+  R1 reads processed: 66,175,188  MAPQ=255: 64,067,161
+  [250 bp]  mean_uf=0.9541  uf=0:   700  delta<-0.10:   679
+  [400 bp]  mean_uf=0.9556  uf=0:   621  delta<-0.10:   646
+  [500 bp]  mean_uf=0.9563  uf=0:   583  delta<-0.10:   632
+  [600 bp]  mean_uf=0.9569  uf=0:   546  delta<-0.10:   607
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8c_MANE_RNA_PE_150_proper.tsv
+
+━━━━ v2c_dedupcds_RNA_SE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2c_dedupcds_RNA_SE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds/transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 33,916,645  MAPQ=255: 9,272,204
+  [250 bp]  mean_uf=0.0668  uf=0: 16,706  delta<-0.10: 6,994
+  [400 bp]  mean_uf=0.0858  uf=0: 15,522  delta<-0.10: 6,358
+  [500 bp]  mean_uf=0.0963  uf=0: 14,793  delta<-0.10: 5,987
+  [600 bp]  mean_uf=0.1056  uf=0: 14,095  delta<-0.10: 5,604
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2c_dedupcds_RNA_SE_100.tsv
+
+━━━━ v2e_dedupcds_RNA_PE_100 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2e_dedupcds_RNA_PE_100
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE/transcript_uniqueness_factors_dedup_cds_RNA_PE.tsv
+  read_len: 100 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,423 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_PE.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 33,405,527  MAPQ=255: 9,011,421
+  [250 bp]  mean_uf=0.0637  uf=0: 16,914  delta<-0.10: 6,931
+  [400 bp]  mean_uf=0.0823  uf=0: 15,786  delta<-0.10: 6,323
+  [500 bp]  mean_uf=0.0926  uf=0: 15,096  delta<-0.10: 5,962
+  [600 bp]  mean_uf=0.1017  uf=0: 14,438  delta<-0.10: 5,599
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2e_dedupcds_RNA_PE_100.tsv
+
+━━━━ v2j_dedupcds_RNA_SE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2j_dedupcds_RNA_SE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L75bp/transcript_uniqueness_factors_dedup_cds_RNA_SE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_SE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 34,574,597  MAPQ=255: 9,365,344
+  [250 bp]  mean_uf=0.0659  uf=0: 16,556  delta<-0.10: 6,871
+  [400 bp]  mean_uf=0.0850  uf=0: 15,292  delta<-0.10: 6,244
+  [500 bp]  mean_uf=0.0955  uf=0: 14,513  delta<-0.10: 5,895
+  [600 bp]  mean_uf=0.1047  uf=0: 13,759  delta<-0.10: 5,518
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2j_dedupcds_RNA_SE_75.tsv
+
+━━━━ v2k_dedupcds_RNA_PE_75 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2k_dedupcds_RNA_PE_75
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L75bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L75bp/transcript_uniqueness_factors_dedup_cds_RNA_PE_L75bp.tsv
+  read_len: 75 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,431 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_PE_L75bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 34,113,699  MAPQ=255: 9,249,790
+  [250 bp]  mean_uf=0.0640  uf=0: 16,722  delta<-0.10: 6,848
+  [400 bp]  mean_uf=0.0830  uf=0: 15,468  delta<-0.10: 6,225
+  [500 bp]  mean_uf=0.0935  uf=0: 14,723  delta<-0.10: 5,880
+  [600 bp]  mean_uf=0.1026  uf=0: 14,002  delta<-0.10: 5,513
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2k_dedupcds_RNA_PE_75.tsv
+
+━━━━ v2l_dedupcds_RNA_SE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2l_dedupcds_RNA_SE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L150bp/transcript_uniqueness_factors_dedup_cds_RNA_SE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_SE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 32,902,583  MAPQ=255: 9,039,961
+  [250 bp]  mean_uf=0.0696  uf=0: 16,954  delta<-0.10: 7,192
+  [400 bp]  mean_uf=0.0883  uf=0: 15,891  delta<-0.10: 6,571
+  [500 bp]  mean_uf=0.0987  uf=0: 15,245  delta<-0.10: 6,209
+  [600 bp]  mean_uf=0.1079  uf=0: 14,654  delta<-0.10: 5,817
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2l_dedupcds_RNA_SE_150.tsv
+
+━━━━ v2m_dedupcds_RNA_PE_150 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2m_dedupcds_RNA_PE_150
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L150bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L150bp/transcript_uniqueness_factors_dedup_cds_RNA_PE_L150bp.tsv
+  read_len: 150 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,402 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_PE_L150bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 32,713,730  MAPQ=255: 8,922,848
+  [250 bp]  mean_uf=0.0683  uf=0: 17,111  delta<-0.10: 7,177
+  [400 bp]  mean_uf=0.0868  uf=0: 16,161  delta<-0.10: 6,562
+  [500 bp]  mean_uf=0.0971  uf=0: 15,616  delta<-0.10: 6,201
+  [600 bp]  mean_uf=0.1062  uf=0: 15,101  delta<-0.10: 5,816
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2m_dedupcds_RNA_PE_150.tsv
+
+━━━━ v2n_dedupcds_RNA_SE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2n_dedupcds_RNA_SE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_SE_L200bp/transcript_uniqueness_factors_dedup_cds_RNA_SE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_SE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 32,342,912  MAPQ=255: 9,017,152
+  [250 bp]  mean_uf=0.0751  uf=0: 16,947  delta<-0.10: 7,378
+  [400 bp]  mean_uf=0.0939  uf=0: 16,037  delta<-0.10: 6,758
+  [500 bp]  mean_uf=0.1042  uf=0: 15,466  delta<-0.10: 6,391
+  [600 bp]  mean_uf=0.1134  uf=0: 15,001  delta<-0.10: 5,986
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2n_dedupcds_RNA_SE_200.tsv
+
+━━━━ v2o_dedupcds_RNA_PE_200 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+════════════════════════════════════════════════════════════
+3' UF analysis: v2o_dedupcds_RNA_PE_200
+  BAM     : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L200bp/bam/sim_Aligned.sortedByCoord.out.bam
+  ref TSV : /scratch/vkovacov/mappability-correction/mappability/results/mappability_dedup_cds_RNA_PE_L200bp/transcript_uniqueness_factors_dedup_cds_RNA_PE_L200bp.tsv
+  read_len: 200 bp
+  windows : [250, 400, 500, 600]
+════════════════════════════════════════════════════════════
+  Loaded 19,388 transcripts from transcript_uniqueness_factors_dedup_cds_RNA_PE_L200bp.tsv
+  5M reads ...
+  10M reads ...
+  15M reads ...
+  20M reads ...
+  25M reads ...
+  30M reads ...
+  R1 reads processed: 32,288,369  MAPQ=255: 9,003,547
+  [250 bp]  mean_uf=0.0747  uf=0: 16,968  delta<-0.10: 7,392
+  [400 bp]  mean_uf=0.0936  uf=0: 16,070  delta<-0.10: 6,768
+  [500 bp]  mean_uf=0.1040  uf=0: 15,504  delta<-0.10: 6,398
+  [600 bp]  mean_uf=0.1131  uf=0: 15,052  delta<-0.10: 5,997
+
+  Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2o_dedupcds_RNA_PE_200.tsv
+
+════════════════════════════════════════════════════════
+Part A complete: Tue Jun 16 20:30:07 CEST 2026
+Output TSVs:
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1a_genome_exflank_PE_100.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1b_genome_exflank_SE_100.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3a_genome_exflank_PE_75.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3b_genome_exflank_SE_75.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4a_genome_exflank_PE_150.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4b_genome_exflank_SE_150.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4d_genome_RNA_PE_150.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5a_MANE_RNA_SE_100.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5c_MANE_RNA_SE_75.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5d_MANE_RNA_SE_200.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5e_MANE_RNA_SE_150.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v6a_genome_RNA_SE_200.tsv
+2.4M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v6b_genome_RNA_PE_200.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1c_genome_RNA_SE_100.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v1d_genome_RNA_PE_100.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3c_genome_RNA_SE_75.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v3d_genome_RNA_PE_75.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v4c_genome_RNA_SE_150.tsv
+2.5M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8c_MANE_RNA_PE_150_proper.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2j_dedupcds_RNA_SE_75.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2k_dedupcds_RNA_PE_75.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2m_dedupcds_RNA_PE_150.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2n_dedupcds_RNA_SE_200.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2o_dedupcds_RNA_PE_200.tsv
+2.6M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8a_genome_RNA_PE_150_proper.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2c_dedupcds_RNA_SE_100.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2e_dedupcds_RNA_PE_100.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v2l_dedupcds_RNA_SE_150.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5j_MANE_exflank_SE_75.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5l_MANE_exflank_SE_150.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5m_MANE_exflank_PE_75.tsv
+2.7M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5n_MANE_exflank_PE_150.tsv
+2.8M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5b_MANE_exflank_PE_100.tsv
+2.8M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5k_MANE_exflank_SE_100.tsv
+2.8M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v8b_dedupcds_RNA_PE_150_proper.tsv
+3.0M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5f_MANE_RNA_PE_75.tsv
+3.0M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5g_MANE_RNA_PE_100.tsv
+3.0M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5h_MANE_RNA_PE_150.tsv
+3.0M /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/sc3prime_v5i_MANE_RNA_PE_200.tsv
+
+════════════════════════════════════════════════════════
+Part B: 3' end sequence similarity — GENCODE v49
+════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════════
+3' end similarity — gencode_v49
+  Format : gencode
+  FASTA  : /scratch/vkovacov/mappability-correction/Ref/gencode.v49.transcripts.fa.gz
+  GTF    : /scratch/vkovacov/mappability-correction/Ref/gencode.v49.basic.annotation.gtf
+  Windows: [250, 400, 500, 600] bp
+  Outdir : /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49
+════════════════════════════════════════════════════════════════
+
+Loading GTF (gencode format) ...
+  78,691 gene_ids loaded
+
+Reading transcript FASTA ...
+  50,000 transcripts ...
+  100,000 transcripts ...
+  150,000 transcripts ...
+  200,000 transcripts ...
+  250,000 transcripts ...
+  300,000 transcripts ...
+  350,000 transcripts ...
+  400,000 transcripts ...
+  450,000 transcripts ...
+  500,000 transcripts ...
+  Total: 533,740 transcripts, 86,369 genes
+
+────────────────────────────────────────────────────────────────
+Window W = 250 bp
+  Analysis 1: isoform 3'/5' sharing per gene ...
+    Multi-isoform genes: 37,585
+    All isoforms share 3' end: 1,444
+    Any isoform pair shares 3' end: 22,779
+    3' sharing > 5' sharing: 19,005
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_isoform_sharing_250bp.tsv
+  Analysis 2: pseudogene 3' end cross-reference ...
+    Protein-coding genes with pseudogene 3' match: 89
+    Pseudogenes involved: 72
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_pseudogene_xref_250bp.tsv
+  Analysis 3: 3' end clusters ...
+    Multi-member clusters: 65,749
+    Clusters with >1 gene: 12,449
+    Clusters mixing PC+pseudogene: 27
+    Transcripts in clusters: 236,411
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_clusters_250bp.tsv
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_cluster_summary_250bp.tsv
+
+────────────────────────────────────────────────────────────────
+Window W = 400 bp
+  Analysis 1: isoform 3'/5' sharing per gene ...
+    Multi-isoform genes: 37,585
+    All isoforms share 3' end: 1,038
+    Any isoform pair shares 3' end: 20,427
+    3' sharing > 5' sharing: 17,596
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_isoform_sharing_400bp.tsv
+  Analysis 2: pseudogene 3' end cross-reference ...
+    Protein-coding genes with pseudogene 3' match: 49
+    Pseudogenes involved: 47
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_pseudogene_xref_400bp.tsv
+  Analysis 3: 3' end clusters ...
+    Multi-member clusters: 59,995
+    Clusters with >1 gene: 12,191
+    Clusters mixing PC+pseudogene: 20
+    Transcripts in clusters: 209,824
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_clusters_400bp.tsv
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_cluster_summary_400bp.tsv
+
+────────────────────────────────────────────────────────────────
+Window W = 500 bp
+  Analysis 1: isoform 3'/5' sharing per gene ...
+    Multi-isoform genes: 37,585
+    All isoforms share 3' end: 878
+    Any isoform pair shares 3' end: 18,885
+    3' sharing > 5' sharing: 16,513
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_isoform_sharing_500bp.tsv
+  Analysis 2: pseudogene 3' end cross-reference ...
+    Protein-coding genes with pseudogene 3' match: 46
+    Pseudogenes involved: 41
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_pseudogene_xref_500bp.tsv
+  Analysis 3: 3' end clusters ...
+    Multi-member clusters: 55,909
+    Clusters with >1 gene: 12,011
+    Clusters mixing PC+pseudogene: 18
+    Transcripts in clusters: 192,931
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_clusters_500bp.tsv
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_cluster_summary_500bp.tsv
+
+────────────────────────────────────────────────────────────────
+Window W = 600 bp
+  Analysis 1: isoform 3'/5' sharing per gene ...
+    Multi-isoform genes: 37,585
+    All isoforms share 3' end: 760
+    Any isoform pair shares 3' end: 17,474
+    3' sharing > 5' sharing: 15,448
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_isoform_sharing_600bp.tsv
+  Analysis 2: pseudogene 3' end cross-reference ...
+    Protein-coding genes with pseudogene 3' match: 37
+    Pseudogenes involved: 30
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_pseudogene_xref_600bp.tsv
+  Analysis 3: 3' end clusters ...
+    Multi-member clusters: 52,124
+    Clusters with >1 gene: 11,874
+    Clusters mixing PC+pseudogene: 15
+    Transcripts in clusters: 178,070
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_clusters_600bp.tsv
+    Saved → /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49/3end_cluster_summary_600bp.tsv
+
+════════════════════════════════════════════════════════════════
+All windows done.
+Output directory: /scratch/vkovacov/mappability-correction/mappability/sc3UTRs/results/gencode_v49
+
+════════════════════════════════════════════════════════
+All done: Tue Jun 16 20:30:41 CEST 2026
+════════════════════════════════════════════════════════

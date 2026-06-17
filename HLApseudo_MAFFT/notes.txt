@@ -1,0 +1,31 @@
+3'UTR uniqueness — observations from hla_shared_fraction figure
+================================================================
+
+All three 3'UTRs are at zero sharing across their entire length, for all window sizes,
+with any pseudogene in the group. The drop is hard and immediate at the CDS boundary.
+
+What this means in practice:
+
+10x Genomics 3' scRNA-seq has a structural advantage for HLA that bulk RNA-seq does not.
+Reads are anchored at the poly-A tail, so they land in precisely the region that is fully
+unique. A 100 bp 3' read from HLA-A will fall somewhere in positions 1117–1435 in the
+figure — zero pseudogene sharing, unambiguous mapping regardless of aligner.
+
+But this requires a UTR-inclusive reference. If the STAR index was built from CDS-only
+sequences (RefSeq NM_ transcript FASTA, or Ensembl/GENCODE filtered to protein-coding
+CDS), those 3'UTR k-mers are absent. Reads landing there become unmapped, not
+multimapped — silent loss with no warning from the aligner. This is the most common
+failure mode: tools like Cell Ranger use a pre-built genome reference (genome + GTF),
+so the 3'UTR is included, but pipelines that build a transcript index from coding
+sequences only will miss it entirely.
+
+For DRB1 the margin is thinner. The 3'UTR is only 319 bp (positions 904–1222). A 100 bp
+read placed anywhere in the last 100 bp of the 3'UTR is fine, but the window is narrow —
+approximately 220 positions of safe territory before the CDS begins to contribute
+ambiguous signal. For very short-read chemistries or trimmed reads this could become
+limiting.
+
+The sc3UTR analysis in the mappability project (compute_3prime_uf.py) is measuring
+exactly this. The UF for the last 250/400/500/600 bp of HLA transcripts should be near
+1.0 if the reads fall in 3'UTR, and will drop sharply when the window extends back into
+the CDS. The alignment figure provides the alignment-space explanation for why.

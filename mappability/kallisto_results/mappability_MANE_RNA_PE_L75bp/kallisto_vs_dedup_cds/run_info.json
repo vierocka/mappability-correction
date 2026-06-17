@@ -1,0 +1,13 @@
+{
+	"n_targets": 93088,
+	"n_bootstraps": 0,
+	"n_processed": 70569649,
+	"n_pseudoaligned": 35089725,
+	"n_unique": 9331477,
+	"p_pseudoaligned": 49.7,
+	"p_unique": 13.2,
+	"kallisto_version": "0.50.1",
+	"index_version": 13,
+	"start_time": "Tue Jun 16 11:20:48 2026",
+	"call": "kallisto quant -b 0 -t 24 -i /scratch/vkovacov/mappability-correction//Ref/kallisto_index_dedup_cds.idx -o /scratch/vkovacov/mappability-correction//mappability/results/mappability_MANE_RNA_PE_L75bp/kallisto_vs_dedup_cds /scratch/vkovacov/mappability-correction//mappability/results/mappability_MANE_RNA_PE_L75bp/simreads/sim_R1.fastq /scratch/vkovacov/mappability-correction//mappability/results/mappability_MANE_RNA_PE_L75bp/simreads/sim_R2.fastq"
+}
