@@ -55,17 +55,6 @@ server/  (HPC; FASTQ → HLA + corrected TPM)                 local/  (laptop; T
 | output | `summary/hla_types.tsv`, `summary/corrected_TPM_matrix.tsv`, `summary/qc_reads.tsv` (read length, Phred), `summary/overview.png` | `<group>/peptide_abundance_<group>.csv` (peptide, mean_TPM, mean_TPM_corrected), reports |
 | needs | 16 cores, 40 GB RAM only if a new read length needs a funique simulation; else 16 GB | 4 cores, 16 GB |
 
-## Validation (2026-11-22)
-
-| check | result |
-|---|---|
-| correction script vs published corrected counts (8 files) | byte-identical |
-| HLA calls → personal MANE FASTA, SAF, protein (3 cell lines) | byte-identical to the published references |
-| funique table builder (L75, L100) | byte-identical |
-| HLA typing, 2 M read pairs, 4 libraries (12 genes) | 12/12 correct after reconciliation (3 rare arcasHLA calls rejected by site evidence) |
-| server dry run (5 runs, 3 groups) | 66 jobs, no errors |
-| local pipeline on published TPM (3 lines, 19 jobs) | runs end to end; filter-impact and inflation-tail reports identical to `tests/` |
-
 ## Key results
 
 | topic | result | where |

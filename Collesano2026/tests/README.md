@@ -1,4 +1,4 @@
-# Tests (2026-11-22)
+# Tests
 
 Impact of single steps, measured on the paper's data. Local machine; full-library results are from the
 published raw counts (fcM), subset results from 2 M read pairs per library.
