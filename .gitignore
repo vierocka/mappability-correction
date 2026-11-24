@@ -94,7 +94,6 @@ Collesano2026/chronological_notes.txt
 Collesano2026/AUDIT_2026-11-23.md
 
 # cited as evidence in LESSONS.md — keep despite the STAR-log rule above
-!Collesano2026/earlier_tests/RNAseq_isoforms/HCC1937_STAR_Log.final.out
 
 # Large derived tables (15-78 MB). Reproducible from the scripts and inputs named in the
 # README beside each one; a small summary is committed where a document cites their numbers.
@@ -102,3 +101,6 @@ mappability/sc3UTRs/results/marker_3prime_impact.tsv
 mappability/sc3UTRs/results/gene_overlap_annotation.tsv
 mappability/sc3UTRs/results/gencode_v49/3end_clusters_*bp.tsv
 mappability/kallisto_results/kallisto_inflation.tsv
+
+# SLURM/HPC job logs and STAR .out files - run artefacts, not project content
+*.out
