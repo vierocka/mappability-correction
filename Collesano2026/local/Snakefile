@@ -1,0 +1,106 @@
+# Collesano 2026 — local pipeline
+# corrected transcript TPM + personal MANE protein → unique 9-mers with net-sum TPM
+# (Σ transcript TPM × occurrences), filter-step report, impact tests, optional MS comparison.
+#
+#   snakemake -s local/Snakefile --configfile config/local.yaml --use-conda --cores 4
+# Run from the Collesano2026/ folder.
+
+import json
+from pathlib import Path
+
+PIPE = str(Path(workflow.basedir).parent.resolve())
+OUT = config["outdir"]
+G = config["groups"]
+GROUPS = list(G)
+MS = bool(config.get("ms_table_s1"))
+
+
+rule all:
+    input:
+        expand(f"{OUT}/{{g}}/peptide_abundance_{{g}}.csv", g=GROUPS),
+        expand(f"{OUT}/reports/{{g}}_steps.tsv", g=GROUPS),
+        expand(f"{OUT}/reports/{{g}}_tail_summary.tsv", g=GROUPS),
+        expand(f"{OUT}/reports/{{g}}_filter_impact.tsv", g=[g for g in GROUPS if MS and G[g].get("ms_column")]),
+        expand(f"{OUT}/reports/{{g}}_ms_summary.tsv", g=[g for g in GROUPS if MS and G[g].get("ms_column")]),
+
+
+rule ninemers:
+    # one canonical protein per gene; HLA allele IDs kept (regex fixed 2026-11-22)
+    input: lambda wc: G[wc.g]["protein"]
+    output:
+        table=f"{OUT}/{{g}}/{{g}}_9mer_table.tsv",
+        rows=f"{OUT}/{{g}}/{{g}}_9mer_rows.csv",
+    conda: "../envs/py.yaml"
+    shell:
+        "python3 {PIPE}/scripts/generate_maneSelect_9mer_table_1gene_1canonicalProtein.py {input} {output.table}; "
+        "python3 {PIPE}/scripts/ninemer_table_to_rows.py {output.table} {output.rows}"
+
+
+rule netsum:
+    # original rebuild_peptide_tables.py; transcript TPM_corrected ≥ min_transcript_tpm
+    input:
+        rows=rules.ninemers.output.rows,
+        tpm=lambda wc: G[wc.g]["tpm"],
+    output:
+        pep=f"{OUT}/{{g}}/peptide_abundance_{{g}}.csv",
+        master=f"{OUT}/{{g}}/master_file_abundance_{{g}}.csv",
+        cfg=f"{OUT}/{{g}}/pipe_config.json",
+    log: f"{OUT}/logs/{{g}}_netsum.log"
+    run:
+        cdir = Path(OUT) / wildcards.g / "corrected_counts"
+        cdir.mkdir(parents=True, exist_ok=True)
+        link = cdir / Path(input.tpm).name
+        if not link.exists():
+            link.symlink_to(Path(input.tpm).resolve())
+        json.dump({"EXPR": {wildcards.g: link.name}, "PCHOP": {wildcards.g: str(Path(input.rows).resolve())},
+                   "min_transcript_tpm": config["min_transcript_tpm"]}, open(output.cfg, "w"))
+        shell(f"PIPE_BASE={OUT} PIPE_CONFIG={output.cfg} python3 {PIPE}/scripts/rebuild_peptide_tables.py > {log} 2>&1")
+
+
+rule steps:
+    input: lambda wc: G[wc.g]["samples"]
+    output: f"{OUT}/reports/{{g}}_steps.tsv"
+    params: labels=lambda wc: [f"{wc.g}:{Path(s).name.split('_')[0]}" for s in G[wc.g]["samples"]]
+    conda: "../envs/py.yaml"
+    shell:
+        "python3 {PIPE}/scripts/report_filter_steps.py --samples {input} --labels {params.labels} "
+        "--resources {PIPE}/resources --min-tpm {config[min_transcript_tpm]} --out-prefix {OUT}/reports/{wildcards.g}"
+
+
+rule inflation_tail:
+    input:
+        samples=lambda wc: G[wc.g]["samples"],
+        table=rules.ninemers.output.table,
+    output: f"{OUT}/reports/{{g}}_tail_summary.tsv"
+    conda: "../envs/py.yaml"
+    shell:
+        "python3 {PIPE}/scripts/inflation_tail.py --cell {wildcards.g} --samples {input.samples} "
+        "--ninemers {input.table} --out-prefix {OUT}/reports/{wildcards.g}"
+
+
+rule filter_impact:
+    input:
+        samples=lambda wc: G[wc.g]["samples"],
+        table=rules.ninemers.output.table,
+        s1=config.get("ms_table_s1") or [],
+    output: f"{OUT}/reports/{{g}}_filter_impact.tsv"
+    params: col=lambda wc: G[wc.g].get("ms_column", wc.g)
+    conda: "../envs/py.yaml"
+    shell:
+        "python3 {PIPE}/scripts/impact_filters.py --cell {params.col} --samples {input.samples} "
+        "--ninemers {input.table} --table-s1 {input.s1} --out-prefix {OUT}/reports/{wildcards.g}"
+
+
+rule ms_compare:
+    input:
+        pep=rules.netsum.output.pep,
+        master=rules.netsum.output.master,
+        s1=config.get("ms_table_s1") or [],
+        db=config.get("ms_search_fasta") or [],
+    output: f"{OUT}/reports/{{g}}_ms_summary.tsv"
+    params: col=lambda wc: G[wc.g].get("ms_column", wc.g)
+    conda: "../envs/py.yaml"
+    shell:
+        "python3 {PIPE}/scripts/compare_ms_bassani.py --table-s1 {input.s1} --uniprot-fasta {input.db} "
+        "--cell {params.col} --peptides {input.pep} --master {input.master} "
+        "--out-prefix {OUT}/reports/{wildcards.g}_ms"

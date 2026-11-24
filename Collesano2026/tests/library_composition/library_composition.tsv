@@ -1,0 +1,6 @@
+library	chemistry	n_transcripts	noncoding_pct_of_raw_TPM	rescale_factor	top10_pct_after	top100_pct_after	median_TPM_expressed	pct_above_TPM1	n_RD_histone	RD_histone_pct_of_PC_TPM
+JY	poly(A)	19437	0.17	1.002	11.05	41.1	11.011	58.9	69	0.036
+HCC1937_r1	poly(A)	19437	0.07	1.001	6.18	25.09	14.02	65.4	69	0.061
+HCC1937_r2	poly(A)	19437	0.07	1.001	6.29	25.42	13.746	64.8	69	0.056
+HCT116_r1	Ribo-Zero	19437	40.43	1.679	12.65	43.67	10.025	63.5	69	1.707
+HCT116_r2	Ribo-Zero	19437	40.45	1.679	12.65	43.65	9.95	63.6	69	1.701

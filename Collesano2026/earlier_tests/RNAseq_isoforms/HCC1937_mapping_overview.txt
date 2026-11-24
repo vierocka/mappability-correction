@@ -1,0 +1,36 @@
+cd <SELF_NONSELF>/human/References/GRCh38.p14
+mkdir HCC1937
+cd HCC1937
+prefetch SRR925709
+fasterq-dump SRR925709 --split-files --threads 24 --outdir SRR925709/
+# spots read      : 24 587 427
+# reads read      : 49 174 854 (/2= 24587427 pairs)
+# reads written   : 49 174 854
+
+kallisto index  -i kallisto_index_GRCh38p14.idx GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna
+
+kallisto quant \
+-i kallisto_index_GRCh38p14.idx \
+-o HCC1937_kallisto \
+<SELF_NONSELF>/human/References/GRCh38.p14/HCC1937/SRR925709/SRR925709_1.fastq <SELF_NONSELF>/human/References/GRCh38.p14/HCC1937/SRR925709/SRR925709_2.fastq
+
+# [index] k-mer length: 31
+# [index] number of targets: 146 337
+# [index] number of k-mers: 35 234 263
+# [index] number of equivalence classes: 251 810
+# processed 24 587 427 reads
+# 14 833 138 reads pseudoaligned (60.3 %)
+
+############ featureCounts ###########
+#### UNIQUE
+# Assigned        27 192 963  (41.5 %)
+# Unassigned_MultiMapping 33 824 367
+# Unassigned_NoFeatures   326 2782 (5 %)
+# Unassigned_Ambiguity    1 319 294
+# ----
+# sum : 65599406
+
+#### MULTIMAPPING
+# Assigned        54 530 349 (83 %)
+# Unassigned_NoFeatures   11 069 057
+

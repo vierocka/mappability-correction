@@ -1,0 +1,44 @@
+🔬 #TransparentScience | HLA diversity problem (Step 2)
+
+Part of an ongoing series — previous posts linked in comments.
+Briefly, you align RNA-seq reads to GRCh38. You get counts. You run PCA, custers form. You trust the numbers — but which HLA sequence did your aligner actually use?
+
+The reference problem pops up.
+
+MANE Select — the curated gold standard for clinical transcript annotation — includes exactly 6 HLA class I sequences: one for HLA-A, -B, -C, -E, -F, and -G. One per gene. These are the reference haplotype sequences anchored to GRCh38, likely reflecting a European-ancestry haplotype.
+
+Now look at the IPD-IMGT/HLA database (v3.63.1):
+ - HLA-A: 9,022 alleles (5,725 unique at 2-field resolution)
+ - HLA-B: 10,875 alleles (6,838 at 2-field)
+ - HLA-C: 9,030 alleles (5,389 at 2-field)
+  
+MANE is a transcript reference, not an allele database. It does exactly what it was designed to do. The gap between 6 and 10,000+ is not a flaw in MANE — it is the biological reality of the HLA locus.
+
+What this looks like in practice
+Take HCC1937, a triple-negative breast cancer cell line (Cellosaurus CVCL_0290). Its typed HLA class I: HLA-A*23:01 / A*24:02, HLA-B*07:02 / B*40:01, HLA-C*03:04 / C*07:02. Six alleles, two per locus — each patient's immune identity in six sequences. None of them are the GRCh38 reference allele. Would this affect the results?
+
+Every patient, every cell line, carries a diploid combination drawn from thousands of known alleles. When we map RNA-seq reads to a single reference sequence, we are asking: how well do reads from this specific allele pair land on a different haplotype?
+
+What the alignments show
+
+Multiple sequence alignment of all deduplicated CDS sequences (78 unique entries across HLA-A/B/C/E/F/G and pseudogenes, after removing identical copies with seqkit rmdup) reveals pairwise identity ranging from ~60% between distant paralogs to >98% between close alleles. The conservation track shows stretches of near-complete conservation interrupted by highly variable exon 2/3 regions — exactly the peptide-binding domains that drive immune specificity.
+
+High similarity across alleles is precisely what makes this region hard for short-read aligners. Reads from an unrepresented allele land ambiguously, get filtered by mapping quality, and disappear from your count matrix — silently.
+
+The practical consequence
+
+If your clustering is driven by APM genes, you may be clustering on mappability artifacts rather than biology. This is not a hypothetical — it is a consequence of how we build reference genomes and how short-read aligners work.
+
+Mappability correction is one mitigation. Allele-aware alignment (e.g., HISAT-genotype, arcasHLA) is another (building a kind of personalized APM locus based on arcasHLA or optitype tools prediction).
+
+References:
+  - Morales et al. 2022, Nature — MANE Select
+  - Robinson et al. 2020, Nucleic Acids Research — IPD-IMGT/HLA
+  - Cellosaurus — https://www.cellosaurus.org/
+  - Orenbuch et al., 2019, Bioinformatics - arcasHLA
+  - Szolek et al., 2014, Bioinformatics - OptiType
+  
+Has anyone benchmarked allele-aware alignment against standard mapping on a real patient cohort? I would genuinely like to know what the count differences look like.
+
+#TransparentScience #OpenScience #RNAseq #HLA #Bioinformatics #Immunogenomics #Mappability
+

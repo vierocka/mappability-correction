@@ -1,0 +1,10 @@
+# reconcile_hla.py / select_hla_alleles.py
+channels: [conda-forge, bioconda]
+dependencies:
+  - python=3.11
+  - pandas
+  - matplotlib
+  - pysam
+  - bwa
+  - mafft
+  - samtools

@@ -1,0 +1,21 @@
+# ── Server pipeline (FASTQ → HLA types + corrected transcript TPM) ───────────────
+samples: config/samples.tsv        # one row per sequencing run
+threads: 16
+outdir: results_server
+
+# References (server/helpers/download_references.sh fills refs/)
+refs: refs
+mane_rna:     refs/MANE/MANE.GRCh38.v1.5.ensembl_rna.fna
+mane_gff:     refs/MANE/MANE.GRCh38.v1.5.ensembl_genomic.gff
+mane_protein: refs/MANE/MANE.GRCh38.v1.5.ensembl_protein.faa
+genome_fa:    refs/Ensembl/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa   # 194 seqs; funique only
+imgt_hla_nuc: refs/IMGTHLA/hla_nuc.fasta                                    # IPD-IMGT/HLA 3.63.1
+
+# Read QC / trimming
+min_phred: 30
+align_trimmed: false     # paper: untrimmed reads aligned (trimming impact < 4 %, tests)
+trimmomatic_adapters: refs/adapters/TruSeq3-PE.fa
+trimmomatic_steps: "LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"   # placeholder: HPC settings not found
+
+# Counting / correction
+hla_total_source: personal_fcM   # methods text; "basic_mane_fc" = original code (adds a basic-MANE alignment)

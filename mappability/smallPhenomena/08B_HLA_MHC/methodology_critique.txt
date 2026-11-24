@@ -1,0 +1,136 @@
+Methodological critique — Gong & Karchin (2023)
+================================================
+"Clustering by antigen-presenting genes reveals immune landscapes and predicts
+response to checkpoint immunotherapy."  Sci. Reports 13:950.
+
+Core question
+-------------
+Does the prognostic signal arise from specific HLA/APM genes, or from broader
+transcriptional activity of the highly duplicated and polymorphic HLA region?
+
+Short answer: the evidence points to a locus-level regional co-expression signal,
+not gene-specific protein biology.  Four lines of argument follow.
+
+
+1. The pseudogene inclusion is the smoking gun
+-----------------------------------------------
+HLA-DRB6 (a transcribed_unprocessed_pseudogene, no protein product, GENCODE v49)
+was forward-selected into the 23-gene prognostic APM signature alongside functional
+genes.
+
+If the signal were gene-specific — each protein contributing independently to
+antigen presentation — a pseudogene with no protein product could not carry
+prognostic value on its own terms.  The only explanations are:
+
+  a) Its "expression" is read leakage from DRB1/3/4/5 (mappability artifact),
+     making it a noisy proxy for functional DRB expression; or
+  b) It is a proxy for the entire HLA region being transcriptionally active.
+
+Either interpretation means the selection process captured a regional co-expression
+signal, not HLA-DRB6 protein biology.
+
+See: HLA_DRB6_pseudogene_as_biomarker.txt
+     HLApseudo_MAFFT/transcript_table.tsv  (is_pseudogene = True)
+     HLApseudo_MAFFT/shared_fraction.tsv   (DRB6 contributes to 66% shared-window
+                                            rate at 100 bp for HLA-DRB1)
+
+
+2. Forward selection on a correlated, non-uniquely mappable gene set cannot isolate
+   gene-specific contributions
+-------------------------------------------------------------------------------------
+All HLA class I genes are co-regulated by the same IFN-γ / NF-κB axis.  In bulk
+RNA-seq their TPM values are structurally correlated because:
+
+  Biology:      All class I genes respond to the same inflammatory stimuli.
+                A sample with high HLA-A will have high HLA-B, HLA-C, HLA-E.
+
+  Mappability:  At 100 bp reads, 60–80% of k-mers are shared between class I
+                paralogs and their pseudogenes (HLApseudo_MAFFT shared_fraction.tsv).
+                EM-based redistributors (kallisto/Salmon) assign ambiguous reads
+                proportionally to current abundance estimates, coupling all estimates
+                within the same locus.
+
+Forward selection on this correlated matrix picks up the strongest predictor of the
+composite locus signal, not the causal gene.  Swapping HLA-B for HLA-A, or removing
+any single gene and replacing it with another co-regulated HLA gene, would likely
+retain the same C-index.  The 23-gene composition is an artefact of the specific
+cohort and the particular correlated structure of the training data.
+
+
+3. EM redistribution in tumours with pseudogene derepression manufactures
+   cross-sample correlation
+---------------------------------------------------------------------------
+In melanoma, global hypomethylation and chromatin remodelling at 6p21 derepress
+HLA pseudogene promoters in a tumour-specific, sample-variable manner.  Samples
+with higher pseudogene transcription have a larger ambiguous read pool.
+
+kallisto/Salmon redistribute more reads across all DRB and class I genes in those
+samples.  This creates an artificial positive correlation between HLA gene estimates
+and the tumour immune landscape that is not mediated by protein surface expression —
+it tracks pseudogene activity instead.  This is not a constant bias that cancels in
+differential expression: it is condition-differential and enriched precisely in the
+cancer samples driving the prognostic association.
+
+See: HLApseudo_MAFFT/README.md (section on "Pseudogene transcription" and
+     "Consequence for RNA-seq")
+     HLApseudo_MAFFT/notes.txt (3'UTR rescue — the only clean signal)
+
+
+4. The paper's "normalisation" does not address mappability
+------------------------------------------------------------
+The authors applied a correction factor based on tumour purity and per-cell HLA
+expression levels to adjust for immune cell contamination in bulk RNA-seq.  This
+corrects for cell-type composition confound (HLA class II expression mirrors
+immune infiltration, not tumour HLA status) but does NOT address:
+
+  - Read ambiguity within the HLA locus
+  - Pseudogene derepression inflating the ambiguous pool
+  - Aligner-dependent redistribution differences between samples
+
+After purity correction, the residual signal still contains locus-level co-expression
+plus mappability coupling between paralogs and pseudogenes.
+
+
+What the existing data can test
+---------------------------------
+From HLApseudo_MAFFT and 08B_HLA_MHC/wide_uf_table.tsv:
+
+  Test                                        Data source
+  ----------------------------------------------------------
+  Which genes have UF < 0.5 at all read       wide_uf_table.tsv
+  lengths? (structurally ambiguous genes)
+
+  Does low-UF rank match selection frequency  wide_uf_table.tsv + paper Methods
+  in the paper's forward-selection? If yes,   (if low-UF genes are over-selected,
+  ambiguity drove selection, not biology.      signal is ambiguity-driven)
+
+  Do STAR and kallisto disagree on HLA gene   star_all_runs.tsv vs
+  ordering across the panel?                  kallisto_all_runs.tsv
+  If yes: signal is aligner-dependent,
+  not gene-specific.
+
+  What is the shared fraction between          Would require adding class I vs class I
+  functional class I paralogs (HLA-A vs       to HLApseudo_MAFFT (currently only
+  HLA-B vs HLA-C), not just vs pseudogenes?   functional vs pseudogene groups)
+
+  Would a single "HLA region activity"         External — TCGA melanoma; not in our
+  score (e.g., mean UF-weighted TPM of all    data.  This is the definitive test.
+  class I genes) predict survival as well
+  as the 23-gene signature?
+
+
+Conclusion
+----------
+The Gong & Karchin APM signature is likely measuring "HLA locus transcriptional
+activity level" — a real biological quantity (IFN-γ responsiveness, immune
+infiltration) — but the 23-gene decomposition is not justified by the data.  The
+specific gene contributions cannot be separated from locus-level co-expression and
+mappability coupling.  The inclusion of HLA-DRB6 (pseudogene) provides the clearest
+single piece of evidence that the selection process was not sensitive to protein-level
+biology.
+
+Independent validation should require at minimum:
+  - IHC or flow cytometry for HLA surface expression (not RNA-seq derived)
+  - WES/WGS for LOH at 6p21 (to distinguish silencing from allele loss)
+  - Long-read RNA-seq to resolve transcripts across inactivating mutations
+  - Personalised HLA-typed reference to reduce allelic ambiguity before quantification

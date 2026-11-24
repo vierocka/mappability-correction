@@ -1,0 +1,240 @@
+# Gene classification by mappability cause and recommended action.
+#
+# Input: a genome FASTA and an annotation GTF. Nothing is hard-coded to human.
+# Output: results/gene_classes.tsv - one row per gene with the ambiguity cause and what to do.
+#
+#   snakemake --configfile config/config.yaml --use-conda --cores 8 -n
+#
+# The inflation arm (kallisto on a UTR-containing vs a CDS-only index) is optional:
+# set run_inflation: false to classify on geometry and funique alone.
+
+from pathlib import Path
+
+configfile: "config/config.yaml"
+
+OUT      = config["outdir"]
+GENOME   = config["genome_fasta"]
+GTF      = config["gtf"]
+L        = config["read_length"]
+MODE     = config["read_mode"]              # SE or PE
+STEP     = config.get("read_step", 1)
+WINDOW   = config.get("cluster_window", 250)
+CODING   = config.get("coding_biotype", "protein_coding")
+REP_TAG  = config.get("representative_tag", "MANE_Select")
+THREADS  = config.get("threads", 8)
+INFLATE  = config.get("run_inflation", True)
+FRAG_L   = config.get("frag_len", 200)
+FRAG_SD  = config.get("frag_sd", 30)
+SINGLE   = "" if MODE == "PE" else "--single -l {} -s {}".format(FRAG_L, FRAG_SD)
+R2_ARG   = "--r2 " + OUT + "/sim/reads_2.fq.gz" if MODE == "PE" else ""
+
+targets = [f"{OUT}/results/gene_classes.tsv", f"{OUT}/results/summary.txt"]
+
+
+rule all:
+    input: targets
+
+
+# ─── references ───────────────────────────────────────────────────────────────
+
+rule gtf_plain:
+    """Decompress the annotation once, and give every rule the same plain file.
+
+    gffread cannot read a gzipped GTF: it parses the compressed bytes as text, prints
+    "invalid start coordinate", and EXITS 0 WITH AN EMPTY FASTA. Nothing downstream notices,
+    so the whole run completes on no sequence at all. gzip -cdf passes an already
+    uncompressed file through unchanged, so this rule is safe either way.
+    """
+    input:  GTF
+    output: gtf=OUT + "/ref/annotation.gtf"
+    log:    OUT + "/logs/gtf_plain.log"
+    shell:
+        "gzip -cdf {input} > {output.gtf} 2> {log} && "
+        "test -s {output.gtf} && grep -qP '^\\S+\\t' {output.gtf}"
+
+
+rule transcript_fasta:
+    """All annotated transcripts, every biotype: the competing sequence space."""
+    input: gtf=rules.gtf_plain.output.gtf, genome=GENOME
+    output: fa=f"{OUT}/ref/transcripts_all.fa"
+    log:    f"{OUT}/logs/gffread_all.log"
+    conda:  "envs/tools.yaml"
+    shell:
+        "gffread {input.gtf} -g {input.genome} -w {output.fa} "
+        "--table transcript_id,gene_id,gene_name,transcript_biotype > {log} 2>&1 && "
+        "grep -q '>' {output.fa}"   # gffread exits 0 on an empty result; fail loudly instead
+
+
+rule tx2gene:
+    """transcript -> gene, biotype, and which transcript represents each gene."""
+    input: gtf=rules.gtf_plain.output.gtf
+    output: tsv=f"{OUT}/ref/tx2gene.tsv", rep=f"{OUT}/ref/representative_tx.txt"
+    log:    f"{OUT}/logs/tx2gene.log"
+    shell:
+        "python3 scripts/tx2gene.py --gtf {input.gtf} --out {output.tsv} "
+        "--representatives {output.rep} --tag {REP_TAG:q} > {log} 2>&1"
+
+
+rule representative_fasta:
+    """One transcript per gene, UTRs included - the quantification reference."""
+    input: fa=rules.transcript_fasta.output.fa, rep=rules.tx2gene.output.rep
+    output: fa=f"{OUT}/ref/representative.fa"
+    log:    f"{OUT}/logs/representative_fasta.log"
+    conda:  "envs/tools.yaml"
+    shell:
+        "seqkit grep -f {input.rep} {input.fa} > {output.fa} 2> {log} && "
+        "grep -q '>' {output.fa}"
+
+
+rule cds_fasta:
+    """CDS only, duplicates collapsed: the reference without UTR k-mers."""
+    input: gtf=rules.gtf_plain.output.gtf, genome=GENOME
+    output: fa=f"{OUT}/ref/cds_dedup.fa"
+    log:    f"{OUT}/logs/cds_fasta.log"
+    conda:  "envs/tools.yaml"
+    shell:
+        "gffread {input.gtf} -g {input.genome} -x {OUT}/ref/cds_all.fa > {log} 2>&1 && "
+        "seqkit rmdup -s {OUT}/ref/cds_all.fa > {output.fa} 2>> {log} && "
+        "grep -q '>' {output.fa}"
+
+
+# ─── geometry and shared sequence ─────────────────────────────────────────────
+
+rule geometry:
+    input:  gtf=rules.gtf_plain.output.gtf
+    output: tsv=f"{OUT}/annotation/gene_geometry.tsv"
+    log:    f"{OUT}/logs/geometry.log"
+    shell:
+        "python3 scripts/gtf_geometry.py --gtf {input.gtf} --out {output.tsv} "
+        "--coding-type {CODING:q} > {log} 2>&1"
+
+
+rule terminal_clusters:
+    """Transcripts whose terminal WINDOW bp are identical cannot be told apart there."""
+    input:  fa=rules.transcript_fasta.output.fa, t2g=rules.tx2gene.output.tsv
+    output: tsv=f"{OUT}/annotation/terminal_clusters.tsv",
+            genes=f"{OUT}/annotation/terminal_clusters_by_gene.tsv"
+    log:    f"{OUT}/logs/terminal_clusters.log"
+    shell:
+        "python3 scripts/terminal_clusters.py --fasta {input.fa} --tx2gene {input.t2g} "
+        "--window {WINDOW} --end 3 --out {output.tsv} --gene-table {output.genes} > {log} 2>&1"
+
+
+rule self_homology:
+    """Genes whose own sequence repeats internally (deflation, not pseudogene inflation)."""
+    input:  fa=rules.representative_fasta.output.fa, t2g=rules.tx2gene.output.tsv
+    output: tsv=f"{OUT}/annotation/self_homology.tsv"
+    log:    f"{OUT}/logs/self_homology.log"
+    shell:
+        "python3 scripts/self_homology.py --fasta {input.fa} --tx2gene {input.t2g} "
+        "--out {output.tsv} --k {config[self_homology_k]} > {log} 2>&1"
+
+
+# ─── uniqueness by read-back ──────────────────────────────────────────────────
+
+rule simulate:
+    input:  fa=rules.representative_fasta.output.fa
+    output: r1=OUT + "/sim/reads_1.fq.gz",
+            r2=(OUT + "/sim/reads_2.fq.gz" if MODE == "PE" else [])
+    log:    OUT + "/logs/simulate.log"
+    params: r2=R2_ARG
+    shell:
+        "python3 scripts/simulate_reads.py --fasta {input.fa} --r1 {output.r1} {params.r2} "
+        "--length {L} --step {STEP} --mode {MODE} > {log} 2>&1"
+
+
+rule star_index:
+    input:  genome=GENOME
+    output: directory(f"{OUT}/ref/star_index")
+    threads: THREADS
+    log:    f"{OUT}/logs/star_index.log"
+    conda:  "envs/tools.yaml"
+    params: extra=config.get("star_index_extra", "")
+    shell:
+        "mkdir -p {output} && STAR --runMode genomeGenerate --runThreadN {threads} "
+        "--genomeDir {output} --genomeFastaFiles {input.genome} {params.extra} "
+        "--outFileNamePrefix {OUT}/logs/star_index_ > {log} 2>&1"
+
+
+rule star_align:
+    """Align the simulated reads back to the genome: the competitor-complete reference."""
+    input:  idx=rules.star_index.output, r1=rules.simulate.output.r1,
+            r2=(rules.simulate.output.r2 if MODE == "PE" else [])
+    output: bam=f"{OUT}/sim/readback.bam"
+    threads: THREADS
+    log:    f"{OUT}/logs/star_align.log"
+    conda:  "envs/tools.yaml"
+    shell:
+        "STAR --genomeDir {input.idx} --readFilesIn {input.r1} {input.r2} "
+        "--readFilesCommand zcat --runThreadN {threads} "
+        "--outFilterMultimapNmax 40 --outFilterMismatchNmax 1 --outSAMmultNmax 1 "
+        "--outSAMtype BAM Unsorted --outSAMunmapped Within "
+        "--outFileNamePrefix {OUT}/sim/readback_ > {log} 2>&1 && "
+        "mv {OUT}/sim/readback_Aligned.out.bam {output.bam}"
+
+
+rule funique:
+    input:  bam=rules.star_align.output.bam
+    output: tsv=f"{OUT}/results/funique.tsv"
+    log:    f"{OUT}/logs/funique.log"
+    conda:  "envs/tools.yaml"
+    shell:
+        "python3 scripts/uniqueness_from_bam.py --bam {input.bam} --out {output.tsv} > {log} 2>&1"
+
+
+# ─── inflation: does a UTR-containing index attribute what a CDS index cannot? ──
+
+rule kallisto_index:
+    input:  fa=OUT + "/ref/{ref}.fa"
+    output: idx=OUT + "/ref/{ref}.kidx"
+    log:    OUT + "/logs/kallisto_index_{ref}.log"
+    conda:  "envs/tools.yaml"
+    shell:  "kallisto index -i {output.idx} {input.fa} > {log} 2>&1"
+
+
+rule kallisto_quant:
+    input:  idx=OUT + "/ref/{ref}.kidx", r1=rules.simulate.output.r1,
+            r2=(rules.simulate.output.r2 if MODE == "PE" else [])
+    output: tsv=OUT + "/inflation/{ref}/abundance.tsv"
+    threads: THREADS
+    log:    OUT + "/logs/kallisto_quant_{ref}.log"
+    conda:  "envs/tools.yaml"
+    params: single=SINGLE
+    shell:
+        "kallisto quant -i {input.idx} -o {OUT}/inflation/{wildcards.ref} -t {threads} "
+        "{params.single} {input.r1} {input.r2} > {log} 2>&1"
+
+
+rule inflation:
+    input:  utr=OUT + "/inflation/representative/abundance.tsv",
+            cds=OUT + "/inflation/cds_dedup/abundance.tsv",
+            t2g=rules.tx2gene.output.tsv
+    output: tsv=f"{OUT}/results/inflation.tsv"
+    log:    f"{OUT}/logs/inflation.log"
+    shell:
+        "python3 scripts/inflation_ratio.py --utr {input.utr} --cds {input.cds} "
+        "--tx2gene {input.t2g} --out {output.tsv} > {log} 2>&1"
+
+
+# ─── classification ───────────────────────────────────────────────────────────
+
+rule classify:
+    input:
+        geometry=rules.geometry.output.tsv,
+        clusters=rules.terminal_clusters.output.tsv,
+        funique=rules.funique.output.tsv,
+        t2g=rules.tx2gene.output.tsv,
+        selfhom=rules.self_homology.output.tsv,
+        inflation=(rules.inflation.output.tsv if INFLATE else []),
+    output:
+        tsv=f"{OUT}/results/gene_classes.tsv",
+        summary=f"{OUT}/results/summary.txt",
+    log: f"{OUT}/logs/classify.log"
+    params:
+        inflation=("--inflation " + OUT + "/results/inflation.tsv" if INFLATE else "")
+    shell:
+        "python3 scripts/classify_genes.py --geometry {input.geometry} --clusters {input.clusters} "
+        "--funique {input.funique} --tx2gene {input.t2g} --self-homology {input.selfhom} "
+        "{params.inflation} --coding-type {CODING:q} --local-mb {config[local_mb]} "
+        "--uf-high {config[uf_high]} --uf-zero {config[uf_zero]} "
+        "--out {output.tsv} > {output.summary} 2> {log}"

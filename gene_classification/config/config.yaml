@@ -1,0 +1,36 @@
+# ── inputs ────────────────────────────────────────────────────────────────────
+# Any organism: the workflow reads only the GTF and the matching genome FASTA.
+# Use a primary assembly (no alt haplotypes or patches): alt contigs are identical
+# copies of primary sequence and drive funique to 0 for reasons unrelated to biology.
+genome_fasta: ref/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa
+gtf:          ref/gencode.v49.annotation.gtf.gz
+
+outdir: results_human
+
+# ── representative transcript per gene ────────────────────────────────────────
+# GTF tag naming the canonical transcript. Human GENCODE/Ensembl: MANE_Select.
+# Other Ensembl species: Ensembl_canonical. Leave empty to always use the longest CDS.
+representative_tag: MANE_Select
+coding_biotype: protein_coding
+
+# ── read-back simulation ──────────────────────────────────────────────────────
+read_length: 100          # match the library you intend to correct
+read_mode: SE             # SE or PE; PE adds little beyond total length
+read_step: 1              # 1 = every position (slow, exact); raise to subsample
+star_index_extra: ""      # small genomes need e.g. "--genomeSAindexNbases 11"
+
+# ── shared-sequence detection ─────────────────────────────────────────────────
+cluster_window: 250       # terminal window that must be identical to form a cluster
+self_homology_k: 31       # k-mer size for internal repeat detection
+local_mb: 5.0             # same-chromosome distance counted as a local duplication
+
+# ── classification thresholds ─────────────────────────────────────────────────
+uf_high: 0.9              # at or above: treated as unique, left uncorrected
+uf_zero: 0.1              # at or below: no usable unique signal
+inflation_hi: 2.0         # UTR/CDS TPM ratio counted as inflated
+
+# ── optional arm ──────────────────────────────────────────────────────────────
+run_inflation: true       # false = classify on geometry and funique only
+frag_len: 200             # kallisto --single parameters, used when read_mode is SE
+frag_sd: 30
+threads: 8

@@ -1,0 +1,16 @@
+sample	rule	n_transcripts
+JY:SRR364065	f=1	18741
+JY:SRR364065	pseudogene inflation: f=UF	400
+JY:SRR364065	f=1: MANE competition (fcM>fc)	181
+HCC1937:SRR31477874	f=1	18590
+HCC1937:SRR31477874	pseudogene inflation: f=UF	574
+HCC1937:SRR31477874	f=1: MANE competition (fcM>fc)	159
+HCC1937:SRR31477875	f=1	18590
+HCC1937:SRR31477875	pseudogene inflation: f=UF	573
+HCC1937:SRR31477875	f=1: MANE competition (fcM>fc)	160
+HCT116:SRR3644141	f=1	18741
+HCT116:SRR3644141	pseudogene inflation: f=UF	424
+HCT116:SRR3644141	f=1: MANE competition (fcM>fc)	158
+HCT116:SRR3644142	f=1	18741
+HCT116:SRR3644142	pseudogene inflation: f=UF	423
+HCT116:SRR3644142	f=1: MANE competition (fcM>fc)	159

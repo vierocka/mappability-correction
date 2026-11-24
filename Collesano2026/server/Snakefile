@@ -1,0 +1,47 @@
+# Collesano 2026 — server pipeline
+# FASTQ (SRA or local) → QC → HLA-A/B/C typing → personal MANE → STAR + featureCounts
+# → funique correction → corrected transcript TPM (+ HLA report, QC report)
+#
+#   snakemake -s server/Snakefile --configfile config/server.yaml --use-conda --cores 16
+# Run from the Collesano2026/ folder.
+
+import pandas as pd
+from pathlib import Path
+
+PIPE = str(Path(workflow.basedir).parent.resolve())
+OUT = config["outdir"]
+SAMPLES = pd.read_csv(config["samples"], sep="\t", dtype=str).fillna("").set_index("run", drop=False)
+RUNS = list(SAMPLES.index)
+GROUPS = sorted(SAMPLES.group.unique())
+
+
+def runs_of(group):
+    return list(SAMPLES[SAMPLES.group == group].index)
+
+
+def group_of(run):
+    return SAMPLES.loc[run, "group"]
+
+
+wildcard_constraints:
+    run="|".join(RUNS),
+    group="|".join(GROUPS),
+    L=r"\d+",
+
+
+include: "rules/qc.smk"
+include: "rules/hla.smk"
+include: "rules/funique.smk"
+include: "rules/align.smk"
+include: "rules/correct.smk"
+include: "rules/report.smk"
+
+
+rule all:
+    input:
+        f"{OUT}/summary/hla_types.tsv",
+        f"{OUT}/summary/qc_reads.tsv",
+        f"{OUT}/summary/corrected_TPM_matrix.tsv",
+        f"{OUT}/correction/HLA_corrected_mean_values.tsv",
+        expand(f"{OUT}/groups/{{group}}/ref/{{group}}_personal_MANE_protein.faa", group=GROUPS),
+        expand(f"{OUT}/reports/{{group}}_steps.tsv", group=GROUPS),

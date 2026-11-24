@@ -1,0 +1,13 @@
+# arcasHLA 0.6.0 = local env used 2026-03 (similar to HPC): bioconda build hdfd78af_2, kallisto 0.44.0, python 3.9.
+# kallisto = arcasHLA's internal engine (`kallisto pseudo`), NOT used for quantification.
+# kallisto 0.50.x lacks pseudo output -> genotype crashes (pseudoalignments.tsv missing).
+channels: [conda-forge, bioconda]
+dependencies:
+  - python=3.9
+  - arcas-hla=0.6.0=hdfd78af_2
+  - kallisto=0.44.0
+  - samtools=1.21
+  - bedtools=2.31.1
+  - pigz
+  - git
+  - git-lfs

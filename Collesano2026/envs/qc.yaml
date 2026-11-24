@@ -1,0 +1,7 @@
+# FastQC + Trimmomatic + SRA download
+channels: [conda-forge, bioconda]
+dependencies:
+  - sra-tools=3.0.5        # methods
+  - fastqc=0.12.1
+  - trimmomatic=0.40       # HPC version unknown -> confirm
+  - python=3.11

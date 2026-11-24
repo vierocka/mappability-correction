@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2290 862" width="2290" height="862">
+<rect width="2290" height="862" fill="#ffffff"/>
+<text x="48.0" y="56.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#1f2328" text-anchor="start">Collesano2026 · server pipeline</text>
+<text x="48.0" y="84.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#59636e" text-anchor="start">FASTQ to HLA-A/B/C types + corrected transcript TPM  ·  Snakemake</text>
+<path d="M112.0,435.0 L454.9,435.0 Q476.9,435.0 492.4,450.6 L576.3,534.4 Q591.9,550.0 613.9,550.0 L1781.6,550.0 Q1803.6,550.0 1819.1,534.4 L1925.6,428.0" fill="none" stroke="#D55E00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,425.0 L473.3,425.0 Q476.9,425.0 479.4,422.5 L479.4,422.5 Q481.9,420.0 485.4,420.0 L2020.6,420.0" fill="none" stroke="#CC79A7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,415.0 L454.9,415.0 Q476.9,415.0 492.4,399.4 L586.3,305.6 Q601.9,290.0 623.9,290.0 L1258.9,290.0 Q1280.9,290.0 1296.5,305.6 L1402.9,412.0" fill="none" stroke="#009E73" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,405.0 L454.9,405.0 Q476.9,405.0 492.4,389.4 L706.3,175.6 Q721.9,160.0 743.9,160.0 L935.9,160.0 Q957.9,160.0 973.4,175.6 L1079.9,282.0" fill="none" stroke="#E69F00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,415.0 L454.9,415.0 Q476.9,415.0 492.4,399.4 L586.3,305.6 Q601.9,290.0 623.9,290.0 L1258.9,290.0 Q1280.9,290.0 1296.5,305.6 L1402.9,412.0" fill="none" stroke="#009E73" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,405.0 L454.9,405.0 Q476.9,405.0 492.4,389.4 L706.3,175.6 Q721.9,160.0 743.9,160.0 L935.9,160.0 Q957.9,160.0 973.4,175.6 L1079.9,282.0" fill="none" stroke="#E69F00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M112.0,435.0 L454.9,435.0 Q476.9,435.0 492.4,450.6 L576.3,534.4 Q591.9,550.0 613.9,550.0 L1781.6,550.0 Q1803.6,550.0 1819.1,534.4 L1925.6,428.0" fill="none" stroke="#D55E00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86.0,454.0 L86.0,658.0 Q86.0,680.0 108.0,680.0 L655.9,680.0 Q677.9,680.0 693.4,664.4 L799.9,558.0" fill="none" stroke="#ffffff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86.0,454.0 L86.0,658.0 Q86.0,680.0 108.0,680.0 L655.9,680.0 Q677.9,680.0 693.4,664.4 L799.9,558.0" fill="none" stroke="#56B4E9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="16 9"/>
+<rect x="235.0" y="392.0" width="26" height="56.0" rx="13.0" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="248.0" y="471.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Download</text>
+<text x="248.0" y="488.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">sra-tools · R1 vs R2 check</text>
+<rect x="405.0" y="392.0" width="26" height="56.0" rx="13.0" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="418.0" y="471.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Read QC</text>
+<text x="418.0" y="488.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">FastQC · length, Phred</text>
+<circle cx="807.9" cy="290.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="807.9" y="256.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Fish HLA reads</text>
+<text x="807.9" y="273.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">razers3</text>
+<circle cx="947.9" cy="290.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="947.9" y="256.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">OptiType</text>
+<text x="947.9" y="273.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">OptiType 1.3.5</text>
+<circle cx="1087.9" cy="290.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1087.9" y="326.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Reconcile</text>
+<text x="1087.9" y="343.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">BWA · MAFFT · Cellosaurus</text>
+<circle cx="1242.9" cy="290.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1242.9" y="256.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Group calls</text>
+<text x="1242.9" y="273.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">HLA-A/B/C per sample</text>
+<circle cx="807.9" cy="160.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="807.9" y="126.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">arcasHLA</text>
+<text x="807.9" y="143.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">arcasHLA 0.6.0</text>
+<circle cx="1410.9" cy="420.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1410.9" y="456.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Personal MANE</text>
+<text x="1410.9" y="473.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">IMGT 3.63.1 CDS · MANE UTRs kept</text>
+<circle cx="1566.4" cy="420.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1566.4" y="456.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">STAR index</text>
+<text x="1566.4" y="473.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">STAR 2.7.10b</text>
+<circle cx="1718.6" cy="420.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1718.6" y="456.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Align + count</text>
+<text x="1718.6" y="473.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">STAR · featureCounts · fc + fcM</text>
+<circle cx="1933.6" cy="420.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="1933.6" y="386.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Correction</text>
+<text x="1933.6" y="403.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">×funique · HLA split</text>
+<circle cx="807.9" cy="550.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="807.9" y="516.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Read length</text>
+<text x="807.9" y="533.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">73–77 / 98–102 bp</text>
+<circle cx="996.1" cy="550.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="996.1" y="586.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">funique table</text>
+<text x="996.1" y="603.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">precomputed or STAR 2.7.11b simulation</text>
+<circle cx="341.0" cy="680.0" r="11" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="341.0" y="716.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Trimmomatic</text>
+<text x="341.0" y="733.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">Trimmomatic 0.40</text>
+<rect x="2016.6" y="389.0" width="34" height="62.0" rx="17.0" fill="#ffffff" stroke="#1f2328" stroke-width="3.2"/>
+<text x="2063.6" y="416.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#1f2328" text-anchor="start">Summary</text>
+<text x="2063.6" y="435.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="start">HLA types · TPM matrix · QC</text>
+<path d="M47.0,391.0 H80.0 L93.0,404.0 V449.0 H47.0 Z" fill="#ffffff" stroke="#1f2328" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M80.0,391.0 V404.0 H93.0" fill="none" stroke="#1f2328" stroke-width="2.2" stroke-linejoin="round"/>
+<rect x="42.0" y="418.0" width="56.0" height="18" rx="3" fill="#57606a"/>
+<text x="70.0" y="432.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">FASTQ</text>
+<text x="70.0" y="362.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle">Input</text>
+<text x="70.0" y="378.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="middle">SRA or FASTQ</text>
+<path d="M2056.7,446.3 L2080.6,473.4" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="2 4" stroke-linecap="round"/>
+<path d="M2084.6,475.0 H2117.6 L2130.6,488.0 V533.0 H2084.6 Z" fill="#ffffff" stroke="#1f2328" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M2117.6,475.0 V488.0 H2130.6" fill="none" stroke="#1f2328" stroke-width="2.2" stroke-linejoin="round"/>
+<rect x="2079.6" y="502.0" width="56.0" height="18" rx="3" fill="#CC79A7"/>
+<text x="2107.6" y="516.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">TSV</text>
+<line x1="48" y1="761.8" x2="2242.4" y2="761.8" stroke="#d0d7de" stroke-width="1.5"/>
+<line x1="48" y1="797.8" x2="94" y2="797.8" stroke="#009E73" stroke-width="7" stroke-linecap="round"/>
+<text x="106.0" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">HLA typing (genome-free)</text>
+<line x1="314.08000000000004" y1="797.8" x2="360.08000000000004" y2="797.8" stroke="#E69F00" stroke-width="7" stroke-linecap="round"/>
+<text x="372.1" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">Second typer</text>
+<line x1="491.12000000000006" y1="797.8" x2="537.1200000000001" y2="797.8" stroke="#CC79A7" stroke-width="7" stroke-linecap="round"/>
+<text x="549.1" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">Quantification on personal MANE</text>
+<line x1="809.1400000000001" y1="797.8" x2="855.1400000000001" y2="797.8" stroke="#D55E00" stroke-width="7" stroke-linecap="round"/>
+<text x="867.1" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">Mappability (funique)</text>
+<line x1="1052.96" y1="797.8" x2="1098.96" y2="797.8" stroke="#56B4E9" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 9"/>
+<text x="1111.0" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">Trimming (optional)</text>
+<circle cx="1291.94" cy="797.8" r="9" fill="#ffffff" stroke="#1f2328" stroke-width="3"/>
+<text x="1308.9" y="802.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start">Step</text>
+<text x="48.0" y="831.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#59636e" text-anchor="start">Genome-free HLA typing avoids reads lost to HLA pseudogenes, alt haplotypes and patches; counting uses one MANE transcript per gene.</text>
+</svg>

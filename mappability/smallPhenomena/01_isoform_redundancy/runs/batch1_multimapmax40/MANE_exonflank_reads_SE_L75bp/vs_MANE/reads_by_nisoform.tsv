@@ -1,0 +1,11 @@
+n_isoforms_bin	n_genes	star_mean_uf	star_median_uf	star_mean_frac_uf0	kallisto_mean_entropy	kallisto_index	read_len_bp	mode
+1	5913				0.0	MANE	75	SE
+2	3431				0.9968	MANE	75	SE
+3	2301				0.9983	MANE	75	SE
+4	1660				0.9982	MANE	75	SE
+5	1169				0.9983	MANE	75	SE
+6	919				0.9967	MANE	75	SE
+7	605				0.9983	MANE	75	SE
+8	539				0.9981	MANE	75	SE
+9	390				1.0	MANE	75	SE
+10+	2218				0.9991	MANE	75	SE

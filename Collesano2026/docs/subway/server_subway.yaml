@@ -1,0 +1,57 @@
+# slitherFlow spec (github.com/mikemartinez99/slitherFlow), drafted from `snakemake --rulegraph`, edited by hand.
+#   slitherflow render docs/subway/server_subway.yaml -o docs/subway/server_subway.svg --png --pdf
+title: "Collesano2026 · server pipeline"
+subtitle: "FASTQ to HLA-A/B/C types + corrected transcript TPM  ·  Snakemake"
+input: {label: "Input", sublabel: "SRA or FASTQ", file: "FASTQ"}
+
+trunk:
+  stations:
+    - {name: "Download", tool: "sra-tools · R1 vs R2 check"}
+    - {name: "Read QC", tool: "FastQC · length, Phred"}
+  lines: [hla, arcas, quant, funique]
+
+lines:
+  hla:
+    name: "HLA typing (genome-free)"
+    row: -1
+    to: {line: quant, station: "Personal MANE"}
+    stations:
+      - {name: "Fish HLA reads", tool: "razers3"}
+      - {name: "OptiType", tool: "OptiType 1.3.5"}
+      - {name: "Reconcile", tool: "BWA · MAFFT · Cellosaurus"}
+      - {name: "Group calls", tool: "HLA-A/B/C per sample"}
+  arcas:
+    name: "Second typer"
+    from: "Download"
+    row: -2
+    to: {line: hla, station: "Reconcile"}
+    stations:
+      - {name: "arcasHLA", tool: "arcasHLA 0.6.0"}
+  quant:
+    name: "Quantification on personal MANE"
+    row: 0
+    to: "terminus"
+    stations:
+      - {name: "Personal MANE", tool: "IMGT 3.63.1 CDS · MANE UTRs kept"}
+      - {name: "STAR index", tool: "STAR 2.7.10b"}
+      - {name: "Align + count", tool: "STAR · featureCounts · fc + fcM"}
+      - {name: "Correction", tool: "×funique · HLA split", gap: 40}
+  funique:
+    name: "Mappability (funique)"
+    from: "Read QC"
+    row: 1
+    to: {line: quant, station: "Correction"}
+    stations:
+      - {name: "Read length", tool: "73–77 / 98–102 bp"}
+      - {name: "funique table", tool: "precomputed or STAR 2.7.11b simulation"}
+  trim:
+    name: "Trimming (optional)"
+    from: "input"
+    row: 2
+    optional: true
+    to: {line: funique, station: "Read length"}
+    stations:
+      - {name: "Trimmomatic", tool: "Trimmomatic 0.40"}
+
+terminus: {name: "Summary", sublabel: "HLA types · TPM matrix · QC", row: 0, file: "TSV"}
+footnote: "Genome-free HLA typing avoids reads lost to HLA pseudogenes, alt haplotypes and patches; counting uses one MANE transcript per gene."

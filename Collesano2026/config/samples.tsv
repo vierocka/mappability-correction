@@ -1,0 +1,6 @@
+run	group	condition	source	fastq_1	fastq_2	cellosaurus	hla_override	include_drb
+SRR31477874	HCC1937	74_75	sra			CVCL_0290		
+SRR31477875	HCC1937	74_75	sra			CVCL_0290		
+SRR3644141	HCT116	41_42	sra			CVCL_0291		
+SRR3644142	HCT116	41_42	sra			CVCL_0291		
+SRR364065	JY	364065	sra			CVCL_0108		HLA-DRB3;HLA-DRB4

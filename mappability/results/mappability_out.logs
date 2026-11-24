@@ -1,0 +1,1052 @@
+════════════════════════════════════════════════════════
+Mappability correction — full run (13 scripts)
+Started : Wed May 27 18:19:24 CEST 2026
+Host    : <node>
+Dir     : <HPC_WORKDIR>/mappability-correction/mappability
+════════════════════════════════════════════════════════
+Loading bio/STAR/2.7.11b-GCC-13.2.0
+  Loading requirement: compiler/GCCcore/13.2.0 lib/zlib/1.2.13-GCCcore-13.2.0
+    tools/binutils/2.40-GCCcore-13.2.0 compiler/GCC/13.2.0
+    tools/bzip2/1.0.8-GCCcore-13.2.0 tools/XZ/5.4.4-GCCcore-13.2.0
+    system/OpenSSL/1.1 tools/cURL/8.3.0-GCCcore-13.2.0
+    bio/HTSlib/1.19.1-GCC-13.2.0
+Loading bio/SAMtools/1.19.2-GCC-13.2.0
+  Loading requirement: devel/ncurses/6.4-GCCcore-13.2.0
+Loading lang/Python/3.11.5-GCCcore-13.2.0
+  Loading requirement: lib/libreadline/8.2-GCCcore-13.2.0
+    lang/Tcl/8.6.13-GCCcore-13.2.0 devel/SQLite/3.43.1-GCCcore-13.2.0
+    lib/libffi/3.4.4-GCCcore-13.2.0
+
+━━━━ v1_a : full genome | exon-flank | PE | 100 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — genomic exon-flank approach
+READ_LEN=100  FLANK=50  THREADS=64
+GFF chromosome naming: ncbi
+════════════════════════════════════════════════════════
+
+Step 0: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+    chr1 → NC_000001.11
+    chr10 → NC_000010.11
+    chr11 → NC_000011.10
+    chr12 → NC_000012.12
+    chr13 → NC_000013.11
+Step 0 complete.
+
+Step 0b: Building STAR index from full genome...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (step=1, READ_LEN=100, FLANK=50)...
+  Exon windows skipped (sequence fetch error): 748
+  Total reads simulated: 71,982,249
+Step 1 complete.
+
+Step 2: STAR alignment (splice-aware, 64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_genome --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/simreads/sim_R1.fastq <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/simreads/sim_R2.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 18:41:30 ..... started STAR run
+May 27 18:41:30 ..... loading genome
+May 27 18:41:35 ..... started mapping
+May 27 18:42:32 ..... finished mapping
+May 27 18:42:32 ..... started sorting BAM
+May 27 18:43:53 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 71,982,249
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.8985
+std          0.2822
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00 (perfect):   15,002
+  f>=0.90:            16,910
+  f 0.10–0.90:        979
+  f<0.10 (exclude):   1,484
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000221418.9         1210              0                0.0
+ENST00000267415.12         1810              0                0.0
+ ENST00000528972.1         1591              0                0.0
+ ENST00000533250.2         1592              0                0.0
+ ENST00000355602.3          326              0                0.0
+ ENST00000335479.2          318              0                0.0
+ ENST00000316169.2          283              0                0.0
+ ENST00000318124.3          520              0                0.0
+ ENST00000613102.5         2830              0                0.0
+ ENST00000292852.9         2224              0                0.0
+ENST00000313250.10         1272              0                0.0
+ ENST00000397121.3         2949              0                0.0
+ ENST00000355524.8         2481              0                0.0
+ ENST00000335021.2          391              0                0.0
+ ENST00000614623.5         3957              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/transcript_uniqueness_factors_genomic_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/transcript_uniqueness_factors_genomic_L100bp.tsv
+Run: python3 apply_uniqueness_correction.py
+════════════════════════════════════════════════════════
+
+━━━━ v1_b : full genome | exon-flank | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v1_b (full genome, exon-flank, SE)
+READ_LEN=100  FLANK=50  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+Step 0 complete.
+
+Step 0b: Building STAR index from full genome...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads (single-end)...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (SE, step=1, READ_LEN=100, FLANK=50)...
+  Exon windows skipped: 748
+  Total reads simulated: 71,982,249
+Step 1 complete.
+
+Step 2: STAR alignment single-end (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_genome --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_SE/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_SE/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 19:07:53 ..... started STAR run
+May 27 19:07:53 ..... loading genome
+May 27 19:07:58 ..... started mapping
+May 27 19:08:41 ..... finished mapping
+May 27 19:08:41 ..... started sorting BAM
+May 27 19:09:22 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 71,982,249
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.8982
+std          0.2824
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00: 14,959
+  f>=0.90: 16,896
+  f<0.10: 1,487
+  f=0.00: 1,127
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000315683.1          940              0                0.0
+ENST00000216840.11         1963              0                0.0
+ ENST00000267425.8         6055              0                0.0
+ENST00000313250.10         1272              0                0.0
+ENST00000267415.12         1810              0                0.0
+ ENST00000555019.6         2618              0                0.0
+ ENST00000298894.5         2410              0                0.0
+ ENST00000399440.7         1605              0                0.0
+ ENST00000557677.3         2891              0                0.0
+ ENST00000315519.3          994              0                0.0
+ENST00000262715.10        10830              0                0.0
+ENST00000272424.11          669              0                0.0
+ ENST00000315915.5          973              0                0.0
+ ENST00000430083.2         3903              0                0.0
+ ENST00000305051.6          976              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_SE/transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_SE/transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v1_c : full genome | MANE RNA   | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v1_c (full genome, MANE RNA, SE)
+READ_LEN=100  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0b: Building STAR index from full genome...
+Step 0b: Index already exists, skipping.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,423  (skipped too short: 14)
+  Total reads simulated: 70,083,967
+Step 1 complete.
+
+Step 2: STAR alignment single-end, full genome (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_genome --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_RNA_SE/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_RNA_SE/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 19:12:06 ..... started STAR run
+May 27 19:12:06 ..... loading genome
+May 27 19:12:12 ..... started mapping
+May 27 19:13:00 ..... finished mapping
+May 27 19:13:01 ..... started sorting BAM
+May 27 19:13:07 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,423  Reads: 70,083,967
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19423.0000
+mean         0.8920
+std          0.2872
+min          0.0000
+25%          0.9957
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00: 12,616
+  f>=0.90: 16,735
+  f<0.10: 1,543
+  f=0.00: 1,158
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000617429.5          806              0                0.0
+ ENST00000557649.6         2372              0                0.0
+ ENST00000374656.5         1642              0                0.0
+ ENST00000335678.7         4134              0                0.0
+ ENST00000310045.9         9167              0                0.0
+ ENST00000641841.1         1963              0                0.0
+ ENST00000415669.4         1156              0                0.0
+ ENST00000376191.3          611              0                0.0
+ENST00000344526.10         4648              0                0.0
+ENST00000314537.10         2438              0                0.0
+ ENST00000360127.7         1742              0                0.0
+ ENST00000625019.3         2064              0                0.0
+ ENST00000235349.6         1741              0                0.0
+ ENST00000409607.5          689              0                0.0
+ ENST00000350513.3          834              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_RNA_SE/transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_RNA_SE/transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v3_a : full genome | exon-flank | PE |  75 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — genomic exon-flank approach
+READ_LEN=75  FLANK=50  THREADS=64
+GFF chromosome naming: ncbi
+════════════════════════════════════════════════════════
+
+Step 0: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+    chr1 → NC_000001.11
+    chr10 → NC_000010.11
+    chr11 → NC_000011.10
+    chr12 → NC_000012.12
+    chr13 → NC_000013.11
+Step 0 complete.
+
+Step 0b: Building STAR index from full genome...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (step=1, READ_LEN=75, FLANK=50)...
+  Exon windows skipped (sequence fetch error): 748
+  Total reads simulated: 77,083,924
+Step 1 complete.
+
+Step 2: STAR alignment (splice-aware, 64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_genome --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/simreads/sim_R1.fastq <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/simreads/sim_R2.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 19:37:16 ..... started STAR run
+May 27 19:37:16 ..... loading genome
+May 27 19:37:22 ..... started mapping
+May 27 19:38:16 ..... finished mapping
+May 27 19:38:16 ..... started sorting BAM
+May 27 19:39:32 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 77,083,924
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.8928
+std          0.2855
+min          0.0000
+25%          0.9938
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00 (perfect):   12,958
+  f>=0.90:            16,682
+  f 0.10–0.90:        1,127
+  f<0.10 (exclude):   1,564
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000437818.1          292              0                0.0
+ ENST00000251372.8         3492              0                0.0
+ ENST00000434248.6         8817              0                0.0
+ ENST00000270747.8         3738              0                0.0
+ ENST00000438167.8          740              0                0.0
+ ENST00000437198.7         3695              0                0.0
+ENST00000292586.11         1350              0                0.0
+ ENST00000377179.4         2964              0                0.0
+ ENST00000692443.1         1783              0                0.0
+ ENST00000437316.7         1368              0                0.0
+ENST00000268668.11          779              0                0.0
+ ENST00000233997.4         1037              0                0.0
+ ENST00000648174.1         1499              0                0.0
+ ENST00000647769.1         1499              0                0.0
+ENST00000336077.11         1822              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/transcript_uniqueness_factors_genomic_L75bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/transcript_uniqueness_factors_genomic_L75bp.tsv
+Run: python3 apply_uniqueness_correction.py
+════════════════════════════════════════════════════════
+
+━━━━ v4_a : full genome | exon-flank | PE | 150 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — genomic exon-flank approach
+READ_LEN=150  FLANK=50  THREADS=64
+GFF chromosome naming: ncbi
+════════════════════════════════════════════════════════
+
+Step 0: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+    chr1 → NC_000001.11
+    chr10 → NC_000010.11
+    chr11 → NC_000011.10
+    chr12 → NC_000012.12
+    chr13 → NC_000013.11
+Step 0 complete.
+
+Step 0b: Building STAR index from full genome...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (step=1, READ_LEN=150, FLANK=50)...
+  Exon windows skipped (sequence fetch error): 748
+  Total reads simulated: 61,872,769
+Step 1 complete.
+
+Step 2: STAR alignment (splice-aware, 64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_genome --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/simreads/sim_R1.fastq <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/simreads/sim_R2.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 20:04:10 ..... started STAR run
+May 27 20:04:10 ..... loading genome
+May 27 20:04:15 ..... started mapping
+May 27 20:05:09 ..... finished mapping
+May 27 20:05:09 ..... started sorting BAM
+May 27 20:06:27 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,372  Reads: 61,872,769
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19372.0000
+mean         0.9045
+std          0.2771
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00 (perfect):   16,299
+  f>=0.90:            17,129
+  f 0.10–0.90:        834
+  f<0.10 (exclude):   1,409
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000445964.6         3579              0                0.0
+ ENST00000356120.9         1149              0                0.0
+ ENST00000270747.8         2538              0                0.0
+ ENST00000375599.8         1329              0                0.0
+ ENST00000358154.8         2908              0                0.0
+ ENST00000299575.5         4685              0                0.0
+ ENST00000487179.2         2566              0                0.0
+ ENST00000350513.3          884              0                0.0
+ENST00000333385.11         2508              0                0.0
+ ENST00000418316.2          893              0                0.0
+ ENST00000222574.9         2295              0                0.0
+ ENST00000315467.9         1315              0                0.0
+ ENST00000382280.8          516              0                0.0
+ ENST00000333751.8         2734              0                0.0
+ ENST00000225550.4         1400              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/transcript_uniqueness_factors_genomic_L150bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/transcript_uniqueness_factors_genomic_L150bp.tsv
+Run: python3 apply_uniqueness_correction.py
+════════════════════════════════════════════════════════
+
+━━━━ v2_a : dedup CDS | exon-flank | PE | 100 bp ━━━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v2_a (dedup CDS, exon-flank, PE)
+READ_LEN=100  FLANK=50  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0a: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+Step 0a complete.
+
+Step 0b: Building STAR index from deduplicated CDS...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads (paired-end)...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (PE, step=1, READ_LEN=100, FLANK=50)...
+  Exon windows skipped: 748
+  Total reads simulated: 71,982,249
+Step 1 complete.
+
+Step 2: STAR alignment paired-end against dedup CDS (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_dedup_cds --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/simreads/sim_R1.fastq <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/simreads/sim_R2.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 20:31:16 ..... started STAR run
+May 27 20:31:16 ..... loading genome
+May 27 20:31:17 ..... started mapping
+May 27 20:35:09 ..... finished mapping
+May 27 20:35:09 ..... started sorting BAM
+May 27 20:35:47 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 71,982,249
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.1600
+std          0.2197
+min          0.0000
+25%          0.0118
+50%          0.0462
+75%          0.2413
+max          0.9904
+
+  f=1.00: 0
+  f>=0.90: 181
+  f<0.10: 12,009
+  f=0.00: 2,616
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000485303.6         5203              0                0.0
+ ENST00000273588.9         2006              0                0.0
+ ENST00000693202.1         5354              0                0.0
+ ENST00000651503.2         5479              0                0.0
+ ENST00000356151.7         3019              0                0.0
+ ENST00000319283.8         3055              0                0.0
+ ENST00000251849.9         3208              0                0.0
+ ENST00000347869.8         3202              0                0.0
+ ENST00000396432.7         7407              0                0.0
+ ENST00000370187.8         6039              0                0.0
+ ENST00000358531.9         5450              0                0.0
+ ENST00000369847.4         2246              0                0.0
+ ENST00000396556.7         3637              0                0.0
+ENST00000271002.15          970              0                0.0
+ ENST00000434724.7         7156              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v2_b : dedup CDS | exon-flank | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v2_b (dedup CDS, exon-flank, SE)
+READ_LEN=100  FLANK=50  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0a: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+Step 0a complete.
+
+Step 0b: Building STAR index from deduplicated CDS...
+Step 0b: Index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads (single-end)...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (SE, step=1, READ_LEN=100, FLANK=50)...
+  Exon windows skipped: 748
+  Total reads simulated: 71,982,249
+Step 1 complete.
+
+Step 2: STAR alignment single-end against dedup CDS (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_dedup_cds --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_SE_flank/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_SE_flank/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 20:58:32 ..... started STAR run
+May 27 20:58:32 ..... loading genome
+May 27 20:58:32 ..... started mapping
+May 27 21:00:27 ..... finished mapping
+May 27 21:00:27 ..... started sorting BAM
+May 27 21:00:40 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 71,982,249
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.1596
+std          0.2207
+min          0.0000
+25%          0.0089
+50%          0.0467
+75%          0.2433
+max          0.9904
+
+  f=1.00: 0
+  f>=0.90: 179
+  f<0.10: 11,989
+  f=0.00: 3,628
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ENST00000357742.10         7747              0                0.0
+ ENST00000443035.8         8870              0                0.0
+ ENST00000337451.8         3235              0                0.0
+ ENST00000260327.9         6446              0                0.0
+ENST00000335181.10         2316              0                0.0
+ENST00000356056.10        12520              0                0.0
+ ENST00000648947.1         6401              0                0.0
+ ENST00000394518.7        13364              0                0.0
+ ENST00000416165.6         4786              0                0.0
+ENST00000268148.13         2281              0                0.0
+ENST00000313597.10         1535              0                0.0
+ ENST00000325551.9         2473              0                0.0
+ ENST00000467087.7         5016              0                0.0
+ ENST00000476941.6         4574              0                0.0
+ ENST00000317096.9         1511              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_SE_flank/transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_SE_flank/transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v2_c : dedup CDS | MANE RNA   | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — deduplicated CDS approach (v2)
+READ_LEN=100  THREADS=64
+Reference: <HPC_WORKDIR>/mappability-correction/mappability/../Ref/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna
+════════════════════════════════════════════════════════
+
+Step 0: Building STAR index from deduplicated CDS...
+Step 0: Index already exists, skipping.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,423  (skipped too short: 14)
+  Total reads simulated: 70,083,967
+Step 1 complete.
+
+Step 2: STAR alignment against deduplicated CDS (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_dedup_cds --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:02:45 ..... started STAR run
+May 27 21:02:45 ..... loading genome
+May 27 21:02:46 ..... started mapping
+May 27 21:04:29 ..... finished mapping
+May 27 21:04:29 ..... started sorting BAM
+May 27 21:04:38 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,423  Reads: 70,083,967
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19423.0000
+mean         0.1955
+std          0.2659
+min          0.0000
+25%          0.0000
+50%          0.0615
+75%          0.2977
+max          1.0000
+
+  f=1.00 (perfect):   199
+  f>=0.90:            579
+  f 0.10–0.90:        7,649
+  f<0.10 (exclude):   11,195
+
+  ── Worst 15 ─────────────────────────────────────────
+    transcript_id  n_positions  n_unique_back  uniqueness_factor
+ENST00000376350.8         3824              0                0.0
+ENST00000356924.9         2936              0                0.0
+ENST00000370214.9         3505              0                0.0
+ENST00000667305.2         1604              0                0.0
+ENST00000393386.7         8004              0                0.0
+ENST00000283228.7         3328              0                0.0
+ENST00000281171.9         6029              0                0.0
+ENST00000389418.9         4761              0                0.0
+ENST00000295718.7         3513              0                0.0
+ENST00000580170.6         5496              0                0.0
+ENST00000368226.9         5907              0                0.0
+ENST00000637617.2         5115              0                0.0
+ENST00000474889.6         9258              0                0.0
+ENST00000359947.9         7621              0                0.0
+ENST00000381196.9        10290              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds/transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds/transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v2_d : dedup CDS | MANE RNA   | SE | 100 bp | alignIntronMax 1 ━━━
+════════════════════════════════════════════════════════
+MANE mappability — v2_d (dedup CDS, MANE RNA, SE, alignIntronMax 1)
+READ_LEN=100  THREADS=64
+Reference: <HPC_WORKDIR>/mappability-correction/mappability/../Ref/GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna
+════════════════════════════════════════════════════════
+
+Step 0: Building STAR index from deduplicated CDS...
+Step 0: Index already exists, skipping.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,423  (skipped too short: 14)
+  Total reads simulated: 70,083,967
+Step 1 complete.
+
+Step 2: STAR alignment against deduplicated CDS (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_dedup_cds --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_alignIntronMax1/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --alignIntronMax 1 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_alignIntronMax1/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:06:45 ..... started STAR run
+May 27 21:06:45 ..... loading genome
+May 27 21:06:46 ..... started mapping
+May 27 21:08:27 ..... finished mapping
+May 27 21:08:27 ..... started sorting BAM
+May 27 21:08:35 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,423  Reads: 70,083,967
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19423.0000
+mean         0.1956
+std          0.2659
+min          0.0000
+25%          0.0000
+50%          0.0616
+75%          0.2978
+max          1.0000
+
+  f=1.00 (perfect):   199
+  f>=0.90:            579
+  f 0.10–0.90:        7,654
+  f<0.10 (exclude):   11,190
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000370552.8         4227              0                0.0
+ ENST00000644971.2        12998              0                0.0
+ ENST00000682258.1        10212              0                0.0
+ ENST00000656932.1         1066              0                0.0
+ ENST00000291574.9         6887              0                0.0
+ ENST00000374719.8         3356              0                0.0
+ ENST00000447601.7         1694              0                0.0
+ ENST00000367278.8         3550              0                0.0
+ENST00000307765.10         3587              0                0.0
+ ENST00000367261.8         3212              0                0.0
+ ENST00000264331.9         5715              0                0.0
+ ENST00000300255.7         1572              0                0.0
+ENST00000362031.10         3183              0                0.0
+ ENST00000423485.6         5596              0                0.0
+ ENST00000409020.6         1590              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_alignIntronMax1/transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_alignIntronMax1/transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v5_a : MANE ref  | MANE RNA    | SE | 100 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v5_a (MANE reference, MANE RNA, SE)
+READ_LEN=100  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0: Building STAR index from MANE RNA FASTA...
+	STAR --runMode genomeGenerate --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_MANE --genomeFastaFiles <HPC_WORKDIR>/mappability-correction/mappability/../Ref/MANE.GRCh38.v1.5.ensembl_rna.fna --genomeSAindexNbases 12 --genomeChrBinNbits 11 --runThreadN 64
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:10:07 ..... started STAR run
+May 27 21:10:07 ... starting to generate Genome files
+May 27 21:10:08 ... starting to sort Suffix Array. This may take a long time...
+May 27 21:10:08 ... sorting Suffix Array chunks and saving them to disk...
+May 27 21:10:10 ... loading chunks from disk, packing SA...
+May 27 21:10:11 ... finished generating suffix array
+May 27 21:10:11 ... generating Suffix Array index
+May 27 21:10:17 ... completed Suffix Array index
+May 27 21:10:17 ... writing Genome to disk ...
+May 27 21:10:17 ... writing Suffix Array to disk ...
+May 27 21:10:17 ... writing SAindex to disk
+May 27 21:10:17 ..... finished successfully
+Step 0 complete.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,423  (skipped too short: 14)
+  Total reads simulated: 70,083,967
+Step 1 complete.
+
+Step 2: STAR alignment single-end, MANE reference (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_MANE --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --alignIntronMax 1 --alignEndsType EndToEnd --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:10:54 ..... started STAR run
+May 27 21:10:54 ..... loading genome
+May 27 21:10:54 ..... started mapping
+May 27 21:11:31 ..... finished mapping
+May 27 21:11:31 ..... started sorting BAM
+May 27 21:11:57 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,423  Reads: 70,083,967
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19423.0000
+mean         0.9515
+std          0.1763
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00: 16,558
+  f>=0.90: 17,702
+  f<0.10: 368
+  f=0.00: 164
+
+  ── Worst 15 ─────────────────────────────────────────
+    transcript_id  n_positions  n_unique_back  uniqueness_factor
+ENST00000715679.1         2567              0                0.0
+ENST00000675268.1           60              0                0.0
+ENST00000381497.7         1471              0                0.0
+ENST00000713549.1          471              0                0.0
+ENST00000649912.2          471              0                0.0
+ENST00000706918.1          684              0                0.0
+ENST00000642841.1            6              0                0.0
+ENST00000578372.2         2121              0                0.0
+ENST00000645271.2         1769              0                0.0
+ENST00000598087.4          553              0                0.0
+ENST00000419795.6          364              0                0.0
+ENST00000310981.6         3647              0                0.0
+ENST00000452267.2          253              0                0.0
+ENST00000542739.3         1696              0                0.0
+ENST00000405679.4          462              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE/transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE/transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v5_b : MANE ref  | exon-flank  | PE | 100 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v5_b (MANE reference, exon-flank, PE)
+READ_LEN=100  FLANK=50  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0: Building chr→NC chromosome name map...
+  Scanning FASTA headers...
+  Chromosomes mapped: 26
+    chr1 → NC_000001.11
+    chr10 → NC_000010.11
+    chr11 → NC_000011.10
+    chr12 → NC_000012.12
+    chr13 → NC_000013.11
+Step 0 complete.
+
+Step 0b: Building STAR index from MANE RNA FASTA...
+Step 0b: MANE index already exists, skipping.
+
+Step 1: Parsing GFF and simulating reads (paired-end)...
+  Loaded 26 chr→NC mappings
+  Parsing GFF exon features...
+  Exon features parsed: 204,815
+  Unique transcripts: 19,437
+  Simulating reads (PE, step=1, READ_LEN=100, FLANK=50)...
+  Exon windows skipped (sequence fetch error): 748
+  Total reads simulated: 71,982,249
+Step 1 complete.
+
+Step 2: STAR alignment paired-end, MANE reference (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_MANE --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/simreads/sim_R1.fastq <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/simreads/sim_R2.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --alignIntronMax 1 --alignEndsType EndToEnd --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:36:16 ..... started STAR run
+May 27 21:36:16 ..... loading genome
+May 27 21:36:16 ..... started mapping
+May 27 21:37:20 ..... finished mapping
+May 27 21:37:20 ..... started sorting BAM
+May 27 21:37:31 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,373  Reads: 71,982,249
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19373.0000
+mean         0.6905
+std          0.2113
+min          0.0000
+25%          0.5640
+50%          0.7316
+75%          0.8622
+max          1.0000
+
+  f=1.00: 3
+  f>=0.90: 3,055
+  f<0.10: 405
+  f=0.00: 81
+
+  ── Worst 15 ─────────────────────────────────────────
+     transcript_id  n_positions  n_unique_back  uniqueness_factor
+ ENST00000382392.5         1215              0                0.0
+ ENST00000405239.6         4363              0                0.0
+ ENST00000382287.5         1215              0                0.0
+ ENST00000331070.8         1215              0                0.0
+ ENST00000440137.2          566              0                0.0
+ ENST00000382365.7         3436              0                0.0
+ ENST00000674075.1          100              0                0.0
+ ENST00000471932.6         2550              0                0.0
+ ENST00000420398.3          566              0                0.0
+ ENST00000682740.1         4301              0                0.0
+ ENST00000370083.9         1796              0                0.0
+ ENST00000623882.4         2587              0                0.0
+ ENST00000247005.8         2587              0                0.0
+ENST00000330330.10         1796              0                0.0
+ ENST00000377930.1         1850              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v5_c : MANE ref  | MANE RNA    | SE |  75 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v5_c (MANE reference, MANE RNA, SE, 75 bp)
+READ_LEN=75  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0: Building STAR index from MANE RNA FASTA...
+Step 0: MANE index already exists, skipping.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,431  (skipped too short: 6)
+  Total reads simulated: 70,569,649
+Step 1 complete.
+
+Step 2: STAR alignment single-end, MANE reference (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_MANE --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --alignIntronMax 1 --alignEndsType EndToEnd --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:40:33 ..... started STAR run
+May 27 21:40:33 ..... loading genome
+May 27 21:40:33 ..... started mapping
+May 27 21:41:09 ..... finished mapping
+May 27 21:41:09 ..... started sorting BAM
+May 27 21:41:44 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,431  Reads: 70,569,649
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19431.0000
+mean         0.9469
+std          0.1834
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00: 15,514
+  f>=0.90: 17,548
+  f<0.10: 408
+  f=0.00: 173
+
+  ── Worst 15 ─────────────────────────────────────────
+    transcript_id  n_positions  n_unique_back  uniqueness_factor
+ENST00000623042.2         1393              0                0.0
+ENST00000618755.2         1087              0                0.0
+ENST00000384627.1           33              0                0.0
+ENST00000715679.1         2592              0                0.0
+ENST00000612377.3         2826              0                0.0
+ENST00000384659.1           90              0                0.0
+ENST00000677770.1            4              0                0.0
+ENST00000419795.6          389              0                0.0
+ENST00000683890.1           16              0                0.0
+ENST00000331733.5         1884              0                0.0
+ENST00000570508.3          943              0                0.0
+ENST00000316169.2          207              0                0.0
+ENST00000578186.3          322              0                0.0
+ENST00000527353.2         1237              0                0.0
+ENST00000642841.1           31              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+════════════════════════════════════════════════════════
+
+━━━━ v5_d : MANE ref  | MANE RNA    | SE | 200 bp ━━━━━━━━━━━━━━━━━━━━
+════════════════════════════════════════════════════════
+MANE mappability — v5_d (MANE reference, MANE RNA, SE, 200 bp)
+READ_LEN=200  THREADS=64
+════════════════════════════════════════════════════════
+
+Step 0: Building STAR index from MANE RNA FASTA...
+Step 0: MANE index already exists, skipping.
+
+Step 1: Simulating reads from MANE RNA FASTA...
+  Reading MANE RNA FASTA...
+  Transcripts processed: 19,388  (skipped too short: 49)
+  Total reads simulated: 68,143,650
+Step 1 complete.
+
+Step 2: STAR alignment single-end, MANE reference (64 threads)...
+	STAR --runThreadN 64 --genomeDir <HPC_WORKDIR>/mappability-correction/mappability/../Ref/STAR_index_MANE --readFilesIn <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/simreads/sim_R1.fastq --outSAMtype BAM SortedByCoordinate --outSAMattributes NH HI AS NM --outSAMmultNmax 1 --outFilterMultimapNmax 40 --alignIntronMax 1 --alignEndsType EndToEnd --outBAMsortingThreadN 64 --outBAMsortingBinsN 20 --limitBAMsortRAM 160000000000 --outFileNamePrefix <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/bam/sim_
+	STAR version: 2.7.11b   compiled: 2024-07-31T14:02:42+02:00 <build>/STAR/2.7.11b/GCC-13.2.0/STAR-2.7.11b/source
+May 27 21:44:27 ..... started STAR run
+May 27 21:44:27 ..... loading genome
+May 27 21:44:28 ..... started mapping
+May 27 21:45:12 ..... finished mapping
+May 27 21:45:12 ..... started sorting BAM
+May 27 21:46:04 ..... finished successfully
+Step 2 complete.
+
+Step 3: Computing uniqueness factors...
+  Counting simulated reads per transcript...
+  Transcripts: 19,388  Reads: 68,143,650
+  Counting unique recoveries from BAM...
+
+  ── Distribution ─────────────────────────────────────
+count    19388.0000
+mean         0.9612
+std          0.1587
+min          0.0000
+25%          1.0000
+50%          1.0000
+75%          1.0000
+max          1.0000
+
+  f=1.00: 17,403
+  f>=0.90: 18,001
+  f<0.10: 294
+  f=0.00: 141
+
+  ── Worst 15 ─────────────────────────────────────────
+    transcript_id  n_positions  n_unique_back  uniqueness_factor
+ENST00000715679.1         2467              0                0.0
+ENST00000645271.2         1669              0                0.0
+ENST00000607829.6          444              0                0.0
+ENST00000454856.4         1488              0                0.0
+ENST00000457020.3         1095              0                0.0
+ENST00000400079.1           41              0                0.0
+ENST00000540220.6          453              0                0.0
+ENST00000403683.2          319              0                0.0
+ENST00000528972.1         1388              0                0.0
+ENST00000437818.1           41              0                0.0
+ENST00000452267.2          153              0                0.0
+ENST00000542739.3         1596              0                0.0
+ENST00000405679.4          362              0                0.0
+ENST00000506414.1         1394              0                0.0
+ENST00000506151.1         1394              0                0.0
+
+  Saved: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv
+
+════════════════════════════════════════════════════════
+Done: <HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv
+════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════
+All scripts complete: Wed May 27 21:48:25 CEST 2026
+
+Result TSVs:
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE/transcript_uniqueness_factors_MANE_RNA_SE_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L200bp/transcript_uniqueness_factors_MANE_RNA_SE_L200bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_RNA_SE_L75bp/transcript_uniqueness_factors_MANE_RNA_SE_L75bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_MANE_exonflank_PE/transcript_uniqueness_factors_MANE_exonflank_PE_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds/transcript_uniqueness_factors_dedup_cds_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_PE_flank/transcript_uniqueness_factors_dedup_cds_PE_flank_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_SE_flank/transcript_uniqueness_factors_dedup_cds_SE_flank_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_dedup_cds_alignIntronMax1/transcript_uniqueness_factors_dedup_cds_alignIntronMax1_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic/transcript_uniqueness_factors_genomic_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L150bp/transcript_uniqueness_factors_genomic_L150bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_L75bp/transcript_uniqueness_factors_genomic_L75bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_RNA_SE/transcript_uniqueness_factors_genomic_RNA_SE_L100bp.tsv
+<HPC_WORKDIR>/mappability-correction/mappability/results/mappability_genomic_SE/transcript_uniqueness_factors_genomic_SE_L100bp.tsv
+════════════════════════════════════════════════════════

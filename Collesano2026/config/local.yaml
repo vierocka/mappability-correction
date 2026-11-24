@@ -1,0 +1,23 @@
+# ── Local pipeline (corrected TPM → 9-mer net sums) ────────────────────────────────
+outdir: results_local
+groups:                       # one entry per group (cell line / individual)
+  HCC1937:
+    tpm: results_server/correction/HCC1937/corrected_counts/HCC1937_corrected_mean_74_75_mane_fc_corrected.tsv
+    samples: [results_server/correction/HCC1937/corrected_counts/SRR31477874_mane_fc_corrected.tsv,
+              results_server/correction/HCC1937/corrected_counts/SRR31477875_mane_fc_corrected.tsv]
+    protein: results_server/groups/HCC1937/ref/HCC1937_personal_MANE_protein.faa
+    ms_column: HCC1937          # Bassani-Sternberg 2015 Table S1 column stem; empty = no MS comparison
+  HCT116:
+    tpm: results_server/correction/HCT116/corrected_counts/HCT116_corrected_mean_41_42_mane_fc_corrected.tsv
+    samples: [results_server/correction/HCT116/corrected_counts/SRR3644141_mane_fc_corrected.tsv,
+              results_server/correction/HCT116/corrected_counts/SRR3644142_mane_fc_corrected.tsv]
+    protein: results_server/groups/HCT116/ref/HCT116_personal_MANE_protein.faa
+    ms_column: HCT116
+  JY:
+    tpm: results_server/correction/JY/corrected_counts/JY_corrected_mean_364065_mane_fc_corrected.tsv
+    samples: [results_server/correction/JY/corrected_counts/SRR364065_mane_fc_corrected.tsv]
+    protein: results_server/groups/JY/ref/JY_personal_MANE_protein.faa
+    ms_column: JY
+min_transcript_tpm: 1         # transcript TPM_corrected cut-off before 9-mer net sums
+ms_table_s1: ""               # mcp.M114.042812-4.xlsx (Bassani-Sternberg 2015); "" = skip
+ms_search_fasta: ""           # HUMAN.fasta used by that study

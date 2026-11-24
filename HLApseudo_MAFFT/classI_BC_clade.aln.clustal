@@ -1,0 +1,272 @@
+CLUSTAL format alignment by MAFFT L-INS-i (v7.505)
+
+
+HLA-B           agagtctcctcagacgccgagatgctggtcatggcgccccgaaccgtcctcctgctgctc
+HLA-C           acattctccccagaggccgagatgcgggtcatggcgccccgagccctcctcctgctgctc
+HLA-F           atatttttcccagacgcggaggttggggtcatggcgccccgaagcctcctcctgctgctc
+HLA-K           a----------------------tggggtcatggcgtcccgaaccctcctcctgctgctc
+HLA-N           a-----------------------------------------------------------
+HLA-T           c-----------------------------------------------------------
+HLA-U           a-----------------------------------------------------------
+HLA-W           g-----------------------------------------------------------
+                                                                            
+
+HLA-B           tcggcggccctggccctgaccgagacctgggccggctcccactccatgaggtatttctac
+HLA-C           tcgggaggcctggccctgaccgagacctgggcctgctcccactccatgaggtatttcgac
+HLA-F           tcaggggccctggccctgaccgatacttgggcgggctcccactccttgaggtatttcagc
+HLA-K           ttgggggccctggccctgaccgagacctgggcgggttcccactccataaggtagttcagc
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------------------------------------------------------------
+                                                                            
+
+HLA-B           acctccgtgtcccggcccggccgcggggagccccgcttcatctcagtgggctacgtggac
+HLA-C           accgccgtgtcccggcccggccgcggagagccccgcttcatctcagtgggctacgtggac
+HLA-F           accgctgtgtcgcggcccggccgcggggagccccgctacatcgccgtggagtacgtagac
+HLA-K           accgccgtgtcccggccgggtcgcggggagccccggtacatcgcagtgggctacgtggac
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------------------------------------------------------------
+                                                                            
+
+HLA-B           gacacccagttcgtgaggttcgacagcgacgccgcgagtccgagagaggagccgcgggcg
+HLA-C           gacacgcagttcgtgcggttcgacagcgacgccgcgagtccgagaggggagccgcgggcg
+HLA-F           gacacgcaattcctgcggttcgacagcgacgccgcgattccgaggatggagccgcgggag
+HLA-K           gacacgcagttcgtgcggttcgacagcgacgcggcgactccgaggacgtagccgcagtcg
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------------------------------------------------------------
+                                                                            
+
+HLA-B           ccgtggatagagcaggaggggccggagtattgggaccggaacacacagatctacaaggcc
+HLA-C           ccgtgggtggagcaggaggggccggagtattgggaccgggagacacagaagtacaagcgc
+HLA-F           ccgtgggtggagcaagaggggccgcagtattgggagtggaccacagggtacgccaaggcc
+HLA-K           ccgtggttggagcaggagggaccggagtattgggaccggagcacacggaacatc-aggcc
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------------------------------------------------------------
+                                                                            
+
+HLA-B           caggcacagactgac-cgagagagcctgcggaacctgcgcggctactacaaccagagcga
+HLA-C           caggcacaggctgac-cgagtgagcctgcggaacctgcgcggctactacaaccagagcga
+HLA-F           aacgcacagactgac-cgagtggccctgaggaacctgctccgccgctacaaccagagcga
+HLA-K           cgcgcacagactgacaagagtgaacctgcccatgccgcgccgctactaccaccaga----
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------------------------------------------------------------
+                                                                            
+
+HLA-B           ggccgggtctcacaccctccagagcatgtacggctgcgacgtggggccggacgggcgcct
+HLA-C           ggacgggtctcacaccctccagaggatgtctggctgcgacctggggcccgacgggcgcct
+HLA-F           ggctgggtctcacaccctccagggaatgaatggctgcgacatggggcccgacggacgcct
+HLA-K           -----ggtctaacaccctccagataatgtatggctgcgacttggggctggaagggcgcct
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ------gtctcacacccttcaatgggtacacagctgcgacgtggactcggactgcagtct
+                                                                            
+
+HLA-B           cctccgcgggcatgaccagtacgcctacgacggcaaggattacatcgccctgaacgagga
+HLA-C           cctccgcgggtatgaccagtccgcctacgacggcaaggattacatcgccctgaacgagga
+HLA-F           cctccgcgggtatcaccagcacgcgtacgacggcaaggattacatctccctgaacgagga
+HLA-K           cctccgcgggtatgaacagcacgccaacgatggcaaggattacatagcccggaactagga
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           -----------------------------------aagattacatcgccctaaaccagga
+HLA-W           cctcagtgggtatgaaca--taccctatcacggcgccagttacctcgtccgaaaccagga
+                                                                            
+
+HLA-B           cctgcgctcctggaccgccgcggacacggcggctcagatcacccagcgcaagtgggaggc
+HLA-C           cctgcgctcctggaccgccgcggacaccgcggctcagatcacccagcgcaagttggaggc
+HLA-F           cctgcgctcctggaccgcggcggacaccgtggctcagatcacccagcgcttctatgaggc
+HLA-K           cctgcgctcctggaccgcggcggacatggcggctcagatcatcaagcgcaagtgggaggc
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           cctgagctcttggactgcggcggccatggcggctcagattacccagcgcaagtgggaggc
+HLA-W           actgcgctcttggactgcagcggacaaggcggctcagatgccct-------------ggc
+                                                                            
+
+HLA-B           ggcccgtgaggcggagcagcggagagcctacctggagggcgagtgcgtggagtggctccg
+HLA-C           ggcccgtgcggcggagcagctgagagcctacctggagggcacgtgcgtggagtggctccg
+HLA-F           agaggaatatgcagaggagttcaggacctacctggagggcgagtgcctggagttgctccg
+HLA-K           agaagaatttgcagagcagatcagggcctacctggagggcacgtgcgtggagaggct-cg
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ggcccatgaggcggagcagcagacagcctacctggagggcaggtgcgtggagtggctccg
+HLA-W           ggaggaacaggcagagctgctcaaaacctacctgcagggaaggtgggcggagtggctcag
+                                                                            
+
+HLA-B           cagatacctggagaacgggaaggacaagctggagcgcgctgaccc---cccaaagacaca
+HLA-C           cagatacctggagaacgggaaggagacgctgcagcgcgcagaacc---cccaaagacaca
+HLA-F           cagatacttggagaatgggaaggagacgctacagcgcgcagatcc---tccaaaggcaca
+HLA-K           cagacacctggagaacgggaaggagacgctgcagctcactgacccccgcccccagacaca
+HLA-N           ------------------------------------------------ccca--------
+HLA-T           ------------------------------------------------ccagaatacatg
+HLA-U           cagatacctggagaacaggaaggagacactgcagcacacc--------------------
+HLA-W           caaagtccttaagaatgggaaggagaggctgcagtgcccagaac----cccaaagactca
+                                                                            
+
+HLA-B           cgtgacccaccaccccatctctgaccatgaggccaccctgaggtgctgggccctgggttt
+HLA-C           cgtgacccaccaccccctctctgaccatgaggccaccctgaggtgctgggccctgggctt
+HLA-F           cgttgcccaccaccccatctctgaccatgaggccaccctgaggtgctgggccctgggctt
+HLA-K           tatgatccaccattccgtctctgactataaggccaccctgaggtgctgggccctgggctt
+HLA-N           ------ctatgaccccatctctgactgtaataccaccctgaggtgctgggccctgggctt
+HLA-T           tgtgatccactaccccatctcggaccatgaggccgccctgaggtgctgggtcccgggctt
+HLA-U           ------------------------------------------------------------
+HLA-W           catgacccaccaccccatctctgaccatgaggccaccctgaggtgctgggctctgggctt
+                                                                            
+
+HLA-B           ctaccctgcggagatcacactgacctggcagcgggatggcgaggaccaaactcaggacac
+HLA-C           ctaccctgcggagatcacactgacctggcagcgggatggggaggaccagacccaggacac
+HLA-F           ctaccctgcggagatcacgctgacctggcagcgggatggggaggaacagacccaggacac
+HLA-K           ctaccctgtggagatcacactgacctggcagcaggatggagaggaccagactagggacat
+HLA-N           ccaccctgaagagatcacattgatctggcagcaggatggggaggactatacctaggacat
+HLA-T           ctaccatgtggaaatcacagtgacccaactgtgggatggggaggaccaaatttaggacgc
+HLA-U           ------------------------------------------------------------
+HLA-W           ctaccctgtggagatcacactgacccagtagtgggatggacaggaccaaatgtaggatgc
+                                                                            
+
+HLA-B           tgagcttgtggagaccagaccagcaggagatagaaccttccagaagtgggcagctgtggt
+HLA-C           cgagcttgtggagaccaggccagcaggagatggaaccttccagaagtgggcagctgtggt
+HLA-F           agagcttgtggagaccaggcctgcaggggatggaaccttccagaagtgggccgctgtggt
+HLA-K           ggagcttgtagagaccaggcctgcaggggatggaaccttccagaagtgggcagctgtggt
+HLA-N           ggagcttgcagagacc--------------------------------------------
+HLA-T           agagcttgtggggaccagacctgcagggtatagaaccttccagaagtgggcagctgtgat
+HLA-U           ------------------------------------------------------------
+HLA-W           agaggttgtggagaccacacctgcagggtacagaaccttccagaagtgggcagctgtggt
+                                                                            
+
+HLA-B           ggtgccttctggagaagagcagagatacacatgccatgtacagcatgaggggctgccgaa
+HLA-C           ggtgccttctggacaagagcagagatacacgtgccatatgcagcacgaggggctgcaaga
+HLA-F           ggtgcctcctggagaggaacagagatacacatgccatgtgcagcacgaggggctgcccca
+HLA-K           ggtgccttctggagaggaacagagatacccgtgccatgtgcagcatgaggggttgcccaa
+HLA-N           ------------------------------------------------------------
+HLA-T           gctgtcttctagagacaagtagagatacacatgccatgtgcagcaggaggcactgccaga
+HLA-U           ------------------------------------------------------------
+HLA-W           ggtgtcttctggagaggagcagagatacacatgccatgtgcagcacgatgggctgccaga
+                                                                            
+
+HLA-B           gcccctcaccctgagatgggagccgtcttcccagtccaccgtccccatcgtgggcattgt
+HLA-C           gcccctcaccctgagctgggagccatcttcccagcccaccatccccatcatgggcatcgt
+HLA-F           gcccctcatcctgagatgggagcagtctccccagcccaccatccccatcgtgggcatcgt
+HLA-K           gcccctcaccctgagatgggagcagtcttctcagcccaccatccccatcgtgggcatcat
+HLA-N           ------------------------------------------------------------
+HLA-T           gctcctcacactgagatggg-gccatcttcccagcccacattcctcatcatgggcatcgt
+HLA-U           ------------------------------------------------------------
+HLA-W           gcccctcaccctgagatg---gctgtcttcccagcccaccatccccatcatgggcatcgt
+                                                                            
+
+HLA-B           tgctggcctggctgtcctagcagttgtggtcatc---ggagctgtggtcgctgctgtgat
+HLA-C           tgctggcctggctgtcctggttgtcctagctgtccttggagctgtggtcaccgctatgat
+HLA-F           tgctggccttgttgtccttggagctgtggtcact---ggagctgtggtcgctgctgtgat
+HLA-K           tgctggcctggttctccttggagctgtagtcact---ggagctgtggtttctgctgtgat
+HLA-N           ------------------------------------------------------------
+HLA-T           taccgtcctggttgttcta------------------ggtgctgtggtcactgctgtgat
+HLA-U           ------------------------------------------------------------
+HLA-W           tactgtcctggttgttcttggtgctgttttcacc---agagctgtggtcactgctgtgat
+                                                                            
+
+HLA-B           gtgtaggaggaagagttcagg-----------tggaaaaggagg--gagctactctcagg
+HLA-C           gtgtaggaggaagagctcagg-----------tggaaaaggagg--gagctgctctcagg
+HLA-F           gtggaggaagaagagctcaga-----------tagaaacagagg--gagctactctcagg
+HLA-K           gtgcaggaagaagaactcagg-----------cagcgaccatg-----------------
+HLA-N           ------------------------------------------------------------
+HLA-T           gtggaagaataagaccccaggtaggaaagggatggaaaaggagt--cagctatgctcagg
+HLA-U           ------------------------------------------------------------
+HLA-W           gtgaagaataagagcccaggg-----------tggattcccagccccagatgggagttgg
+                                                                            
+
+HLA-B           ctgcgtgcagcgacagtgcccagggctctgatgtgtctctcacagcttgaaaagcctgag
+HLA-C           ctgcgtgcagcaacagtgcccagggctctgatgagtctctcatcacttgtaaagcctgag
+HLA-F           ctgcagcc--------tactcagtggtcagcggaaacttgatgataacatggtggtcaag
+HLA-K           ------------------cgcagggttctgatgtgtctctcacggcttgtaaa-------
+HLA-N           ------------------------------------------------------------
+HLA-T           cttcaagtaagaacagtacccagggctctgatgtgtctctcaagtcttg-----------
+HLA-U           ------------------------------------------------------------
+HLA-W           cttgtatcctgcctagtcatgaggcaccatctctgtctatcaacactta-----------
+                                                                            
+
+HLA-B           acagctgtcttgtgagggact----gagatgcaggatttcttcacgcctcccctttgtga
+HLA-C           acagctg-cctgtgtgggact----gagatgcaggatttcttcacacctctcctttgtga
+HLA-F           cttattt-ctcctggggg--------------------------tgctcttccaaggata
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ----ctcttttgtaaagaacttgtgaaaatgaaggacaaatttatcaccttcattggag-
+                                                                            
+
+HLA-B           cttcaagagcctctggcatctctttctgcaaaggcacctgaatgtgtctgc--------g
+HLA-C           cttcaagagcctctggcatctctttctgcaaaggcacctgaatgtgtctgc--------g
+HLA-F           tttgggctgcctccggagtcacagtgtcttgggccgccggaaggt---------------
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           --tcatgggaacctgactcccagcagtcacaggtcaggggaaggtacccgcagaggacag
+                                                                            
+
+HLA-B           tccctgttagcataatgtgaggaggtggagagacagcccacccttgtgtccactgtgacc
+HLA-C           ttcctgttagcataatgtgaggaggtggagagacagcccacccccgtgtccaccgtgacc
+HLA-F           ---------------------------gggtgacatgtggatcttgttttttttgtggct
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           acctcactaggacaat------tagtccagtttcaacacatcctcttacctaggg-----
+                                                                            
+
+HLA-B           -----cctgttcccatgctgacctgtgtttcctccccagtcatctttcttgttcc-----
+HLA-C           -----cctgtccccacactgacctgtgttccctccccgatcatctttcctgttcc-----
+HLA-F           gtggacatctttcaacactgccttcttggccttgcaaagccttcgctttggcttcggctt
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           -------tttcctgattctgacctggg-----tctgcagtcacagttctggacactcctc
+                                                                            
+
+HLA-B           --agagaggtggggctggatgtctccatctctgtctcaactttac----gtgcactgagc
+HLA-C           --agagaggtggggctggatgtctccatctctgtctcaaattcatg---gtgcactgagc
+HLA-F           taggaggggcaggagcttccttcttcgttcttggcaccatcttatgaaaagggtccagat
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ---------tgggatctcatgaccctgcttcctccctggcctt----------------t
+                                                                            
+
+HLA-B           tgcaacttcttacttccctactgaaaataagaatctgaa---tataaatttgttttctca
+HLA-C           tgcaacttcttacttccctaatgaagttaagaacctgaa---tataaatttgtgttctca
+HLA-F           taagatttttgactgagtcattctaaagtaagttgcaagacccatgatactagaccacta
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           cacagtttattttctttccacagaggacagtacccaggg---ctctgatgtgtctctcaa
+                                                                            
+
+HLA-B           aatatttgctatgagaggttgatggattaattaaataagtcaattcctggaatttgagag
+HLA-C           aatatttgctatgaagcgttgatggattaattaaataagtcaattcctagaagttgagag
+HLA-F           aatacttcatcacacacctcctaagaat-----aagaaccaacattatcacaccaaagaa
+HLA-K           ------------------------------------------------------------
+HLA-N           ------------------------------------------------------------
+HLA-T           ------------------------------------------------------------
+HLA-U           ------------------------------------------------------------
+HLA-W           ggcttgtaaaatg-----------------------------------------------
+                                                                            
+
+HLA-B           agcaaataaagacctgagaaccttcca---
+HLA-C           agcaaataaagacctgagaaccttccagaa
+HLA-F           aataaataattccataatatta--------
+HLA-K           ------------------------------
+HLA-N           ------------------------------
+HLA-T           ------------------------------
+HLA-U           ------------------------------
+HLA-W           ------------------------------
+                                              

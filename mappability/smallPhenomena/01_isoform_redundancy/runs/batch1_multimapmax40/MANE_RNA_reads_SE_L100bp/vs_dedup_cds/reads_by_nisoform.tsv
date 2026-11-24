@@ -1,0 +1,11 @@
+n_isoforms_bin	n_genes	star_mean_uf	star_median_uf	star_mean_frac_uf0	kallisto_mean_entropy	kallisto_index	read_len_bp	mode
+1	7087				0.0	dedup_cds	100	SE
+2	3560				0.0927	dedup_cds	100	SE
+3	2326				0.0892	dedup_cds	100	SE
+4	1677				0.0976	dedup_cds	100	SE
+5	1177				0.1008	dedup_cds	100	SE
+6	924				0.1021	dedup_cds	100	SE
+7	606				0.096	dedup_cds	100	SE
+8	542				0.1092	dedup_cds	100	SE
+9	393				0.1067	dedup_cds	100	SE
+10+	2221				0.0958	dedup_cds	100	SE

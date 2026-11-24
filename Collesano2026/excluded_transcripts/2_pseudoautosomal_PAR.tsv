@@ -1,0 +1,18 @@
+transcript_id	gene	region	reason
+ENST00000313871.9	AKAP17A	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381241.9	ASMT	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381317.9	ASMTL	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381192.10	CD99	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000400841.8	CRLF2	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381529.9	CSF2RA	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000334651.11	DHRSX	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000326153.10	GTPBP6	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000331035.10	IL3RA	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000244174.11	IL9R	PAR2	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381297.10	P2RY8	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381657.8	PLCXD1	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000390665.9	PPP2R3B	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000686671.1	SHOX	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000381401.11	SLC25A6	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000286448.12	VAMP7	PAR2	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy
+ENST00000652001.1	ZBED1	PAR1	identical X/Y copies in primary assembly; funique = 0; not quantifiable per copy

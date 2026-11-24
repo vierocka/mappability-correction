@@ -1,0 +1,5 @@
+	n	f=0	f<0.9	median
+genome + alt (RefSeq p14)	19299.0	1121.0	2455.0	1.0
+dedup CDS	19345.0	5226.0	18765.0	0.056762
+MANE only	19345.0	80.0	1652.0	0.999175
+Ensembl primary (used)	19299.0	159.0	1201.0	1.0

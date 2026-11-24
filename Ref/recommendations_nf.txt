@@ -1,0 +1,71 @@
+7th July 2026
+https://nf-co.re/rnaseq/usage#reference-genome-options
+As recommended "Reference genome
+It is recommended to provide the most complete reference genome for your species, without additional loci (haplotypes) or patches. For model organisms such as mouse or human, this is the “primary assembly”, which includes the reference chromosomes and some additional scaffolds. For the human assembly GRCh38 (hg38), use the GRCh38.primary_assembly.genome.fa.gz file from GENCODE or the Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz file from Ensembl. These files cover the largest portion of the reference genome without including multiple copies of the same sequence, which would result in heavy mapping quality penalties."
+
+Here following the recommendation
+"latest_release=$(curl -s 'http://rest.ensembl.org/info/software?content-type=application/json' | grep -o '"release":[0-9]*' | cut -d: -f2)
+wget -L ftp://ftp.ensembl.org/pub/release-${latest_release}/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz
+wget -L ftp://ftp.ensembl.org/pub/release-${latest_release}/gtf/homo_sapiens/Homo_sapiens.GRCh38.${latest_release}.gtf.gz"
+
+Reference transcriptome
+In addition to the reference genome sequence and annotation, you can provide a reference transcriptome FASTA file. These files can be obtained from GENCODE or Ensembl. However, these sequences only cover the reference chromosomes and can cause inconsistencies if you are using a primary or toplevel genome assembly and annotation.
+
+We recommend not providing a transcriptome FASTA file and instead allowing the pipeline to create it from the provided genome and annotation. Similar to aligner indexes, you can save the created transcriptome FASTA and BED files to a central location for future pipeline runs. This helps avoid redundant computation and having multiple copies on your system. Ensure that all genome, annotation, transcriptome, and index versions match to maintain consistency.
+
+---
+8th July 2026
+STAR mapping / index settings — nf-core/rnaseq (v3.26.0) vs. our mappability pipeline
+Sources: https://nf-co.re/rnaseq/3.26.0/ , https://nf-co.re/rnaseq/3.26.0/docs/usage ,
+https://nf-co.re/usage/reference_genomes ,
+nf-core/modules star/align/main.nf and star/genomegenerate/main.nf
+
+nf-core/rnaseq STAR_GENOMEGENERATE:
+  STAR --runMode genomeGenerate --genomeFastaFiles $fasta \
+       --sjdbGTFfile $gtf (only if GTF provided) \
+       --genomeSAindexNbases <auto or user-set> \
+       --limitGenomeGenerateRAM (task.memory - 100MB) --runThreadN $task.cpus
+  - genomeSAindexNbases auto-computed: min(14, log2(genome_length)/2 - 1)
+    (STAR manual's own recommendation, not just hardcoded 14)
+  - --sjdbOverhang is NEVER set, even at index-build time — left at STAR's
+    own default (100), not tuned to actual read length.
+
+nf-core/rnaseq STAR_ALIGN (module command):
+  STAR --genomeDir $index --readFilesIn ... --runThreadN $task.cpus \
+       --outFileNamePrefix $prefix. \
+       --outSAMtype BAM Unsorted (default) \
+       --sjdbGTFfile $gtf (again, at align time, unless --star_ignore_sjdbgtf) \
+       --outSAMattrRGline 'ID:$prefix' 'SM:$prefix' \
+       + extra args (task.ext.args / --extra_star_align_args)
+  star_rsem preset (ENCODE3-compatible) adds:
+       --outSAMunmapped Within --outFilterType BySJout \
+       --outFilterMultimapNmax 20 --alignIntronMin 20 \
+       --alignIntronMax 1000000 --sjdbScore 1
+
+Our genomeSAindexNbases values vs. the formula (checked against actual file sizes):
+  Full genome (~3.1 Gb)              -> formula 14 (capped)  | we used 14  (match)
+  Genome-wide dedup CDS (~260 Mb)     -> formula ~13.0        | we used 12  (slightly conservative)
+  MANE RNA (~76 Mb)                  -> formula ~12.1         | we used 12  (match)
+  MANE-restricted dedup CDS (~33.5Mb)-> formula ~11.5         | we used 12  (slightly high, harmless)
+  No correctness issue either way — at most a marginally oversized index for the two CDS references.
+
+Key methodological difference (deliberate on our side, worth revisiting):
+  nf-core passes the GTF to STAR both at genomeGenerate time AND at align
+  time (--sjdbGTFfile), so STAR aligns with annotated splice junctions as a
+  prior. Our STAR calls (index build AND alignment, all v1-v8 and all _nf
+  scripts) never pass a GTF to STAR at all — every intron is discovered de
+  novo. This was intentional (we want raw mappability, not annotation-
+  assisted alignment that could inflate uniqueness factors near known
+  junctions) — but it means our results are not a direct replication of
+  what nf-core/rnaseq itself would produce against the same reference.
+
+  TODO once the full nf-core/rnaseq comparison run is done: check whether
+  this GTF-agnostic base index actually helps or hurts vs. nf-core's
+  annotation-assisted (--sjdbGTFfile) STAR runs — compare uniqueness
+  factors / multimapping rates for the same transcripts under both setups.
+
+Pending change (not yet applied, per user instruction — see task list):
+  --outFilterMultimapNmax 40 -> 20 across ALL scripts (old and _nf), to
+  match nf-core's ENCODE3-standard star_rsem preset above.
+  No adapter clipping needed on our side — reads are simulated "perfect"
+  reads, not real sequencer output.

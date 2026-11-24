@@ -1,0 +1,9 @@
+# run outputs and references (large; regenerate)
+refs/
+results_server/
+results_local/
+.snakemake/
+**/__pycache__/
+*.bam
+*.fq.gz
+*.fastq*

@@ -1,0 +1,4 @@
+cell_line	n_transcripts	n_demoted	ligands_total	ligands_on_demoted	pct_zero	var_over_mean	rate_decile1_over_decile10
+JY	16583	341	1821	31	91.1	1.42	254.1
+HCC1937	16958	486	694	31	96.3	1.21	168.7
+HCT116	17147	355	627	7	96.7	1.29	98.0

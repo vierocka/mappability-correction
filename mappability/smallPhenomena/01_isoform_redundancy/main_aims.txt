@@ -1,0 +1,106 @@
+MAIN AIMs:
+
+1.) better targeted list of sequences per for scRNA
+- if UTR does not work, try within coding CDS
+- check UTR, CDS, protein coding domains
+- at least 2 unique 31-mers in a contiguous stretch spanning ≥ 50 bp total
+  (optimal: ≥ 20 consecutive unique 31-mer positions = 50 bp span;
+   minimum reportable: 1 unique 31-mer = 31 bp span)
+- f_uniq > 0.95 (uniqueness factor)
+- try per gene
+- try per isoform
+
+2.) define set of genes where using isoform level is pointless
+
+3.) define genes and isoforms with uniqueness level 0 (at raw CDS, at UTR-CDS-UTR level)
+
+4.) define genes with zero or hugely inflated signal (RNA -> immunopeptidomics difficulties; does applying f_uniq always help?)
+
+5.) evolutionary perspective - isoforms, pseudogenes, single genes, multicopy genes, their homology, conservation and uniqueness
+
+────────────────────────────────────────────────────────────────────────────────
+FEASIBILITY AND PRIOR KNOWLEDGE ASSESSMENT
+────────────────────────────────────────────────────────────────────────────────
+k-mer note: k = 31 throughout (KMER_K constant in analyze.py; matches kallisto/salmon
+default). Rather than raising k, uniqueness is assessed via contiguous stretches of
+unique 31-mers: a run of N consecutive positions where every 31-mer is unique spans
+N + 30 bp. Target stretch: ≥ 50 bp (≥ 20 consecutive unique positions). This tolerates
+short indels or mismatches that shift k-mer positions by a few bp while guaranteeing
+≥ 1 unique 31-mer within any overlapping read. One unique 31-mer (31 bp) is the minimum
+reportable case. Key output columns: max_unique_stretch_bp, stretch_reaches_50bp.
+
+Aim 1 — Targeted sequence list for scRNA (unique k-mer approach)
+   Feasible  : Yes. All inputs exist. The global k-mer frequency table is built in
+               Section C (parse_mane_fasta). The unique_kmers column in
+               isoform_kmers_mane.tsv stores the count of unique 50-mers per
+               transcript; filtering on unique_kmers ≥ 2 AND frac_unique ≥ 0.95
+               gives the target gene set directly. Per-isoform variant uses
+               GENCODE pc_transcripts.fa (already parsed in Section G). Domain-region
+               windowing requires the planned hmmscan step (to_does.txt, DOMAIN-LEVEL
+               MAPPABILITY section).
+   Known     : The splici index (Tian et al. 2023, alevin-fry) identifies unique
+               k-mers per gene for scRNA quantification — the closest published analog.
+               Probe design for targeted RNA capture uses equivalent logic. A MANE-
+               anchored table with per-gene minimum unique k-mer counts and domain-
+               region annotation at k=50 is not published.
+
+Aim 2 — Gene list where isoform-level quantification is pointless
+   Feasible  : Yes. Section F (utr_fail_stats.tsv, signal_distribution column) and
+               Section H (gene_level_recommendation.tsv) produce this list directly.
+               Inputs in place: isoform_kmers_mane.tsv + kallisto est_counts.
+   Known     : The general limitation of short-read isoform quantification is
+               documented (Glaus et al. 2012, Turro et al. 2011, Patro et al. 2017).
+               SUPPA2, rMATS, and DEXSeq implicitly restrict to separable splicing
+               events. A curated genome-wide list of MANE genes where isoform-level
+               TPM is empirically uninformative (k-mer + entropy + chi-squared) is
+               not published.
+
+Aim 3 — Genes with frac_unique = 0 at CDS and at UTR-CDS-UTR level
+   Feasible  : Yes. Filter isoform_kmers_cds.tsv and isoform_kmers_mane.tsv on
+               frac_unique == 0 and unique_kmers == 0. Already computed; needs
+               tabulation.
+   Known     : Y-chromosome multicopy genes (BPY2, DAZ, VCY, TSPY) and certain
+               tandem arrays (PRR20, AMY1) are qualitatively known to be unmappable
+               (genome assembly and population genetics literature). A MANE-anchored
+               catalog with exact frac_unique = 0 at transcript level at k=50 is
+               not published.
+
+Aim 4 — Inflated signal; does f_uniq correction always help?
+   Feasible  : Yes for RNA side. Comparing vs_dedup_cds vs vs_MANE kallisto entropy
+               (Section D) identifies genes where applying the MANE index provides no
+               improvement — the cases where f_uniq does not help. The immunopeptidomics
+               link requires experimental peptide tables (not in the current pipeline).
+   Known     : Pseudogene-derived peptides in immunopeptidomics are documented in
+               individual cases (HLA pseudogenes: Faridi et al. 2018). A systematic
+               genome-wide analysis linking RNA-level mappability uniqueness to
+               immunopeptidomics signal inflation is not published. The f_uniq
+               correction approach is novel.
+
+Aim 5 — Evolutionary perspective (isoforms, pseudogenes, multicopy genes,
+         homology, conservation, uniqueness)
+   Feasible  : Partially. Pseudogene counts (Section B), isoform homology (Section E),
+               paralog pairwise identity (Section G) are implemented. Conservation
+               is not covered — would require dN/dS ratios (Ensembl Compara) or
+               per-base conservation scores (phastCons/phyloP, UCSC) mapped onto
+               transcript coordinates. Evolutionary age of paralogs (Ks values or
+               synteny-based dating) is not in the current pipeline.
+   Known     : The relationship between gene family size, pseudogene accumulation,
+               and mappability difficulty is understood qualitatively (Zhang 2003 on
+               gene duplication; OR gene literature; HLA immunogenetics). A
+               quantitative framework connecting isoform count × pseudogene count ×
+               pairwise identity × k-mer uniqueness × UF in a single analysis is
+               not published.
+
+Summary table
+   Aim  Feasible with current pipeline          Novel vs published literature
+   1    Yes, + domain windowing needed          Yes — MANE unique 50-mer catalogue
+   2    Yes, Sections F + H                     Yes — genome-wide empirical catalog
+   3    Yes, already computed                   Partially — known cases, not systematic
+   4    Yes for RNA; proteomics needs ext. data Yes — RNA ↔ immunopeptidomics link
+   5    Partial — conservation/Ks missing       Yes as integrated quantitative framework
+
+Missing data sources for full Aim 5:
+   - dN/dS or Ks per gene pair: Ensembl Compara BioMart or precomputed tables
+     (e.g. EnsemblCompara_homology.tsv from BioMart REST API)
+   - Per-base conservation: phastCons100way or phyloP100way bigWig tracks (UCSC)
+     lifted to transcript coordinates via BEDtools intersect on MANE GTF exons

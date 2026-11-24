@@ -1,0 +1,144 @@
+Methodological critique — Shi et al. (2022)
+============================================
+"Role of GBP1 in innate immunity and potential as a tuberculosis biomarker."
+Sci. Reports 12:11097.  doi:10.1038/s41598-022-15482-2
+
+Core question
+-------------
+Does the GBP1-module signal arise from GBP1 specifically, or from broader
+transcriptional activity of the IFN-γ / innate immune response — with the
+gene-level decomposition being an artefact of probe cross-hybridisation?
+
+Short answer: the biological signal (IFN-γ-driven innate immune activation in
+TB) is almost certainly real.  The gene-specific interpretation — that GBP1,
+HLA-B, ELF4, HLA-E, IFITM2, TNFRSF14, CD274, AIM2, CFB, RHOG, HORMAD1 are
+individually meaningful biomarkers — is not supported by the methodology.
+
+
+Platform: microarray, not RNA-seq
+-----------------------------------
+The data are from Illumina Sentrix HT12 V3 BeadChip arrays (50-mer oligonucleotide
+probes), retrieved as pre-processed GEO datasets (GSE83456 training;
+GSE42834, GSE19491 validation) using the R/Bioconductor package GEOquery.
+
+Processing pipeline:
+  RNA isolation  →  GLOBINclear globin reduction  →  Illumina CustomPrep amplification
+  →  HT12 V3 hybridisation  →  BeadStudio v2 per-chip normalisation  →  log₂ transform
+  →  limma (lmFit + eBayes) for DEG calling
+  →  WGCNA on DEG intersection  →  LASSO on hub gene intensities
+
+There is NO reference genome alignment.
+There is NO read counter.
+There is NO aligner.
+
+The "expression values" throughout the paper (Fig. 1A box plots, heatmap, LASSO
+index) are log₂ hybridisation intensity values from microarray probes, not
+read-count-derived TPM or FPKM.
+
+
+Critical omission: probe IDs are not reported
+----------------------------------------------
+The paper does not state which Illumina HT12 V3 probe ID was used for any gene.
+
+This is a fundamental reporting failure.  For a gene family with multiple
+paralogs sharing high sequence identity, the probe ID determines:
+  - Whether the probe sequence falls in a conserved or divergent region
+  - Which paralogs can cross-hybridise at standard hybridisation stringency
+  - Whether the signal is gene-specific or family-level
+
+Without probe IDs, the gene-level interpretation cannot be verified or
+reproduced.  Reviewers cannot check specificity; readers cannot replicate.
+
+
+Probe cross-hybridisation: the microarray equivalent of multi-mapping
+----------------------------------------------------------------------
+Illumina HT12 V3 uses 50-mer probes.  A 50-mer probe placed in a region
+shared at >80% identity with a paralog will produce a mixed signal — the
+microarray equivalent of a multi-mapping read.  This is not corrected for
+in the paper.
+
+  Gene       Family / issue
+  ---------  -----------------------------------------------------------------
+  GBP1       GBP family (GBP1–7) share 50–70% CDS identity.  GBP1, GBP2, GBP3,
+             GBP4, GBP5 are adjacent on chr1p22.  A probe in a conserved exon
+             block will hybridise to multiple family members simultaneously.
+             GBP1 and GBP5 are both listed as interferon-stimulated genes
+             (ISGs) in the paper itself — they are co-regulated and
+             sequence-similar, making probe specificity critical and unverified.
+
+  HLA-B,     HLA class I paralogs (HLA-A, B, C, E, F, G) share 75–90% identity
+  HLA-E      in exons 2–3 (the peptide-binding groove).  Cross-hybridisation
+             between class I probes is documented in the microarray literature.
+             The LASSO model index literally includes HLA-B and HLA-E as
+             separate terms, but their probe signals may both reflect a mixture
+             of class I family expression.
+
+  IFITM2     IFITM1, IFITM2, IFITM3 are local tandem duplicates on chr11p15,
+             ~80% identical.  Probe specificity between family members is not
+             guaranteed and not verified.
+
+  TNFRSF14   TNF receptor superfamily (>25 members); some share conserved
+             cysteine-rich domains at 60–70% identity.
+
+  RHOG       Rho GTPase superfamily.  RHOG/RHOA/RHOB/RHOC share conserved
+             GTPase domain sequences.  Probe placement matters.
+
+
+The signal is real; the interpretation is wrong
+-------------------------------------------------
+This is the same structural problem as in 08B (Gong & Karchin 2023):
+
+  The results are likely biologically real.
+  TB patients have strongly activated IFN-γ signalling and innate immune
+  responses.  GBP proteins, HLA class I, IFITM proteins, and AIM2
+  inflammasome components are all bona fide IFN-γ target genes.  The
+  upregulation measured in GSE83456 is real and reproducible.
+
+  But the gene-specific interpretation is wrong.
+  The WGCNA module captures the IFN-γ transcriptional programme — a
+  co-regulated gene network — not individual gene contributions.  LASSO
+  selection from a co-regulated, cross-hybridising gene set picks the
+  strongest proxies for the composite IFN-γ signal, not the causal genes.
+
+  The LASSO model index:
+    GBP1×0.1568 + HLA-B×0.0845 + ELF4×0.0965 + TNFRSF14×0.0279
+  should be read as: "weighted average of IFN-γ response intensity,
+  measured with imprecise family-level probes", not as four specific
+  protein contributions to TB pathology.
+
+  The AUC = 0.97 on the training set and AUC = 1.0 on GSE42834 are
+  consistent with the model capturing a strong, real biological signal
+  (IFN-γ activation in TB) — not with it having identified the specific
+  molecular mechanism.
+
+
+What would be needed for gene-specific claims
+----------------------------------------------
+  1. Report probe IDs for every gene in the analysis.
+  2. Verify probe specificity: BLAST each 50-mer against the transcriptome;
+     flag probes with >80% identity hits to any paralog.
+  3. For GBP1: use a probe in the divergent C-terminal helical domain
+     (positions ~1400–1800 nt from TSS) where family members differ.
+  4. For HLA-B/HLA-E: acknowledge that class I probes measure a mixture
+     of class I family signal; do not use individual class I genes as
+     separate LASSO predictors.
+  5. Validate at the protein level (e.g., Western blot or proteomics for
+     GBP1) before claiming GBP1 is a TB biomarker rather than a proxy
+     for IFN-γ activation.
+
+
+Comparison with 08B
+--------------------
+Both papers share the same logical structure:
+
+  Real signal        →  IFN-γ / immune activation (08A), HLA locus activity (08B)
+  Artefact           →  probe cross-hybridisation (08A), read multi-mapping (08B)
+  Wrong conclusion   →  gene X is THE biomarker (08A), gene X drives prognosis (08B)
+
+In 08A the technology is microarray (probe cross-hybridisation = the problem).
+In 08B the technology is RNA-seq (read multi-mapping and EM redistribution = the problem).
+The epistemological failure is identical: mistaking a co-regulated, non-uniquely
+measurable locus signal for individual gene-level evidence.
+
+See: 08B_HLA_MHC/methodology_critique.txt
+     08B_HLA_MHC/HLA_DRB6_pseudogene_as_biomarker.txt

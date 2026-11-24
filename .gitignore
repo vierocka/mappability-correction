@@ -6,6 +6,14 @@ Ref/*.fna.gz
 Ref/*.gff
 Ref/*.gff.gz
 
+# nf reference (Ensembl GRCh38.116) — merged into Ref/, different extensions
+# than the NCBI files above (.fa/.gtf, not .fna/.gff)
+Ref/*.fa
+Ref/*.fa.fai
+Ref/*.fa.gz
+Ref/*.gtf
+Ref/*.gtf.gz
+
 # STAR genome indices
 Ref/STAR_index*/
 
@@ -20,5 +28,77 @@ _STARtmp/
 *.bam
 *.bai
 
+# Run logs (full SLURM output — large, not versioned)
+mappability_all_*.out
+
 # Result directories — uncomment once TSVs are copied out
 # results*/
+
+# Dropbox sync conflict duplicates — never authoritative
+*conflicted copy*
+
+# Claude Code local settings — machine-specific, not shared
+.claude/
+
+# Third-party publications (authors' / journals' rights) — never versioned
+articles/
+**/article/
+**/articles/
+mappability/smallPhenomena/03_repetitive_pseudogene/gkn758.pdf
+mappability/smallPhenomena/08B_HLA_MHC/article/*.docx
+mappability/sc3UTRs/CellMarker2_Human_cell_markers.xlsx
+
+.snakemake/
+__pycache__/
+
+# Archives of directories that are also present uncompressed — derived, redundant
+*.tar.gz
+
+# kallisto binary bootstrap files — regenerable, abundance.tsv is the readable form
+*.h5
+
+# ── Aligner / pseudoaligner raw outputs ──────────────────────────────────────
+# STAR per-run output (logs, splice junctions, alignments, working dirs)
+Log.out
+Log.final.out
+Log.progress.out
+*_Log.out
+*_Log.final.out
+*_Log.progress.out
+SJ.out.tab
+*_SJ.out.tab
+Aligned.*
+*_Aligned.*
+ReadsPerGene.out.tab
+*_ReadsPerGene.out.tab
+Unmapped.out.mate*
+*_STARgenome/
+*_STARpass1/
+
+# kallisto per-run output (abundance tables, bootstraps, run metadata)
+abundance.tsv
+abundance.h5
+run_info.json
+
+# featureCounts raw per-run output
+*.counts.csv
+*.counts.txt
+*.counts.summary
+
+# Literature scan dumps — not referenced by Collesano2026
+JournalsScan/
+
+# Working notes — superseded by Collesano2026/ROADMAP.md (architecture) + HOW2RUN.md
+Collesano2026/ROADMAP_working_notes.md
+Collesano2026/chronological_notes.txt
+Collesano2026/AUDIT_2026-11-23.md
+
+# cited as evidence in LESSONS.md — keep despite the STAR-log rule above
+!Collesano2026/earlier_tests/RNAseq_isoforms/HCC1937_STAR_Log.final.out
+
+# Large derived tables (15-78 MB). Reproducible from the scripts and inputs named in the
+# README beside each one; a small summary is committed where a document cites their numbers.
+mappability/sc3UTRs/results/marker_3prime_impact.tsv
+mappability/sc3UTRs/results/gene_overlap_annotation.tsv
+mappability/sc3UTRs/results/gencode_v49/3end_clusters_*bp.tsv
+mappability/kallisto_results/kallisto_inflation.tsv

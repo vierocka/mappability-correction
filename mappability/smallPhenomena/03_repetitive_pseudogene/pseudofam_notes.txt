@@ -1,0 +1,5 @@
+http://pseudofam.pseudogene.org/
+- downloaded file 18th June 2026 are in:
+<SELF_NONSELF>/Reference/GRC38p14/ensembl
+And describing paper:
+<SELF_NONSELF>/Reference/mappability-correction/mappability/smallPhenomena/03_repetitive_pseudogene/gkn758.pdf

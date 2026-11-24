@@ -1,0 +1,11 @@
+phenomenon	n_genes
+nested	32538
+genomic_overlap_antisense	23795
+unique	17627
+genomic_overlap_sense	2235
+local_tandem_dup	1286
+readthrough	664
+retrogene	391
+distant_paralog	131
+pseudogene_shadow	24
+TOTAL	78691

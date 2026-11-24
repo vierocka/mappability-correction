@@ -1,0 +1,13 @@
+sample	stage	file	encoding	total_sequences	pct_gc	mean_length	mode_length	mean_phred	phred_ok	star_avg_input_len_pair
+SRR31477874	raw	SRR31477874_1.fastq.gz	Sanger / Illumina 1.9	2000000	48	75.29	76.0	33.98	True	150.0
+SRR31477874	raw	SRR31477874_2.fastq.gz	Sanger / Illumina 1.9	2000000	49	75.27	76.0	33.41	True	150.0
+SRR31477874	trimmed	SRR31477874_1P.fq.gz	Sanger / Illumina 1.9	1907307	48	74.88	76.0	34.22	True	149.0
+SRR31477874	trimmed	SRR31477874_2P.fq.gz	Sanger / Illumina 1.9	1907307	48	74.6	76.0	34.02	True	149.0
+SRR364065	raw	SRR364065_1.fastq.gz	Sanger / Illumina 1.9	2000000	48	99.0	99.0	30.22	True	198.0
+SRR364065	raw	SRR364065_2.fastq.gz	Sanger / Illumina 1.9	2000000	48	99.0	99.0	30.7	True	198.0
+SRR364065	trimmed	SRR364065_1P.fq.gz	Sanger / Illumina 1.9	1856712	46	87.4	98.5	34.61	True	176.0
+SRR364065	trimmed	SRR364065_2P.fq.gz	Sanger / Illumina 1.9	1856712	46	88.81	98.5	34.96	True	176.0
+SRR3644141	raw	SRR3644141_1.fastq.gz	Sanger / Illumina 1.9	2000000	49	101.0	101.0	36.04	True	202.0
+SRR3644141	raw	SRR3644141_2.fastq.gz	Sanger / Illumina 1.9	2000000	50	101.0	101.0	35.19	True	202.0
+SRR3644141	trimmed	SRR3644141_1P.fq.gz	Sanger / Illumina 1.9	1874730	49	99.48	100.5	36.66	True	199.0
+SRR3644141	trimmed	SRR3644141_2P.fq.gz	Sanger / Illumina 1.9	1874730	49	98.85	100.5	36.49	True	199.0

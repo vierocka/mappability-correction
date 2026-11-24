@@ -1,0 +1,4 @@
+transcript_id	gene	locus	MAPQ	homology_to_primary_pct	reason	notes
+ENST00000713586.1	PRAMEF22	chr1_KQ031383v1_fix	60	99.72	no unique primary-assembly locus (multi-copy family / absent from Ensembl primary annotation)	absent from Ensembl 116 primary annotation (nf-core does not quantify it); best primary hit PRAMEF18 (multi-copy PRAMEF family)
+ENST00000713540.1	FP885538.1	chr1_MU273333v1_fix	1	68.28	no unique primary-assembly locus (multi-copy family / absent from Ensembl primary annotation)	no unique genomic locus (MAPQ 1, 68% id); absent from Ensembl 116 primary annotation (ENSG00000292227)
+ENST00000713538.1	NBPF1	chr1_MU273333v1_fix	1	68.21	no unique primary-assembly locus (multi-copy family / absent from Ensembl primary annotation)	no unique genomic locus: multi-copy NBPF family, 7 primary-genome hits at MAPQ 0-1, 68-86% id

@@ -1,0 +1,15 @@
+script	source	md5_original	change
+apply_uniqueness_and_average.py	<BIOARCHIV>/Data_files/scripts/apply_uniqueness_and_average.py	54fea78168077d17e0477f7ce186afcd	hook: PIPE_BASE/PIPE_CONFIG; hla_total_source switch (default = original basic_mane_fc)
+make_hla_tap_tables.py	<BIOARCHIV>/Data_files/scripts/make_hla_tap_tables.py	6479d3834c16ead7ed2a80fe68e4342b	hook: PIPE_BASE/PIPE_CONFIG (CONDITIONS)
+rebuild_peptide_tables.py	<BIOARCHIV>/Data_files/scripts/rebuild_peptide_tables.py	2089b75e44c85ff4489862afccb5fe2b	hook: PIPE_BASE/PIPE_CONFIG (EXPR, 9-mer CSV path)
+build_personal_MANE_utr.py	<SELF_NONSELF>/Reference/MANE/build_personal_MANE_utr.py	65ff1bfc45e2e5856591d7a8477ab9b4	verbatim
+build_personal_MANE_protein.py	<SELF_NONSELF>/Reference/MANE/build_personal_MANE_protein.py	d90db4260cfb20d9006824bd2e1ed04e	verbatim
+generate_maneSelect_9mer_table_1gene_1canonicalProtein.py	<SELF_NONSELF>/Reference/MANE/generate_maneSelect_9mer_table_1gene_1canonicalProtein.py	962f04ee47c58bdddaac830486ce9738	fix: regex keeps HLA allele suffix
+build_correction_tables.py	<SELF_NONSELF>/Reference/MANE/build_correction_tables.py	b6bbbe9ae605377f3a14d3881c0070fa	verbatim
+compute_uniqueness.py	<SELF_NONSELF>/compute_uniqueness.py	8081b6b6e84c6cf5712d393dc3156690	verbatim
+run_mappability_master.sh	<SELF_NONSELF>/run_mappability_master.sh	e9bfa06a48fce24eb7cf5b34e4b8943c	moved to original_shell/ (reference)
+Laura_MANE_personalized_UTR.sh	<SELF_NONSELF>/Reference/MANE/Laura_MANE_personalized_UTR.sh	b904b0778c30981a9fdc288b9dc50392	moved to original_shell/ (flags copied into rules)
+arcasHLA_genotyping_quant.sh	<SELF_NONSELF>/arcasHLA/arcasHLA_genotyping_quant.sh	773391923936eaa3f466c6f66a100ab5	moved to original_shell/ (reference)
+optiType_8samples.sh	<SELF_NONSELF>/arcasHLA/optiType_8samples.sh	53ca85099c75b6a9495e6c467b132f9c	moved to original_shell/ (reference)
+personalized_reference.sh	<SELF_NONSELF>/arcasHLA/personalized_reference.sh	09a9d06fdb5f842b4f5d233b36da62a6	moved to original_shell/ (IMGT awk logic scripted)
+# 2026-11-23: original_shell/*.sh and log files: local paths, user names and host names replaced by <placeholders> before publishing (md5 above = pre-sanitising source).

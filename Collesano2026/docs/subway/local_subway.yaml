@@ -1,0 +1,41 @@
+# slitherFlow spec, drafted from `snakemake --rulegraph`, edited by hand.
+#   slitherflow render docs/subway/local_subway.yaml -o docs/subway/local_subway.svg --png --pdf
+title: "Collesano2026 · local pipeline"
+subtitle: "corrected TPM to unique 9-mers with net-sum TPM  ·  Snakemake"
+input: {label: "Input", sublabel: "TPM + protein", file: "TSV"}
+
+trunk:
+  stations:
+    - {name: "9-mers", tool: "personal MANE proteome"}
+    - {name: "Net sum", tool: "Σ TPM × occurrences", outputs: [{file: "CSV", label: "transcript TPM >= 1"}]}
+  lines: [ms, tail, impact]
+
+lines:
+  ms:
+    name: "Immunopeptidome check"
+    row: -1
+    to: "terminus"
+    stations:
+      - {name: "MS comparison", tool: "Bassani-Sternberg 2015", outputs: [{file: "TSV", label: "recall, AUC"}]}
+  tail:
+    name: "Inflation tail"
+    row: 0
+    to: "terminus"
+    stations:
+      - {name: "Inflation tail", tool: "before vs after ×funique"}
+  impact:
+    name: "Filter impact"
+    row: 1
+    to: "terminus"
+    stations:
+      - {name: "Filter impact", tool: "raw / excl / ×funique / TPM >= 1"}
+  steps:
+    name: "Filter-step report"
+    from: "input"
+    row: -2
+    to: "terminus"
+    stations:
+      - {name: "Filter steps", tool: "loss per step"}
+
+terminus: {name: "Peptide table", sublabel: "peptide · net-sum TPM", row: 0, file: "CSV"}
+footnote: "Self model: filtered MANE Select, one protein per gene; MS comparison only when the immunopeptidome table is given."

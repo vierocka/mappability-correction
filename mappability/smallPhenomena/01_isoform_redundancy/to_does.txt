@@ -1,0 +1,343 @@
+Questions and analysis status
+=============================
+Format: Question → Analysis (section + output file) → Result (numbers only, no interpretation)
+Abbreviations are defined inline where first used.
+"pending" = analysis not yet run.
+
+────────────────────────────────────────────────────────────────────────────────
+ISOFORM STRUCTURE
+────────────────────────────────────────────────────────────────────────────────
+
+Q: How many genes have only one isoform?
+   Abbrev   : CDS = coding sequence (protein-coding exons only, no UTRs)
+   Analysis : Section A → isoform_table.tsv  (column: n_isoforms)
+   Result   : pending
+
+Q: How many single-copy genes have only one isoform?
+   Abbrev   : single-copy gene = pseudogene_count == 0 in isoform_groups.tsv
+              (pseudogene_count: number of GENCODE v49 pseudogene entries matched
+              to this gene by HGNC gene_name prefix — see README.md Section B note)
+   Analysis : Section B → isoform_groups.tsv
+              filter: pseudogene_count == 0 AND n_isoforms == 1
+   Result   : pending
+
+Q: How many multicopy genes have only one isoform?
+   Abbrev   : multicopy gene = pseudogene_count > 0 in isoform_groups.tsv
+   Analysis : Section B → isoform_groups.tsv
+              filter: pseudogene_count > 0 AND n_isoforms == 1
+   Result   : pending
+
+Q: Do single-copy genes tend to have a higher number of isoforms?
+   Analysis : Section B → isoform_groups.tsv
+              mean(n_isoforms) grouped by pseudogene_count == 0 vs > 0
+              Section B runtime table: mean_n_iso × mean_pseudo by n_isoforms_bin
+   Result   : pending
+
+Q: Do single-copy genes tend to have more pseudogenes?
+   Analysis : Section B → isoform_groups.tsv
+              mean(pseudogene_count) in genes with n_isoforms == 1 vs n_isoforms > 1
+              Section B runtime table: mean_pseudo by n_isoforms_bin
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+SIGNAL RESOLUTION AND MAPPING QUALITY
+────────────────────────────────────────────────────────────────────────────────
+
+Q: RNA-protein signal: for which group of genes is it worst?
+   Abbrev   : frac_unique = fraction of 31-mers in a transcript not shared with
+              any other transcript in the same reference set
+              UF (uniqueness factor) = fraction of simulated reads mapping back
+              to their source sequence with MAPQ = 255
+   Analysis : Section C → isoform_kmers_mane.tsv  (column: frac_unique)
+              Section D → isoform_mappability.tsv  (column: star_uf_mean)
+              Section F → utr_fail_stats.tsv       (column: signal_distribution)
+              Section H → gene_level_recommendation.tsv, cluster_level_recommendation.tsv
+   Result   : pending
+
+Q: Do UTRs always provide enough resolution?
+   Abbrev   : UTR = untranslated region (5'UTR and/or 3'UTR flanking the CDS)
+              frac_unique: see above
+              UTR-fail gene: frac_unique < 0.90 in isoform_kmers_mane.tsv
+   Analysis : Section C → isoform_kmers_mane.tsv vs isoform_kmers_cds.tsv
+              count of genes with frac_unique < 0.90
+              mechanistic breakdown: Why_UTRs_fail_to_rescue_nearly2000annotGenes.txt
+   Result   : ~1,922 genes (9.9% of MANE Select protein-coding genes) have
+              frac_unique < 0.90 in the MANE RNA reference.
+              Category counts:
+                Y-chr active homogenization          ~80
+                En-bloc tandem duplication           ~200
+                No polyadenylated 3'UTR (histones)   ~40
+                Pol III / ncRNA loci                 ~17
+                Large family, slow UTR neutral drift ~1,600
+
+Q: Is UTR always better in mapping (signal resolution) than CDS?
+   Analysis : Section C
+              delta frac_unique = frac_unique(isoform_kmers_mane) − frac_unique(isoform_kmers_cds)
+              per gene, across all MANE Select transcripts
+              Section D → per-gene kallisto_tpm_entropy in vs_MANE vs vs_dedup_cds
+   Result   : pending (delta distribution not yet tabulated across all genes)
+              Known from prior k-mer analysis: genome-wide mean frac_unique
+              shifts from ~3% (CDS-only) to ~94% (MANE RNA).
+              For UTR-fail genes the delta is near zero.
+
+Q: How dangerous is it to use only UTR-free CDS for mapping?
+   Abbrev   : vs_dedup_cds = kallisto run against deduplicated CDS index (no UTRs)
+              vs_MANE = kallisto run against MANE Select full-transcript index
+              entropy = normalised Shannon entropy of TPM distribution across
+              CDS isoforms of a gene [0 = all signal on one isoform, 1 = uniform]
+   Analysis : Section D → isoform_mappability.tsv (column: kallisto_tpm_entropy)
+              compare vs_dedup_cds vs vs_MANE per gene, per run condition
+   Result   : pending
+
+Q: How good is resolution using CDS only — across read sources, references, and read lengths?
+   Abbrev   : UF = uniqueness factor (fraction of simulated reads mapping back with MAPQ=255)
+              dedup CDS reads = reads simulated from the deduplicated CDS reference
+              vs_dedup_cds = kallisto or STAR run against the CDS-only index
+              PE/SE = paired-end / single-end sequencing mode
+   Analysis : Section D → runs/dedup_cds_reads_{PE,SE}_L{75,100,150,200}bp/vs_dedup_cds/
+                          isoform_mappability.tsv and reads_by_nisoform.tsv
+              columns: star_uf_mean, kallisto_tpm_entropy, kallisto_tpm_cv
+              grouped by: read_len_bp, mode (PE/SE), n_isoforms_bin
+              cross-reference between:
+                (a) read length effect within the same reference (dedup_cds)
+                (b) reference effect: vs_dedup_cds vs vs_MANE at the same read length
+                (c) read source effect: dedup_cds_reads vs MANE_RNA_reads at the same
+                    read length and index (dedup reads map into CDS index vs full
+                    transcript reads mapping into CDS index)
+   Result   : Partial (from dedup_cds_reads PE/SE × 75–200 bp, vs_dedup_cds):
+              kallisto_tpm_entropy for 2-isoform genes: 0.9957 (75 bp) → 0.9812 (200 bp)
+              PE vs SE: no detectable difference at any length
+              Full cross-condition table: pending
+
+Q: Does read length impact the kallisto/salmon EM decision (31 bp k-mers)?
+   Abbrev   : PE = paired-end sequencing; SE = single-end sequencing
+              EM = expectation-maximisation (isoform abundance estimation)
+              k-mer = subsequence of fixed length k=31 (kallisto/salmon default)
+   Analysis : Section D → reads_by_nisoform.tsv
+              across 8 dedup_cds_reads conditions (PE/SE × 75/100/150/200 bp)
+              column: kallisto_mean_entropy by n_isoforms_bin and read_len_bp
+   Result   : Entropy range across read lengths for 2-isoform genes:
+              0.9957 (75 bp) → 0.9812 (200 bp), difference < 0.002.
+              PE vs SE: no detectable difference at any length.
+
+Q: How much can the signal be impacted when using total RNA and kallisto?
+   Abbrev   : total RNA-seq = RNA-seq protocol that includes unspliced pre-mRNA
+              and nuclear RNA in addition to mature mRNA
+              exon-flank reads = simulated reads spanning exon–intron boundaries
+              (±50 bp from the exon edge), as a proxy for total-RNA reads
+   Analysis : Section D → runs/MANE_exonflank_reads_{PE,SE}_L{75,100,150}bp/
+              vs_dedup_cds/isoform_mappability.tsv and vs_MANE/isoform_mappability.tsv
+              column: n_with_kallisto (number of isoforms receiving ≥ 1 pseudoaligned read)
+              compare to MANE_RNA_reads conditions (spliced reads only)
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+PARALOG SIMILARITY AND IMMUNOPEPTIDOMICS LINKS
+────────────────────────────────────────────────────────────────────────────────
+
+Q: How similar are paralogs with unresolved UTRs?
+   Abbrev   : paralog family = genes grouped by HGNC symbol prefix (e.g. OR, ZNF, PCDHA)
+              pct_identity = percent identical aligned positions in MAFFT alignment
+              Option A = one MANE canonical sequence per family member
+              Option B = all GENCODE v49 isoforms per member (if ≤ 20 isoforms/member)
+   Analysis : Section G → paralog_homology_mane.tsv     (Option A, column: pct_identity)
+              Section G → paralog_homology_isoforms.tsv (Option B, column: pct_identity)
+              Section G → id_verification.tsv            (symbol consistency check)
+   Result   : pending (requires MAFFT run)
+
+Q: Are the young paralogs inflating the signal (link to immunopeptidomics)?
+   Abbrev   : signal inflation = reads from one paralog pseudoaligning to another,
+              causing overestimation of one paralog's TPM
+              immunopeptidomics = mass-spectrometry identification of MHC-presented
+              peptides from cell or tissue lysate
+   Analysis : Section G → paralog_homology_mane.tsv (column: pct_identity, high_homology)
+              Section H → cluster_level_recommendation.tsv
+              (filter: max_paralog_identity ≥ 85% AND frac_unique_mane < 0.90)
+              + immunopeptidomics peptide table cross-reference (separate analysis)
+   Result   : pending
+
+Q: Are the genes with pseudogenes inflating the signal (link to immunopeptidomics)?
+   Abbrev   : transcribed pseudogene = pseudogene with evidence of RNA transcription
+              (GENCODE gene_type: transcribed_processed_pseudogene or
+              transcribed_unprocessed_pseudogene or transcribed_unitary_pseudogene)
+   Analysis : Section B → isoform_groups.tsv (column: pseudogene_count)
+              + immunopeptidomics peptide table cross-reference (separate analysis)
+              precise list: filter GENCODE v49 GTF on gene_type in transcribed_*pseudogene
+              and parent_gene_id matching the coding gene
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+REAL DATA QUESTIONS (require experimental RNA-seq or proteomics data)
+────────────────────────────────────────────────────────────────────────────────
+
+Q: Is there a higher chance to have one leading isoform or is the signal equally spread?
+   Abbrev   : leading isoform = isoform with the highest TPM in a given sample
+              est_counts = EM-estimated fractional read count per isoform (kallisto output)
+   Analysis : Section F → utr_fail_stats.tsv
+              columns: mean_entropy, frac_chi2_nonsig, signal_distribution
+              requires real RNA-seq kallisto abundance.tsv (not simulated reads)
+   Result   : pending
+
+Q: Are peptides from minor isoforms equally found in immunopeptidomics?
+   Abbrev   : minor isoform = non-leading isoform (lower TPM than the dominant isoform)
+   Analysis : Section F → utr_fail_stats.tsv (gene list)
+              + immunopeptidomics peptide table cross-reference (separate analysis)
+              requires isoform-resolved peptide identification
+   Result   : pending
+
+Q: Do we see pseudogene-specific peptides in immunopeptidomics?
+   Analysis : pseudogene-aware proteogenomics reference (separate analysis)
+              translate GENCODE pseudogene GTF → in-silico peptides → MS/MS search
+   Result   : pending
+
+Q: How much can transcribed pseudogenes inflate the signal?
+   Analysis : requires pseudogene expression data (e.g. GTEx pseudogene TPM tracks)
+              cross-referenced with parent gene TPM from Section D
+   Result   : pending
+
+Q: When to use STAR+featureCounts and when kallisto?
+   Abbrev   : STAR = spliced read aligner (full-read alignment)
+              featureCounts = read counting against gene/transcript annotation
+              kallisto = pseudoaligner using k-mer index
+   Analysis : Section D (all 22 conditions) + Section F → utr_fail_stats.tsv
+              compare UF, entropy, n_with_kallisto across tools and conditions
+   Result   : pending
+
+Q: Are there groups of genes which should be excluded?
+   Analysis : Section H → gene_level_recommendation.tsv
+                          cluster_level_recommendation.tsv
+              columns: recommendation, signal_distribution, max_paralog_identity,
+              frac_unique_mane
+   Result   : pending
+
+Q: Do peptides from non-leading isoforms show higher binding affinities?
+   Abbrev   : binding affinity = predicted MHC–peptide binding strength
+              (e.g. NetMHCpan %rank, lower = stronger binder)
+   Analysis : requires NetMHCpan scores for isoform-specific peptides
+              prerequisite: isoform-specific peptide catalogue from isoform_table.tsv
+              protein IDs
+   Result   : pending
+
+Q: Is the leading isoform tissue-agnostic (TCGA)?
+   Abbrev   : TCGA = The Cancer Genome Atlas (pan-cancer RNA-seq resource)
+              MANE Select = one canonical transcript per protein-coding gene
+              (MANE: Matched Annotation from NCBI and EMBL-EBI)
+   Analysis : TCGA pan-cancer RNA-seq TPM joined on MANE ENST IDs
+              check whether MANE Select transcript has highest TPM across cancer types
+              proxy available: stable_protein_coding_transcripts/stable_high_expr_genes.py
+              (JY, HCC1937, HCT116 + Eisenberg + HPA)
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+NEW QUESTIONS OPENED BY THE ANALYSIS
+────────────────────────────────────────────────────────────────────────────────
+
+Q: For UTR-fail genes, is the signal uniformly distributed across isoforms/paralogs,
+   or does one dominate?
+   Abbrev   : UTR-fail gene: frac_unique < 0.90 in isoform_kmers_mane.tsv (~1,922 genes)
+              χ² = chi-squared goodness-of-fit test against uniform distribution
+              CV = coefficient of variation (std / mean of est_counts across isoforms)
+   Analysis : Section F → utr_fail_stats.tsv
+              columns: mean_entropy, std_entropy, mean_cv, frac_chi2_nonsig,
+              signal_distribution
+              follow-up ANOVA per functional group:
+              R> aov(mean_entropy ~ functional_groups, data = utr_fail_stats)
+   Result   : pending
+
+Q: Which UTR-fail paralog families show pairwise identity below 85%?
+   Analysis : Section G → paralog_homology_mane.tsv
+              filter: pct_identity < 85 (column: high_homology == FALSE)
+              cross-reference with utr_fail_stats.tsv signal_distribution column
+   Result   : pending (requires MAFFT run)
+
+Q: Does the v8 proper-pair fragment geometry change the UF distribution
+   compared to earlier simulated-read versions?
+   Abbrev   : v8 proper-pair = 150 bp PE reads with true 300 bp fragment geometry
+              (R1 and R2 from opposite ends of fragment, non-overlapping)
+              prior versions = PE reads where both reads covered the same window
+   Analysis : Section D → runs/v8_proper_*/gene_uf.tsv  (column: star_uf)
+              compare to runs/dedup_cds_reads_PE_L150bp/vs_dedup_cds/ star_uf_mean
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+DOMAIN-LEVEL MAPPABILITY
+────────────────────────────────────────────────────────────────────────────────
+
+Q: How much signal can be gained from shared protein domains
+   (MANE + hmmscan + MAFFT + mappability)?
+   Abbrev   : hmmscan = HMMER tool for searching a protein sequence against a
+              profile HMM database (e.g. Pfam); identifies conserved domain regions
+              Pfam = database of protein family profile HMMs
+              profile HMM = probabilistic model of a multiple sequence alignment
+              domain = contiguous protein region matching a Pfam profile HMM above
+              the inclusion threshold (E-value < 0.01 by default)
+              domain coordinates (aa) → transcript coordinates (nt): multiply aa
+              position by 3, add CDS start offset from transcript start
+              shared domain = Pfam domain present in ≥ 2 members of a paralog family
+   Analysis : new analysis (not yet in analyze.py)
+              step 1: run hmmscan (Pfam database) on MANE Select protein sequences
+                      input:  MANE.GRCh38.v1.5.ensembl_rna.fna → translate CDS
+                      output: per-gene domain table (Pfam accession, aa start/end,
+                              E-value, score)
+              step 2: map domain aa coordinates to transcript nt positions
+                      using CDS position within MANE transcript
+              step 3: extract domain-region sequences and inter-domain sequences
+                      from MANE RNA FASTA
+              step 4: compute frac_unique (31-mer) separately for
+                      (a) domain regions only
+                      (b) inter-domain / terminal regions only
+              step 5: run MAFFT pairwise alignment within each shared domain
+                      across paralog family members (as in Section G Option A)
+              step 6: compare pct_identity within domain vs outside domain
+              output files (proposed):
+                      domain_annotations.tsv    — gene × domain table
+                      domain_kmer_uniqueness.tsv — frac_unique inside vs outside domains
+                      domain_homology.tsv        — MAFFT pct_identity within shared domains
+   Result   : pending
+
+Q: Is mappability uniqueness outside of protein domains better than inside?
+   Abbrev   : domain region = transcript nucleotides encoding a Pfam-annotated domain
+              inter-domain region = transcript nucleotides between annotated domains
+              or N-/C-terminal extensions beyond the outermost domain
+              frac_unique_domain     = 31-mer unique fraction within domain nt windows
+              frac_unique_nondomain  = 31-mer unique fraction outside domain nt windows
+   Analysis : domain_kmer_uniqueness.tsv (from domain analysis above)
+              columns: gene_name, pfam_id, frac_unique_domain, frac_unique_nondomain,
+              delta (frac_unique_nondomain − frac_unique_domain)
+              group by: Pfam clan (structurally related domain superfamilies),
+              paralog family prefix, n_isoforms_bin
+   Result   : pending
+
+────────────────────────────────────────────────────────────────────────────────
+SIGNATURE SEQUENCES
+────────────────────────────────────────────────────────────────────────────────
+
+Q: Can we define a signature sequence for each MANE gene to simplify k-mer-driven mapping?
+   Abbrev   : unique stretch = the longest contiguous run of transcript positions i
+              where seq[i:i+31] is a unique 31-mer (not present in any other MANE
+              transcript); each step in the run adds 1 bp
+              stretch span (bp) = N_positions + 30  (N positions of 31-mers, each
+              overlapping the previous by 30 bp)
+              minimum reportable: 1 unique 31-mer → 31 bp span
+              target: ≥ 20 consecutive positions → ≥ 50 bp span; a 50 bp unique
+              region can tolerate short indels or mismatches that shift k-mer
+              positions by a few bp while still landing on ≥ 1 unique 31-mer
+              optimal: the longest such stretch, regardless of target threshold
+              max_unique_stretch_bp = span of the longest unique run per transcript
+              stretch_reaches_50bp  = 1 if max_unique_stretch_bp ≥ 50, else 0
+   Analysis : Section C → isoform_kmers_mane.tsv
+              columns: max_unique_stretch_bp, max_stretch_positions,
+              stretch_start_nt, stretch_reaches_50bp
+              (computed in max_unique_stretch() in analyze.py, runs as part of
+              the existing k-mer pass — no additional analysis step needed)
+              step 2 (proposed, not yet implemented): record stretch position
+              relative to transcript structure: 5'UTR / CDS / 3'UTR using
+              MANE transcript CDS coordinates from MANE summary table
+              output (proposed):
+              signature_sequences.tsv — gene_name, enst_id, stretch_start_nt,
+              stretch_end_nt, max_unique_stretch_bp, stretch_region
+              (5UTR / CDS_start / CDS_internal / CDS_end / 3UTR),
+              stretch_reaches_50bp
+              for UTR-fail genes: record max_unique_stretch_bp achieved;
+              genes with max_unique_stretch_bp = 0 have no unique 31-mer anywhere
+   Result   : pending

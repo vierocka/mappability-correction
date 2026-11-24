@@ -1,0 +1,133 @@
+extract_dedup.log — CDS extraction & deduplication, old vs. nf reference
+==========================================================================
+Generated: 2026-07-08
+
+Purpose
+-------
+The old pipeline uses one dedup-CDS reference (genome-wide, protein-coding
+only) for both v2 and v7/v8_b. The nf pipeline splits this into TWO separate
+references instead: a genome-wide one (v7_nf/v8_b_nf, for a fair like-for-like
+comparison against old v7/v8_b) and a smaller MANE_Select-restricted one
+(v2_nf, since v2_nf was deliberately scoped differently from what v2 actually
+used — see Map_scripts/README3.md). This log records how each of the three
+was built and their resulting sequence counts, for direct comparison.
+
+Old reference (NCBI RefSeq GRCh38.p14)
+---------------------------------------
+Source        : GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna
+                (downloaded pre-spliced/pre-oriented directly from NCBI —
+                no extraction step needed; NCBI already provides one FASTA
+                entry per CDS, ID format "lcl|NC_..._cds_NP_..._N")
+Dedup command : seqkit rmdup -s -i GCF_000001405.40_GRCh38.p14_cds_from_genomic.fna \
+                    -o GCF_000001405.40_GRCh38.p14_cds_from_genomic.dedup.fna --threads 12
+Dedup basis   : exact sequence match (-s flag)
+Result        : 93,088 unique sequences retained; 53,249 exact duplicates removed
+Pre-dedup     : 146,337 (93,088 + 53,249)
+Known issue   : downstream v7 scripts originally grouped reads by
+                cds_id.split('|')[0], which collapses every CDS to the
+                literal string "lcl" because the ID itself contains '|'.
+                Patched post-hoc for existing results by
+                Map_scripts/mappability_v7_fix_uf.sh (re-run Step 3 only,
+                using '|'.join(name.split('|')[:-1]) as the grouping key) —
+                the v7 scripts themselves were never corrected at the source.
+
+New reference — genome-wide (Ensembl GRCh38.116, nf, v7_nf/v8_b_nf)
+--------------------------------------------------------------------
+Source        : Homo_sapiens.GRCh38.116.gtf + Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa
+                (nf-core/rnaseq-recommended pair; no pre-spliced CDS FASTA
+                is distributed, so extraction had to be done from scratch)
+Extraction    : build_dedup_cds_nf.py --scope genome-wide (standalone; same
+                logic also embedded as Step 0d in
+                Map_scripts/mappability_correction_v7_a_nf.sh for cluster runs)
+  - Parsed all CDS-type feature lines in the GTF
+  - Filtered to transcript_biotype "protein_coding" (matches the old
+    reference's implicit protein-coding-only scope, since NCBI's
+    cds_from_genomic.fna only ever contained CDS features)
+  - Spliced multi-exon CDS per transcript via pysam.FastaFile (in-process
+    fetch, not per-exon samtools subprocess calls — needed at this scale)
+  - Reverse-complemented minus-strand transcripts
+  - Header = plain versioned transcript ID (e.g. ENST00000256078.10) —
+    deliberately no '|' characters, avoiding the old v7 ID-grouping bug
+    class entirely rather than patching it after the fact
+Dedup command : seqkit rmdup -s -i Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds_raw.fna \
+                    -o Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds.fna --threads 4
+Dedup basis   : exact sequence match (-s flag) — same criterion as old reference
+Result        : 182,639 unique sequences retained; 95,845 exact duplicates removed
+Pre-dedup     : 278,484 protein-coding transcripts with CDS (0 skipped during extraction)
+Run location  : local (laptop), not the cluster — genome+GTF and seqkit were
+                already available locally; result copied to
+                Ref/Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds.fna for scp
+                to the cluster's <HPC_WORKDIR>/mappability-correction/Ref/
+                (nf reference files live inside Ref/ now, not a separate nfRef/)
+
+New reference — MANE-restricted (Ensembl GRCh38.116, nf, v2_nf)
+-------------------------------------------------------------------
+Source        : same Homo_sapiens.GRCh38.116.gtf + primary_assembly.fa pair
+Extraction    : build_dedup_cds_nf.py --scope mane (same logic embedded as
+                Step 0d in Map_scripts/mappability_correction_v2_a_nf.sh)
+  - Pass 1: scanned all `transcript`-feature lines for tag "MANE_Select"
+    → 19,299 MANE_Select transcripts found
+  - Pass 2: parsed CDS-type feature lines, kept only those belonging to a
+    MANE_Select transcript (not filtered by transcript_biotype, since
+    MANE_Select membership already implies protein-coding)
+  - Same splicing/revcomp/plain-ID approach as the genome-wide extraction
+Dedup command : seqkit rmdup -s -i Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds_mane_raw.fna \
+                    -o Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds_mane.fna --threads 4
+Dedup basis   : exact sequence match (-s flag) — same criterion as both above
+Result        : 19,132 unique sequences retained; 97 exact duplicates removed
+Pre-dedup     : 19,229 transcripts with CDS (0 skipped during extraction)
+Note          : 19,299 MANE_Select transcripts were tagged, but only 19,229
+                have any CDS feature — the missing 70 are the same
+                non-coding (RNU/SNORD/lncRNA) MANE_Select transcripts already
+                identified in id_conversion_check_nf.tsv, consistent since
+                ncRNAs have no CDS by definition
+Run location  : local (laptop); result copied to
+                Ref/Homo_sapiens.GRCh38.dna_sm.primary_ass.dedup_cds_mane.fna
+                for scp to the cluster's Ref/
+
+Comparison table
+----------------
+                                  Old (NCBI p14)   New genome-wide (nf)   New MANE-restricted (nf)
+CDS feature lines scanned         n/a (pre-spliced)      2,717,081                191,809
+Transcripts with CDS (pre-dedup)       146,337              278,484                 19,229
+Avg. CDS segments/exons per tx             n/a                 9.76                   9.97
+Exact duplicates removed                53,249               95,845                     97
+Unique CDS sequences (post-dedup)       93,088              182,639                 19,132
+Dedup fraction (removed/pre-dedup)        36.4%                34.4%                   0.5%
+Extraction skipped/failed                    n/a                    0                      0
+
+Interpretation
+--------------
+The nf/Ensembl genome-wide reference has ~1.9x as many pre-dedup
+protein-coding transcripts (278,484 vs. 146,337) and ~2.0x as many unique CDS
+sequences after dedup (182,639 vs. 93,088) as the old NCBI RefSeq reference.
+This reflects Ensembl's more expansive isoform annotation (predicted/
+non-canonical transcripts, alternative CDS starts, etc.) relative to NCBI's
+more curated RefSeq transcript set — not a difference in dedup methodology,
+since all three used the identical seqkit rmdup -s exact-match criterion.
+The genome-wide dedup fraction is close between old and new (36.4% vs.
+34.4%), suggesting a similar underlying rate of redundant CDS sequence per
+transcript in both annotations, despite the near-doubling in transcript
+count.
+
+The MANE-restricted reference's dedup fraction (0.5%) is dramatically lower
+than either genome-wide reference (~35%) — expected, since MANE_Select
+deliberately selects one representative transcript per gene, so most
+cross-transcript redundancy from alternative isoforms of the same gene is
+already excluded before dedup even runs. The 97 duplicates that remain are
+presumably genuinely distinct genes with identical CDS (e.g. recent
+paralogs, or genes annotated twice under different IDs).
+
+Average CDS segment (exon) count per transcript is essentially identical
+between the genome-wide and MANE-restricted sets (9.76 vs. 9.97) — the
+speed difference in extracting them is not because MANE transcripts splice
+more simply, but because the splicing/fetching loop (the dominant cost)
+scales with the number of retained transcripts: ~19k vs. ~278k, about 14x
+fewer pysam.fetch() calls.
+
+These size differences are a relevant finding for the reference comparison
+this project is running: v7_nf/v8_b_nf reads will have roughly twice as much
+competing CDS sequence to multimap against as the old v7/v8_b runs, while
+v2_nf reads compete against a CDS pool two orders of magnitude smaller than
+either genome-wide reference — independent of any genome-coordinate or
+annotation-version effects already characterized in reference_differences.docx.

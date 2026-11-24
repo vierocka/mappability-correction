@@ -1,0 +1,9 @@
+# Genome alignment for HLA read extraction + funique simulation (methods: STAR 2.7.11b)
+channels: [conda-forge, bioconda]
+dependencies:
+  - star=2.7.11b
+  - samtools               # 1.19.2 conflicts with subread 2.1.1 (zlib)
+  - subread=2.1.1
+  - python=3.11
+  - pysam
+  - pandas

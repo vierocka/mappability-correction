@@ -1,0 +1,50 @@
+sample	platform	published	organ	cell_line	subtype	cancer	metastatic_lines	notes
+SRR364065	Illumina HiSeq 2000	2015-07-22	immune cell 	JY	an Epstein-Barr virus (EBV)-transformed human B-lymphoblastoid cell line	no	no	used in immunology as a model to study binding
+SRR3644141	Illumina HiSeq 2500	2019-06-07	colon	HCT116	carcinoma	yes	no	carcinoma, parental cell type
+SRR3644142	Illumina HiSeq 2500	2019-06-07	colon	HCT116	carcinoma	yes	no	carcinoma, parental cell type
+SRR3644143	Illumina HiSeq 2500	2019-06-07	colon	HCT116	carcinoma with genetic knockouts of both DNA methyltransferases DNMT1 (-/-) and DNMT3b (-/-)	yes	no	globally hypomethylated; genes previously silenced by promoter methylation in HCT116 should go up; ectopic expression; a viral-mimicry signature
+SRR3644144	Illumina HiSeq 2500	2019-06-07	colon	HCT116	carcinoma with genetic knockouts of both DNA methyltransferases DNMT1 (-/-) and DNMT3b (-/-)	yes	no	globally hypomethylated; genes previously silenced by promoter methylation in HCT116 should go up; ectopic expression; a viral-mimicry signature
+SRR925687	Illumina Genome Analyzer Iix	2015-10-19	breast	184A1	non-malignant	no	no	Non-tumorigenic immortalized mammary epithelial cell line derived from reduction mammoplasty (normal epithelium); a “healthy-ish” mammary epithelial comparator
+SRR925688	Illumina Genome Analyzer Iix	2015-10-19	breast	184B5	non-malignant	intermediate	no	progression model of 184A1; more transformed derivative
+SRR925689	Illumina Genome Analyzer Iix	2015-10-19	breast	21MT1	basal	yes	strong “viral-mimic/ISG” immune-mimic signatures	Metastatic cell line 1 from patient 21
+SRR925690	Illumina Genome Analyzer Iix	2015-10-19	breast	21MT2	basal	yes	strong “viral-mimic/ISG” immune-mimic signatures	Metastatic cell line 2 from patient 21
+SRR925691	Illumina Genome Analyzer Iix	2015-10-19	breast	21NT	basal	intermediate	no	Primary non-tumorigenic mammary epithelial cell line, patient 21 (preneoplastic / premalignant epithelium); “normal adjacent” epithelium
+SRR925692	Illumina Genome Analyzer Iix	2015-10-19	breast	21PT	basal	yes	no	Primary tumor cell line from same patient as 21NT, patient 21
+SRR1283038	Illumina Genome Analyzer Iix	2014-05-12	breast	MDAMB453	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	HER2 amplified, androgen receptor positive metastatic breast cancer.
+SRR925693	Illumina Genome Analyzer Iix	2015-10-19	breast	600MPE	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	"Mammary pleural effusion derived metastatic breast carcinoma cell line
+"
+SRR925694	Illumina Genome Analyzer Iix	2015-10-19	breast	AU565	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	HER2 amplified metastatic breast cancer cell line (also from pleural effusion); similar subtype family as SKBR3, BT474 etc
+SRR925695	Illumina Genome Analyzer Iix	2015-10-19	breast	BT474	luminal	yes	no	HER2 amplified luminal breast cancer; endocrine responsive.
+SRR925696	Illumina Genome Analyzer Iix	2015-10-19	breast	BT483	luminal	yes	no	"Luminal breast cancer, ER+ weak, moderate HER2.
+"
+SRR925697	Illumina Genome Analyzer Iix	2015-10-19	breast	BT549	claudin-low	yes	no	Triple negative breast cancer (TNBC), mesenchymal / claudin-low
+SRR925698	Illumina Genome Analyzer Iix	2015-10-19	breast	CAMA1	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	Luminal type, ER+ low tumorigenicity breast cancer
+SRR925699	Illumina Genome Analyzer Iix	2015-10-19	breast	EFM1192A	luminal	yes	no	Related breast carcinoma lines from same patient, progression set
+SRR925700	Illumina Genome Analyzer Iix	2015-10-19	breast	EFM192B	luminal	yes	no	Related breast carcinoma lines from same patient, progression set
+SRR925701	Illumina Genome Analyzer Iix	2015-10-19	breast	EFM192C	luminal	yes	no	Related breast carcinoma lines from same patient, progression set
+SRR925702	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1143	basal	yes	no	TNBC basal-like, highly aggressive
+SRR925703	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1395	claudin-low	yes	no	TNBC basal-like, BRCA1 mutant
+SRR925704	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1419	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	HER2 amplified breast carcinoma
+SRR925705	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1428	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	Luminal breast cancer, ER+.
+SRR925706	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1569	basal	yes	no	HER2 amplified invasive ductal carcinoma
+SRR925707	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1599	basal	yes	no	Basal breast cancer line (triple negative)
+SRR925708	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1806	basal	yes	no	TNBC basal-like highly invasive
+SRR925709	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1937	basal	yes	no	TNBC BRCA1 mutant
+SRR925710	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC1954	basal	yes	no	HER2 amplified TNBC hybrid subtype
+SRR925711	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC202	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	HER2 amplified breast carcinoma
+SRR925713	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC3153	basal	yes	no	TNBC/metaplastic phenotype
+SRR925714	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC38	claudin-low	yes	no	"TNBC basal-like line
+"
+SRR925715	Illumina Genome Analyzer Iix	2015-10-19	breast	HCC70	basal	yes	no	TNBC basal-like, ductal carcinoma
+SRR925716	Illumina Genome Analyzer Iix	2015-10-19	breast	HS578T	claudin-low	yes	no	Mesenchymal TNBC, highly invasive
+SRR925717	Illumina Genome Analyzer Iix	2013-07-03	breast	JIMT1	basal	yes	likely	HER2 amplified but trastuzumab resistant
+SRR925718	Illumina Genome Analyzer Iix	2013-07-05	breast	LY2	luminal	yes	no	"Endocrine therapy resistant luminal breast cancer
+"
+SRR925719	Illumina Genome Analyzer Iix	2015-10-19	breast	MB157	basal	yes	strong “viral-mimic/ISG” immune-mimic signatures	Metastatic breast carcinoma from pleural effusion; basal / mesenchymal / TNBC cluster; triple negative
+SRR925720	Illumina Genome Analyzer Iix	2015-10-19	breast	MCF10A	non-malignant	no	no	Non-tumorigenic immortalized breast epithelial model (normal); a “healthy-ish” mammary epithelial comparator
+SRR925721	Illumina Genome Analyzer Iix	2015-10-19	breast	MCF10F	non-malignant	intermediate	no	Pre-malignant transformation derivative of MCF10A; intermediate stage between MCF10A and malignant transformation; already has acquired transformation features, early neoplastic moves, but not fully tumorigenic
+SRR925723	Illumina Genome Analyzer Iix	2015-10-19	breast	MCF7	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	"Luminal ER+ classic breast cancer model
+"
+SRR925724	Illumina Genome Analyzer Iix	2015-10-19	breast	MDAMB134VI	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	ER+ breast cancer line derived from metastasis
+SRR925725	Illumina Genome Analyzer Iix	2013-08-28	breast	MDAMB175	luminal	yes	strong “viral-mimic/ISG” immune-mimic signatures	ER+/luminal, secretory phenotype model
+SRR925726	Illumina Genome Analyzer Iix	2015-10-19	breast	MDAMB231	claudin-low	yes	strong “viral-mimic/ISG” immune-mimic signatures	Triple negative, highly metastatic mesenchymal classic line

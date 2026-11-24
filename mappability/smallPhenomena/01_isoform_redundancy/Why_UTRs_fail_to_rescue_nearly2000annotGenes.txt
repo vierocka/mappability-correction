@@ -1,0 +1,65 @@
+Why UTRs fail to rescue these 1,922 genes
+
+  The 3% → 94% jump (CDS k-mers → MANE RNA k-mers) was driven by UTR divergence. These genes represent the cases where that rescue fails — and they fall into five mechanistically distinct categories:
+
+  ---
+  1. Y-chromosome multicopy families (~80 genes, near-zero uniqueness)
+
+  BPY2, VCY, DAZ, TSPY, CDY, RBMY, HSFY, SLX1A/B — all near or at frac_unique = 0.
+
+  The Y chromosome contains large palindromic regions maintained by gene conversion. Copies are kept nearly identical by recombination between palindrome arms, not just historical duplication — meaning UTRs are actively homogenized. There is no
+  divergence to exploit.
+
+  ---
+  2. Tandem-duplicated coding families (~200 genes, frac_unique 0.03–0.25)
+
+  PRR20A/B/C/D/E (all five = 0.000), DEFB103A–107B, AMY1A/AMY1B, SPDYE8/SPDYE11, TP53TG3B, DEFA, NBPF, GOLGA, RGPD5.
+
+  These are recent tandem duplications where the entire genomic segment — exons, introns, and flanking UTRs — was copied en bloc. The UTR was duplicated along with the CDS, so 3'UTR k-mers are as identical as CDS k-mers. This is exactly what the
+  delta (CDS → MANE) was designed to detect: here the delta is near zero, meaning annotation geometry cannot help.
+
+  ---
+  3. Replication-dependent histones (~40 genes, frac_unique 0.20–0.45)
+
+  H2A (13 genes, mean 0.43), H2B (15, mean 0.68), H3 (8, mean 0.45), H4 (5, mean 0.20).
+
+  Replication-dependent histone mRNAs do not have a canonical polyadenylated 3'UTR — they terminate at a stem-loop. The MANE FASTA for these transcripts has essentially no 3'UTR sequence. Without UTR, the only k-mers are CDS k-mers, and the 20+
+  histone family members share most of their coding sequence. This is a UTR-absent class, not a UTR-non-diverged class.
+
+  ---
+  4. Multicopy ncRNA loci (~17 genes, frac_unique 0.27)
+     
+  RNU6-7, RNU6-8, SNORD118.
+     
+  Hundreds of near-identical U6 snRNA gene copies are scattered across the genome. MANE Select has one representative per "gene," but the 31-mer overlap with other copies is guaranteed. No UTR concept applies here — these are Pol III transcripts
+  (no cap, no poly-A, no UTRs). Their presence in MANE RNA FASTA at all is an annotation artifact.
+     
+  ---
+  5. Large multigene families with slow UTR divergence (~1,600 genes, frac_unique 0.60–0.89)
+
+  The bulk of the 9.9% tail: ZNF (111 genes, mean 0.78), OR (110 genes, mean 0.59), KRTAP (57, mean 0.66), PCDHA/B/GA/GB/GC (~50 combined), KIR (15, mean 0.30), IFNA (12, mean 0.55), HLA (11, mean 0.77).
+
+  These are not at zero — UTRs do partially help — but the paralogs are numerous enough and similar enough that no single transcript gets clean k-mers. For olfactory receptors (OR), there are ~400 functional genes with high CDS similarity and UTRs
+  that were diverged only by neutral drift. For ZNF proteins, the C2H2 zinc finger arrays are highly repetitive even within a single gene; across the family, uniqueness is fundamentally limited by the shared zinc finger domain k-mers.
+
+Summary: why 9.9% and not more
+
+  The 90.1% that was rescued by UTRs are genes with enough evolutionary divergence and UTR length that at least one exon-exon junction or UTR segment is unique. The 9.9% represents genes where one of these conditions holds:
+
+  ┌──────────────────────────────────────────────────┬───────────────────────────┬─────────┐
+  │                      Cause                       │         Examples          │ n genes │
+  ├──────────────────────────────────────────────────┼───────────────────────────┼─────────┤
+  │ Y-chr active homogenization                      │ BPY, DAZ, VCY             │ ~80     │
+  ├──────────────────────────────────────────────────┼───────────────────────────┼─────────┤
+  │ En-bloc tandem duplication (UTR copied with CDS) │ PRR20, DEFB, AMY, SPDYE   │ ~200    │
+  ├──────────────────────────────────────────────────┼───────────────────────────┼─────────┤
+  │ No polyadenylated 3'UTR (stem-loop termination)  │ H2A, H2B, H3, H4          │ ~40     │
+  ├──────────────────────────────────────────────────┼───────────────────────────┼─────────┤
+  │ Pol III / ncRNA (no UTR concept)                 │ RNU6, SNORD               │ ~17     │
+  ├──────────────────────────────────────────────────┼───────────────────────────┼─────────┤
+  │ Large family, slow UTR neutral drift             │ OR, ZNF, KRTAP, PCDH, KIR │ ~1,600  │
+  └──────────────────────────────────────────────────┴───────────────────────────┴─────────┘
+
+  These are also precisely the genes that will never be quantifiable by short-read RNA-seq regardless of which reference or tool is used — the information is not in the reads. Any published TPM for AMY1A vs AMY1B, or for two specific OR genes,
+  should be treated as an equivalence-class average, not a transcript estimate.
+

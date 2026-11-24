@@ -1,0 +1,41 @@
+sample	step	n_transcripts	counts	pct_raw_counts	pct_raw_TPM	pct_corrected_TPM	note
+JY:SRR364065	excluded: non_coding	70	102196.670	0.165	0.177		removed
+JY:SRR364065	excluded: PAR	17	110502.500	0.178	0.228		removed
+JY:SRR364065	excluded: alt_copy_folded	7	2532.990	0.004	0.004		counts moved to primary copy
+JY:SRR364065	excluded: alt_population_variable	18	44.410	0.000	0.000		removed
+JY:SRR364065	excluded: no_unique_locus	3	359.450	0.001	0.000		removed
+JY:SRR364065	x funique (pseudogene inflation)	400	1369226.636	2.209			median f = 0.690
+JY:SRR364065	TPM_corrected < 1	7698	107300.000	0.173	0.108	0.107	removed before peptides
+JY:SRR364065	final (peptide input)	11624	60305648.274	97.275	99.482	99.893	kept
+HCC1937:SRR31477874	excluded: non_coding	70	19665.070	0.078	0.086		removed
+HCC1937:SRR31477874	excluded: PAR	17	12283.060	0.049	0.068		removed
+HCC1937:SRR31477874	excluded: alt_copy_folded	7	1240.660	0.005	0.006		counts moved to primary copy
+HCC1937:SRR31477874	excluded: alt_population_variable	20	22.000	0.000	0.000		removed
+HCC1937:SRR31477874	excluded: no_unique_locus	3	608.900	0.002	0.001		removed
+HCC1937:SRR31477874	x funique (pseudogene inflation)	574	451758.011	1.796			median f = 0.710
+HCC1937:SRR31477874	TPM_corrected < 1	6392	38608.692	0.153	0.104	0.102	removed before peptides
+HCC1937:SRR31477874	final (peptide input)	12931	24631298.907	97.921	99.734	99.898	kept
+HCC1937:SRR31477875	excluded: non_coding	70	18886.640	0.078	0.078		removed
+HCC1937:SRR31477875	excluded: PAR	17	10618.750	0.044	0.061		removed
+HCC1937:SRR31477875	excluded: alt_copy_folded	7	857.830	0.004	0.005		counts moved to primary copy
+HCC1937:SRR31477875	excluded: alt_population_variable	20	16.000	0.000	0.000		removed
+HCC1937:SRR31477875	excluded: no_unique_locus	3	673.180	0.003	0.001		removed
+HCC1937:SRR31477875	x funique (pseudogene inflation)	573	438889.003	1.803			median f = 0.710
+HCC1937:SRR31477875	TPM_corrected < 1	6490	36235.451	0.149	0.103	0.101	removed before peptides
+HCC1937:SRR31477875	final (peptide input)	12833	23839738.386	97.924	99.752	99.899	kept
+HCT116:SRR3644141	excluded: non_coding	70	2459009.750	10.767	57.777		removed
+HCT116:SRR3644141	excluded: PAR	17	6061.700	0.027	0.013		removed
+HCT116:SRR3644141	excluded: alt_copy_folded	7	983.660	0.004	0.003		counts moved to primary copy
+HCT116:SRR3644141	excluded: alt_population_variable	20	99.160	0.000	0.000		removed
+HCT116:SRR3644141	excluded: no_unique_locus	3	2901.650	0.013	0.002		removed
+HCT116:SRR3644141	x funique (pseudogene inflation)	424	492565.701	2.157			median f = 0.649
+HCT116:SRR3644141	TPM_corrected < 1	6757	39222.935	0.172	0.050	0.114	removed before peptides
+HCT116:SRR3644141	final (peptide input)	12566	19837926.154	86.864	42.156	99.886	kept
+HCT116:SRR3644142	excluded: non_coding	70	2497933.700	10.759	57.774		removed
+HCT116:SRR3644142	excluded: PAR	17	6083.750	0.026	0.013		removed
+HCT116:SRR3644142	excluded: alt_copy_folded	7	1006.160	0.004	0.003		counts moved to primary copy
+HCT116:SRR3644142	excluded: alt_population_variable	20	85.000	0.000	0.000		removed
+HCT116:SRR3644142	excluded: no_unique_locus	3	2985.860	0.013	0.002		removed
+HCT116:SRR3644142	x funique (pseudogene inflation)	423	501038.072	2.158			median f = 0.657
+HCT116:SRR3644142	TPM_corrected < 1	6730	39333.403	0.169	0.049	0.114	removed before peptides
+HCT116:SRR3644142	final (peptide input)	12593	20168719.125	86.874	42.158	99.886	kept

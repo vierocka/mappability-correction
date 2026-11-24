@@ -1,0 +1,92 @@
+HLA-DRB6 as a pseudogene in the APM biomarker gene list
+=========================================================
+
+Context
+-------
+Gong & Karchin (2023) — "Clustering by antigen-presenting genes reveals immune
+landscapes and predicts response to checkpoint immunotherapy" (Sci. Reports 13:950)
+— propose a 23-gene APM expression signature that includes HLA-DRB6.  The gene
+was selected from an initial forward-selection process on bulk and scRNA-seq
+transcriptomic cohorts.
+
+HLA-DRB6 classification in GENCODE v49
+---------------------------------------
+Biotype : transcribed_unprocessed_pseudogene
+Transcript (longest annotated) : ENST00000437650.2  (715 bp)
+MANE Select : NONE  — no MANE transcript exists for HLA-DRB6
+Confirmed in : HLApseudo_MAFFT/transcript_table.tsv  (is_pseudogene = True)
+
+HLA-DRB6 carries inactivating mutations (stop codons / frameshift indels) and
+is not predicted to produce a functional protein.  It retains promoter activity
+and is detectably transcribed in normal tissue, particularly in immune cells,
+explaining why it passes expression-based gene-selection filters.
+
+Role in the HLApseudo_MAFFT analysis
+--------------------------------------
+In the MAFFT alignment project (HLApseudo_MAFFT/), the five DRB pseudogenes
+(DRB2, DRB6, DRB7, DRB8, DRB9) were aligned against the four functional DRB
+genes (DRB1, DRB3, DRB4, DRB5) as the classII_DRB group.
+
+Key result from shared_fraction.tsv (≥90% identity threshold):
+
+  Gene     W=75bp  W=100bp  W=150bp  W=250bp
+  HLA-DRB1   61%     66%      72%      81%
+  HLA-DRB4   62%     69%      71%      79%
+  HLA-DRB3   56%     58%      61%      70%
+  HLA-DRB5   49%     50%      55%      57%
+
+At 100 bp read length, 66% of HLA-DRB1 sliding windows share ≥90% nucleotide
+identity with at least one of the five DRB pseudogenes.  HLA-DRB6 is one of the
+five that together produce this overlap — it cannot be isolated from the group
+in the sliding-window analysis, but it is among the two longest pseudogenes in
+the group (715 bp vs DRB2 at 503 bp) and is therefore the most likely source
+of the competition for DRB1 reads.
+
+The overlap worsens with longer reads (81% at 250 bp) because DRB pseudogenes
+share exon 2 — which encodes the peptide-binding groove and is the most
+conserved block — and longer reads more often span this block in full.
+
+Implication for the biomarker paper
+-------------------------------------
+The paper measured "HLA-DRB6 expression" from bulk RNA-seq.  Three confounds:
+
+1. Read contamination from functional DRB genes.
+   Because DRB6 shares 60–80% of its exonic k-mers with DRB1/3/4/5, any
+   standard aligner will assign some DRB1/3/4/5 reads to DRB6 (kallisto/Salmon
+   via EM; STAR if multi-mapping is allowed).  The "expression" signal for DRB6
+   is therefore a mix of genuine pseudogene transcription and leaked quantification
+   from the functional genes.
+
+2. Differential pseudogene derepression in cancer vs normal.
+   The DRB locus in cancer (melanoma, as studied) may undergo chromatin
+   remodelling that derepress pseudogene promoters.  If DRB6 is more expressed
+   in some tumour subtypes, the additional pseudogene transcripts increase the
+   ambiguous read pool and distort quantification of DRB1/3/4/5 in a
+   sample-specific manner.  This is not a constant bias — it manufactures
+   apparent fold-changes that do not reflect protein surface expression.
+
+3. No MANE canonical transcript → no UF data in the mappability project.
+   Because HLA-DRB6 has no MANE Select transcript, it is absent from the
+   sc3prime_v5g_MANE_RNA_PE_100.tsv uniqueness-factor tables.  Our UF analysis
+   correctly flags it as "not in MANE" — the practical consequence is that
+   any study treating HLA-DRB6 as a coding gene will receive no mappability
+   warning from the standard reference set and the ambiguity will go undetected.
+
+Conclusion
+----------
+HLA-DRB6 inclusion in the APM signature is a methodological concern.  Its
+measured expression likely represents a mixture of pseudogene transcription and
+mappability leakage from functional DRB genes.  Prognostic signals attributed
+to HLA-DRB6 in the Gong & Karchin model should be interpreted with caution;
+they may reflect DRB1/DRB3/DRB4/DRB5 biology (via leakage) or tumour-specific
+pseudogene derepression, rather than HLA-DRB6 protein function (which does not
+exist).
+
+Cross-references
+----------------
+  HLApseudo_MAFFT/transcript_table.tsv   — biotype and MANE status
+  HLApseudo_MAFFT/shared_fraction.tsv    — per-window shared fraction data
+  HLApseudo_MAFFT/classII_DRB.aln.fa     — alignment of DRB1/3/4/5 vs DRB2/6/7/8/9
+  HLApseudo_MAFFT/notes.txt              — 3'UTR rescue discussion for DRB1
+  08B_HLA_MHC/analyze.py                 — UF analysis of functional DRB genes
+  08B_HLA_MHC/article/                   — deposited PDF and supplementary files

@@ -1,0 +1,12 @@
+gene_symbol	ambiguity_types	phenomenon	chrom	uf_PE_75bp	uf_PE_100bp	uf_PE_150bp	uf_PE_200bp	uf_PE_proper_150bp	uf_SE_75bp	uf_SE_100bp	uf_SE_150bp	uf_SE_200bp	uf3p250_PE_75bp	uf3p250_PE_100bp	uf3p250_PE_150bp	uf3p250_PE_200bp	uf3p250_PE_proper_150bp	uf3p250_SE_75bp	uf3p250_SE_100bp	uf3p250_SE_150bp	uf3p250_SE_200bp
+GBP1	nested_gene;paralog_ambiguity;pseudogene_ambiguity	nested	chr1	0.990032	0.999282	0.999268	0.999255	1.0	0.990744	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+HLA-B	allelic_ambiguity;genomic_overlap;local_duplication;pseudogene_ambiguity	genomic_overlap_antisense	chr6	0.998632	0.998608	0.998558	0.998504	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+ELF4	genomic_overlap;local_duplication	genomic_overlap_antisense	chrX	0.998816	0.999603	0.999599	0.999595	1.0	0.99921	1.0	1.0	1.0	0.98	0.996	0.996	0.996	1.0	0.984	1.0	1.0	1.0
+HLA-E	allelic_ambiguity;local_duplication;paralog_ambiguity	local_tandem_dup	chr6	0.978577	0.993058	0.999166	0.999149	1.0	0.979386	0.993875	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+IFITM2	genomic_overlap;paralog_ambiguity;pseudogene_ambiguity	genomic_overlap_antisense	chr11	0.97103	0.997795	0.997666	0.997522	1.0	0.973176	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+TNFRSF14	genomic_overlap;paralog_ambiguity	genomic_overlap_antisense	chr1	0.998771	0.998752	0.998712	0.998669	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+CD274	genomic_overlap;pseudogene_ambiguity	genomic_overlap_antisense	chr9	0.999438	0.999434	0.999426	0.999418	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+AIM2	genomic_overlap;local_duplication;pseudogene_ambiguity	genomic_overlap_antisense	chr1	0.998485	0.998456	0.998394	0.998326	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+CFB	genomic_overlap;paralog_ambiguity	genomic_overlap_antisense	chr6	0.999167	0.999159	0.999141	0.999122	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+RHOG	paralog_ambiguity;retrogene	retrogene	chr11	0.998362	0.998328	0.998255	0.998175	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0
+HORMAD1	genomic_overlap;local_duplication	genomic_overlap_antisense	chr1	0.998907	0.998892	0.99886	0.998827	1.0	1.0	1.0	1.0	1.0	0.996	0.996	0.996	0.996	1.0	1.0	1.0	1.0	1.0

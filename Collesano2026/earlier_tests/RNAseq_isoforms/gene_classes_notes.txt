@@ -1,0 +1,17 @@
+### SO-CALLED HOUSEKEEPING
+
+# these are the top kmers present across 4 tissues (skin, colon, lung and muscles) extracted from 788 most transcribed genes
+
+cd <SELF_NONSELF>/human/References/HumanProteinAtlas
+cp top_1_percent.txt <SELF_NONSELF>/human/gene_classes/housekeeping/9mers_top_1_percent.txt
+
+## SO-CALLED HCC1937_homozyg_nonsense
+# 9-mers after nonsense mutation; should be completely missing in HCC1937
+
+## SO_CALLED HCC1937_suspicous
+# these should be less stable in HCC1937, perhaps displaying a lower abundance in RNA-seq and directed to NMD (degradation), but more visible (more presented) - biological paradox
+
+
+###### -> housekeeping and structural proteins
+
+

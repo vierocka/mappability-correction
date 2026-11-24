@@ -1,0 +1,8 @@
+metric	value
+n_genes_near_pseudogenes	6543
+n_pseudogene_shadow	19
+n_other_near_pseudo	6524
+mean_utr_benefit	-0.0245
+frac_utr_rescues_yes	0.0333
+frac_utr_rescues_partial	0.0657
+frac_utr_no_rescue	0.9

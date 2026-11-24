@@ -1,0 +1,16 @@
+python3 peptides_per_gene_MANE_vs_GRCh38p14.py 
+[1/2] Processing MANE set: <SELF_NONSELF>/human/References/MANE_v1.5/MANE.GRCh38.v1.5.ensembl_protein.faa
+      19367 proteins read | 0 skipped | 19289 genes → mane_9mers.tsv
+      WARNING: 77 genes have >1 isoform in MANE (e.g. [('BMP1', 2), ('DST', 2), ('BRAF', 2)])
+[2/2] Processing GCF set:  <SELF_NONSELF>/human/References/GRCh38.p14/GCF_000001405.40_GRCh38.p14_protein.dedup.faa
+      Loading gene map from <SELF_NONSELF>/human/References/GRCh38.p14/CDS_GRCh38p14_annotNames.csv …
+      137698 CDS → gene mappings loaded
+      90373 proteins read | 0 unmapped/skipped | 19866 genes → gcf_9mers.tsv
+
+── Summary ──────────────────────────────────────────────
+  Genes in MANE only  :    195
+  Genes in GCF only   :    772
+  Genes in both sets  :  19094
+  Total unique 9-mers (MANE, summed across genes): 10,943,092
+  Total unique 9-mers (GCF,  summed across genes): 12,086,986
+  Done.

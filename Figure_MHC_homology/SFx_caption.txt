@@ -1,0 +1,14 @@
+ Figure 1. Annotation complexity and sequence homology of the MHC class I/II locus on chromosome 6.
+  
+  A. Overview of the antigen-processing machinery (APM) sub-locus (chr6: 32.75–33.40 Mb), showing all MANE Select protein-coding genes and pseudogenes on both strands. Bidirectional transcription produces overlapping gene bodies (e.g.
+  TAP1/PSMB8-AS1), visible as dotted overlap markers.
+
+  B. The HLA class I gene cluster (chr6: 29.65–31.60 Mb), illustrating extensive pseudogenisation and allelic multiplication across the HLA-A, -B, -C, -E, -F, -G loci and surrounding MIC/pseudogene family members.
+
+  C. Sequence homology between canonical HLA-A, HLA-B, and HLA-DRB1 MANE Select transcripts and their surrounding pseudogenes (MAFFT L-INS-i alignment, 100 bp sliding window, ≥90% identity threshold, smoothed with 80 bp rolling mean). High
+  shared-sequence fractions in CDS regions underlie signal inflation when pseudogene-lacking references (e.g. MANE + STAR + featureCounts) are used for expression quantification, as reads originating from pseudogene loci map uniquely to the single
+  canonical transcript (de Bakker & Raychaudhuri, 2012).
+
+  de Bakker PIW, Raychaudhuri S. Interrogating the major histocompatibility complex with high-throughput genomics. Hum Mol Genet. 2012;21(R1):R29–R36. https://doi.org/10.1093/hmg/dds384
+
+

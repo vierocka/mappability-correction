@@ -1,0 +1,5 @@
+cls	count
+lower >10%	9165
+within 10%	4894
+zero	4163
+higher >10%	1201

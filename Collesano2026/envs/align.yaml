@@ -1,0 +1,6 @@
+# Personal-MANE alignment + counting (HPC versions, methods)
+channels: [conda-forge, bioconda]
+dependencies:
+  - star=2.7.10b
+  - subread=2.1.1
+  - samtools               # 1.19.2 conflicts with subread 2.1.1 (zlib)

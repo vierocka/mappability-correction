@@ -1,0 +1,30 @@
+Figure notes — hla_shared_fraction.pdf/png
+==========================================
+
+HLA-A
+One large contiguous block — essentially the entire CDS region (positions ~50–900) is
+≥90% shared with at least one of H, J, L, P, V. Then a hard drop to zero. That cliff
+at ~900 bp is the 3'UTR becoming unique. This is precisely the sequence space that
+kallisto/Salmon exploit for their discriminating k-mers, and exactly what is lost when
+CDS-only references are used.
+
+HLA-DRB1
+Similar shape but with interior structure — the valleys around positions 200 and 500–600
+likely correspond to exon boundaries or regions where the pseudogene transcript models
+have gaps (partial annotation). The 66% overall is comparable to HLA-A, but the profile
+is less monolithic, which matters: if a study uses a short 3'UTR-anchored protocol, those
+interior unique islands will not be captured.
+
+HLA-B
+A completely different pattern — fragmented peaks, none reaching 100%, overall only 15%.
+The B/C-clade pseudogenes (K, N, T, U, W) are clearly far more degenerated than the
+A-clade ones. This quantitatively explains why HLA-B is somewhat less affected by the
+mappability artifact in practice, though the peaks still reach 70–80% locally, which is
+enough to lose reads in those windows.
+
+To do
+Add a thin annotation bar at the top of each panel showing the approximate 5'UTR / CDS /
+3'UTR regions. The cliff in HLA-A would line up perfectly with the CDS/3'UTR boundary
+and make the biological interpretation immediate without needing text. Requires extracting
+CDS start/end coordinates from the GENCODE v49 GTF for ENST00000376809 (HLA-A),
+ENST00000360004 (HLA-DRB1), and ENST00000412585 (HLA-B).
