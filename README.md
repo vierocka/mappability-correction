@@ -20,6 +20,12 @@ low-uniqueness transcripts carry pseudogene evidence in every library tested, ag
 Reproducible pipeline:
 **[Collesano2026/](Collesano2026/README.md)**.
 
+![why correction is needed](Collesano2026/results/figures/phenomena_overview.png)
+*The same simulated reads, counted against different references: zero (STAR on alt contigs),
+fractions (kallisto across isoforms) or the correct value. The reference, not the biology, decides.
+Each panel is one phenomenon, tabulated in
+[Collesano2026/PHENOMENA.md](Collesano2026/PHENOMENA.md).*
+
 **The result is a compromise.** Each choice below fixes one artefact and accepts another (details in
 [Collesano2026/LEARNED_LESSONS.md](Collesano2026/LEARNED_LESSONS.md)).
 

@@ -22,7 +22,7 @@ Two independent questions, answered separately:
             CDS-only reference:
               always_ok            funique >= --uf-high, no inflation      any pipeline is fine
               apply_correction     funique below the cut, no inflation     multiply the count by funique
-              prefer_pseudoaligner funique high but inflated               unique counting is right
+              prefer_pseudoaligner funique high but inflated               UTR k-mers resolve what CDS cannot
               always_wrong         funique <= --uf-zero and inflated       neither works
             Correction is advised ONLY when the competing sequence is outside the reference, i.e.
             for a pseudogene cause. When the competitor is inside the reference its reads are

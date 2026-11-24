@@ -35,7 +35,15 @@ which genes a cell line happens to express. (Replication-*independent* variants 
 H3-3, H3-5, macroH2A — are polyadenylated and are excluded from the set.)
 
 After non-coding removal and rescaling, 69 replication-dependent histone genes hold **1.70 % of protein-coding
-TPM in HCT116 against 0.036–0.061 % in the poly(A) lines: a 28–47-fold difference.** Per gene it is larger:
+TPM in HCT116 against 0.036–0.061 % in the poly(A) lines: a 28–47-fold difference.**
+
+![histone bias](histone_bias.png)
+*The marker that non-coding removal does not fix: replication-dependent histones, which have no
+poly(A) tail, hold 28–47× more of the coding TPM in the Ribo-Zero line than in either poly(A) line
+even after rescaling. Both HCT116 replicates agree (1.70 %), as do all three poly(A) libraries
+(0.036–0.061 %). Log scale; `plot_histone_bias.py` from `library_composition.tsv`.*
+
+Per gene it is larger:
 
 | gene | HCC1937 r1 | HCC1937 r2 | JY | HCT116 r1 | HCT116 r2 |
 |---|---|---|---|---|---|

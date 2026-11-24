@@ -27,19 +27,13 @@ are not reimplemented there.
 | [excluded_transcripts/](excluded_transcripts/README.md) | The 117 excluded MANE transcripts: every ID and reason |
 | [tests/](tests/README.md) | Impact tests: trimming, personal MANE, filtering, inflation tail, HLA typing |
 
-![overview](results/figures/phenomena_overview.png)
-*Why correction is needed: the same simulated reads give zero (STAR, alt contigs), fractions (kallisto, isoforms)
-or correct values depending on the reference (details in [PHENOMENA.md](PHENOMENA.md)).*
-
 ---
 
 ## Pipelines
 
-![server pipeline](docs/subway/server_subway.png)
-![local pipeline](docs/subway/local_subway.png)
-
-*Subway maps drawn with [slitherFlow](https://github.com/mikemartinez99/slitherFlow) from `snakemake --rulegraph`
-(specs: `docs/subway/*.yaml`).*
+Two Snakemake workflows: `server/` takes FASTQ to HLA types and corrected TPM, `local/` takes TPM to
+9-mers. The subway maps are wide diagrams and read better on their own page —
+[docs/subway/](docs/subway/README.md), which also gives the commands that draw them.
 
 <details><summary>text version</summary>
 

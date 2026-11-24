@@ -33,6 +33,13 @@ on **where the competing sequence lives**:
 So the workflow reports `cause` and `action` as separate columns, and only ever advises correction
 for the first case.
 
+![cause and action](figures/gene_classification.png)
+*The distinction the workflow turns on: low uniqueness means different things depending on where the
+competing sequence sits. Only when it is outside the reference (a pseudogene) is scaling the count
+the right answer; when both copies are in the reference, fractional assignment already divides the
+reads and scaling again corrects twice. Simplified — the full taxonomy is 11 causes and 7 actions,
+listed in the two tables below.*
+
 ## Causes
 
 From annotation geometry (interval sweep over gene records) and identical terminal sequence
@@ -64,7 +71,7 @@ index quantified from the same reads:
 | `always_ok` | funique ≥ `uf_high`, not inflated | any pipeline is reliable |
 | `apply_correction` | funique below the cut, cause is external | multiply the count by funique |
 | `ambiguous_no_correction` | funique below the cut, competitor inside the reference | leave it to fractional counting |
-| `prefer_pseudoaligner` | funique high but inflated | unique counting is right here |
+| `prefer_pseudoaligner` | funique high but inflated | the UTR is genuinely unique, so UTR k-mers place reads the CDS alone cannot resolve: quantify against a UTR-containing index |
 | `always_wrong` | funique ≤ `uf_zero` and inflated | needs long reads or protein evidence |
 | `unquantifiable` | funique ≤ `uf_zero` | no usable unique signal |
 | `use_primary_assembly` | `alt_haplotype_copy` | rebuild the reference, do not scale |

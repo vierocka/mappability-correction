@@ -2,10 +2,12 @@
 
 Why a "TPM" from short reads can be wrong, and why this pipeline corrects some genes but not others.
 Each row: the phenomenon in one line, the key number, and the folder with the full analysis.
-Figure: [results/figures/phenomena_overview.png](results/figures/phenomena_overview.png)
-(`scripts/plot_phenomena.py`, existing results only). Tables: `results/tables/phenomena_*.tsv`.
+Tables: `results/tables/phenomena_*.tsv`.
 
 ![phenomena](results/figures/phenomena_overview.png)
+*The same simulated reads give zero (STAR, alt contigs), fractions (kallisto, isoforms) or correct
+values, depending only on which reference they are counted against. Panels A–F are cited in the
+`panel` column below (`scripts/plot_phenomena.py`, existing results only).*
 
 | # | phenomenon | what happens to reads | key number | panel | details | status |
 |---|---|---|---|---|---|---|

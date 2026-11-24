@@ -41,7 +41,9 @@ def main():
     d = d.sort_values(["cell_line", "bin"])
     cells = sorted(d.cell_line.unique())
 
-    fig, axes = plt.subplots(1, len(cells), figsize=(3.5 * len(cells), 3.6),
+    # keep the panels side by side for comparison, but below 2:1 overall: a wider figure is
+    # scaled to the page width when rendered and its labels become unreadable
+    fig, axes = plt.subplots(1, len(cells), figsize=(3.2 * len(cells), 5.0),
                              sharey=True, constrained_layout=True)
     axes = [axes] if len(cells) == 1 else list(axes)
     x = range(len(ORDER))

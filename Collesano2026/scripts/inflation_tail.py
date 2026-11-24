@@ -72,7 +72,9 @@ def main():
     s.to_frame("value").to_csv(f"{a.out_prefix}_tail_summary.tsv", sep="\t")
 
     bins = np.linspace(-3, np.log10(pep.before.max()) + .2, 80)
-    fig, ax = plt.subplots(1, 2, figsize=(10, 3.6))
+    # below 2:1 overall: a wider figure is scaled to the page width when rendered and its
+    # axis labels become unreadable
+    fig, ax = plt.subplots(1, 2, figsize=(9, 4.4))
     for col, c in [("before", "#999999"), ("after", "#1f77b4")]:
         ax[0].hist(np.log10(pep[col].clip(lower=1e-3)), bins=bins, histtype="step", color=c, label=col)
         ax[1].hist(np.log10(tt[col].clip(lower=1e-3)), bins=bins, histtype="step", color=c, label=col)
